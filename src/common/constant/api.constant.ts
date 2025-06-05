@@ -1,4 +1,6 @@
 // AUTH API CONSTANTS
-export const LOGIN_API = '/login';
-export const LOGOUT_API = '/logout';
-export const REFRESH_TOKEN_API = '/refresh-token';
+export const API_LOGIN = '/login';
+export const API_LOGOUT = '/logout';
+export const API_REFRESH_TOKEN = '/refresh-token';
+export const API_PROFILE = '/profile';
+export const API_POLICIES = '/policies';

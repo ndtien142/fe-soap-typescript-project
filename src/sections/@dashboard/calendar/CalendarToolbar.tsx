@@ -8,7 +8,7 @@ import useResponsive from '../../../hooks/useResponsive';
 // @types
 import { CalendarView } from '../../../@types/calendar';
 // components
-import Iconify from '../../../components/Iconify';
+import Iconify from '../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

@@ -14,14 +14,14 @@ import { fData } from '../../../../utils/formatNumber';
 // _mock
 import { countries } from '../../../../_mock';
 // components
-import { CustomFile } from '../../../../components/upload';
+import { CustomFile } from '../../../../common/components/upload';
 import {
   FormProvider,
   RHFSwitch,
   RHFSelect,
   RHFTextField,
   RHFUploadAvatar,
-} from '../../../../components/hook-form';
+} from '../../../../common/components/hook-form';
 
 // ----------------------------------------------------------------------
 

@@ -17,15 +17,15 @@ import { UserManager } from '../../../@types/user';
 // _mock
 import { countries } from '../../../_mock';
 // components
-import Label from '../../../components/Label';
-import { CustomFile } from '../../../components/upload';
+import Label from '../../../common/components/Label';
+import { CustomFile } from '../../../common/components/upload';
 import {
   FormProvider,
   RHFSelect,
   RHFSwitch,
   RHFTextField,
   RHFUploadAvatar,
-} from '../../../components/hook-form';
+} from '../../../common/components/hook-form';
 
 // ----------------------------------------------------------------------
 

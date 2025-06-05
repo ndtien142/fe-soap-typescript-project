@@ -13,11 +13,11 @@ import { fShortenNumber } from '../../../utils/formatNumber';
 // @types
 import { Post } from '../../../@types/blog';
 // components
-import Image from '../../../components/Image';
-import Iconify from '../../../components/Iconify';
-import TextMaxLine from '../../../components/TextMaxLine';
-import TextIconLabel from '../../../components/TextIconLabel';
-import SvgIconStyle from '../../../components/SvgIconStyle';
+import Image from '../../../common/components/Image';
+import Iconify from '../../../common/components/Iconify';
+import TextMaxLine from '../../../common/components/TextMaxLine';
+import TextIconLabel from '../../../common/components/TextIconLabel';
+import SvgIconStyle from '../../../common/components/SvgIconStyle';
 
 // ----------------------------------------------------------------------
 

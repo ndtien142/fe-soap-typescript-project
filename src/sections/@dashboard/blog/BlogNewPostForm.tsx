@@ -21,14 +21,14 @@ import {
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
-import { CustomFile } from '../../../components/upload';
+import { CustomFile } from '../../../common/components/upload';
 import {
   RHFSwitch,
   RHFEditor,
   FormProvider,
   RHFTextField,
   RHFUploadSingleFile,
-} from '../../../components/hook-form';
+} from '../../../common/components/hook-form';
 //
 import BlogNewPostPreview from './BlogNewPostPreview';
 

@@ -16,8 +16,8 @@ import {
 // hooks
 import useSettings from '../../hooks/useSettings';
 // components
-import Image from '../../components/Image';
-import { MotionViewport, varFade } from '../../components/animate';
+import Image from '../../common/components/Image';
+import { MotionViewport, varFade } from '../../common/components/animate';
 
 // ----------------------------------------------------------------------
 

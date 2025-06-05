@@ -11,7 +11,7 @@ import { LoadingButton } from '@mui/lab';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
-import { FormProvider } from '../../../components/hook-form';
+import { FormProvider } from '../../../common/components/hook-form';
 
 // ----------------------------------------------------------------------
 

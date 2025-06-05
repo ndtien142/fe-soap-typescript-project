@@ -1,14 +1,14 @@
 // @mui
 import { enUS, frFR, zhCN, viVN, arSD } from '@mui/material/locale';
 // components
-import { SettingsValueProps } from './components/settings/type';
+import { SettingsValueProps } from './common/components/settings/type';
 // routes
 import { PATH_DASHBOARD } from './routes/paths';
 
 // API
 // ----------------------------------------------------------------------
 
-export const HOST_API = process.env.REACT_APP_HOST_API_KEY || '';
+export const HOST_API = process.env.REACT_APP_HOST_API_KEY || 'localhost:3055/v1/api';
 
 export const FIREBASE_API = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,

@@ -18,7 +18,7 @@ import { PATH_DASHBOARD } from '../../../../routes/paths';
 // @types
 import { Invoice } from '../../../../@types/invoice';
 // components
-import Iconify from '../../../../components/Iconify';
+import Iconify from '../../../../common/components/Iconify';
 //
 import InvoicePDF from './InvoicePDF';
 

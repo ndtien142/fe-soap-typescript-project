@@ -9,8 +9,8 @@ import { onBackStep, onNextStep, createBilling } from '../../../../redux/slices/
 // _mock_
 import { _addressBooks } from '../../../../_mock';
 // components
-import Label from '../../../../components/Label';
-import Iconify from '../../../../components/Iconify';
+import Label from '../../../../common/components/Label';
+import Iconify from '../../../../common/components/Iconify';
 //
 import CheckoutSummary from './CheckoutSummary';
 import CheckoutNewAddressForm from './CheckoutNewAddressForm';

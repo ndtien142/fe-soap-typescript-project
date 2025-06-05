@@ -16,11 +16,11 @@ import {
 // config
 import { NAVBAR } from '../../config';
 // components
-import Logo from '../../components/Logo';
-import Iconify from '../../components/Iconify';
-import Scrollbar from '../../components/Scrollbar';
-import { IconButtonAnimate } from '../../components/animate';
-import { NavSectionVertical } from '../../components/nav-section';
+import Logo from '../../common/components/Logo';
+import Iconify from '../../common/components/Iconify';
+import Scrollbar from '../../common/components/Scrollbar';
+import { IconButtonAnimate } from '../../common/components/animate';
+import { NavSectionVertical } from '../../common/components/nav-section';
 //
 import { MenuProps, MenuItemProps } from './type';
 

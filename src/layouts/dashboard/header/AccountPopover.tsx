@@ -10,9 +10,9 @@ import { PATH_DASHBOARD, PATH_AUTH } from '../../../routes/paths';
 import useAuth from '../../../hooks/useAuth';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';
 // components
-import MyAvatar from '../../../components/MyAvatar';
-import MenuPopover from '../../../components/MenuPopover';
-import { IconButtonAnimate } from '../../../components/animate';
+import MyAvatar from '../../../common/components/MyAvatar';
+import MenuPopover from '../../../common/components/MenuPopover';
+import { IconButtonAnimate } from '../../../common/components/animate';
 
 // ----------------------------------------------------------------------
 

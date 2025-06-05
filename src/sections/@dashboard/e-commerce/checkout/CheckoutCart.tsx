@@ -14,9 +14,9 @@ import {
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // components
-import Iconify from '../../../../components/Iconify';
-import Scrollbar from '../../../../components/Scrollbar';
-import EmptyContent from '../../../../components/EmptyContent';
+import Iconify from '../../../../common/components/Iconify';
+import Scrollbar from '../../../../common/components/Scrollbar';
+import EmptyContent from '../../../../common/components/EmptyContent';
 //
 import CheckoutSummary from './CheckoutSummary';
 import CheckoutProductList from './CheckoutProductList';

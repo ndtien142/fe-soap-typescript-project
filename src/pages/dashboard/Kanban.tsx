@@ -8,9 +8,9 @@ import { getBoard, persistColumn, persistCard } from '../../redux/slices/kanban'
 // routes
 import { PATH_DASHBOARD } from '../../routes/paths';
 // components
-import Page from '../../components/Page';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
-import { SkeletonKanbanColumn } from '../../components/skeleton';
+import Page from '../../common/components/Page';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
+import { SkeletonKanbanColumn } from '../../common/components/skeleton';
 // sections
 import { KanbanColumn, KanbanColumnAdd } from '../../sections/@dashboard/kanban';
 

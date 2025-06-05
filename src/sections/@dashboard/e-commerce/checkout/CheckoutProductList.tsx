@@ -18,9 +18,9 @@ import { fCurrency } from '../../../../utils/formatNumber';
 // @types
 import { CartItem } from '../../../../@types/product';
 // components
-import Image from '../../../../components/Image';
-import Iconify from '../../../../components/Iconify';
-import { TableHeadCustom } from '../../../../components/table';
+import Image from '../../../../common/components/Image';
+import Iconify from '../../../../common/components/Iconify';
+import { TableHeadCustom } from '../../../../common/components/table';
 
 // ----------------------------------------------------------------------
 

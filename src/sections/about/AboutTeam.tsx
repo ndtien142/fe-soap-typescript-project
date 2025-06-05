@@ -7,11 +7,11 @@ import { Box, Stack, Card, Button, Container, Typography } from '@mui/material';
 // _mock_
 import { _carouselsMembers } from '../../_mock';
 // components
-import Image from '../../components/Image';
-import Iconify from '../../components/Iconify';
-import { CarouselArrows } from '../../components/carousel';
-import SocialsButton from '../../components/SocialsButton';
-import { MotionViewport, varFade } from '../../components/animate';
+import Image from '../../common/components/Image';
+import Iconify from '../../common/components/Iconify';
+import { CarouselArrows } from '../../common/components/carousel';
+import SocialsButton from '../../common/components/SocialsButton';
+import { MotionViewport, varFade } from '../../common/components/animate';
 
 // ----------------------------------------------------------------------
 

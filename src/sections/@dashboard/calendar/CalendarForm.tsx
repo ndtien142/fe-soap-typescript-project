@@ -14,9 +14,9 @@ import { MobileDateTimePicker } from '@mui/x-date-pickers';
 import { useDispatch } from '../../../redux/store';
 import { createEvent, updateEvent, deleteEvent } from '../../../redux/slices/calendar';
 // components
-import Iconify from '../../../components/Iconify';
-import { ColorSinglePicker } from '../../../components/color-utils';
-import { FormProvider, RHFTextField, RHFSwitch } from '../../../components/hook-form';
+import Iconify from '../../../common/components/Iconify';
+import { ColorSinglePicker } from '../../../common/components/color-utils';
+import { FormProvider, RHFTextField, RHFSwitch } from '../../../common/components/hook-form';
 
 // ----------------------------------------------------------------------
 

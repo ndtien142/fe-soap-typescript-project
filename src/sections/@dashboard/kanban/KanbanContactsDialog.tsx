@@ -14,8 +14,8 @@ import {
 // _mock_
 import { _contacts } from '../../../_mock';
 // components
-import Iconify from '../../../components/Iconify';
-import Scrollbar from '../../../components/Scrollbar';
+import Iconify from '../../../common/components/Iconify';
+import Scrollbar from '../../../common/components/Scrollbar';
 
 // ----------------------------------------------------------------------
 

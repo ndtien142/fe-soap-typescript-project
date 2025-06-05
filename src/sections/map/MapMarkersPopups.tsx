@@ -3,8 +3,8 @@ import Map from 'react-map-gl';
 // @mui
 import { Box, Typography } from '@mui/material';
 // components
-import Image from '../../components/Image';
-import { MapPopup, MapMarker, MapControl, MapBoxProps } from '../../components/map';
+import Image from '../../common/components/Image';
+import { MapPopup, MapMarker, MapControl, MapBoxProps } from '../../common/components/map';
 
 // ----------------------------------------------------------------------
 

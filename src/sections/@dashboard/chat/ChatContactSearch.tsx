@@ -1,8 +1,8 @@
 // @mui
 import { InputAdornment, ClickAwayListener } from '@mui/material';
 // components
-import Iconify from '../../../components/Iconify';
-import InputStyle from '../../../components/InputStyle';
+import Iconify from '../../../common/components/Iconify';
+import InputStyle from '../../../common/components/InputStyle';
 
 // ----------------------------------------------------------------------
 

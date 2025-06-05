@@ -4,9 +4,9 @@ import { MenuItem, Stack } from '@mui/material';
 // hooks
 import useLocales from '../../../hooks/useLocales';
 // components
-import Image from '../../../components/Image';
-import MenuPopover from '../../../components/MenuPopover';
-import { IconButtonAnimate } from '../../../components/animate';
+import Image from '../../../common/components/Image';
+import MenuPopover from '../../../common/components/MenuPopover';
+import { IconButtonAnimate } from '../../../common/components/animate';
 
 // ----------------------------------------------------------------------
 

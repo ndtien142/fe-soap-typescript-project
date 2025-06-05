@@ -32,17 +32,17 @@ import { _invoices } from '../../_mock';
 // @types
 import { Invoice } from '../../@types/invoice';
 // components
-import Page from '../../components/Page';
-import Label from '../../components/Label';
-import Iconify from '../../components/Iconify';
-import Scrollbar from '../../components/Scrollbar';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../common/components/Page';
+import Label from '../../common/components/Label';
+import Iconify from '../../common/components/Iconify';
+import Scrollbar from '../../common/components/Scrollbar';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
 import {
   TableNoData,
   TableEmptyRows,
   TableHeadCustom,
   TableSelectedActions,
-} from '../../components/table';
+} from '../../common/components/table';
 // sections
 import InvoiceAnalytic from '../../sections/@dashboard/invoice/InvoiceAnalytic';
 import { InvoiceTableRow, InvoiceTableToolbar } from '../../sections/@dashboard/invoice/list';

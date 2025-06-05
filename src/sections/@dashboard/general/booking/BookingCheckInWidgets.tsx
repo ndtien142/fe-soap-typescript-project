@@ -8,7 +8,7 @@ import useResponsive from '../../../../hooks/useResponsive';
 // utils
 import { fNumber } from '../../../../utils/formatNumber';
 // components
-import { BaseOptionChart } from '../../../../components/chart';
+import { BaseOptionChart } from '../../../../common/components/chart';
 
 // ----------------------------------------------------------------------
 

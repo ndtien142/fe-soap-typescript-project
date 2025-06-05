@@ -8,8 +8,8 @@ import { _invoices } from '../../_mock';
 // hooks
 import useSettings from '../../hooks/useSettings';
 // components
-import Page from '../../components/Page';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../common/components/Page';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
 // sections
 import Invoice from '../../sections/@dashboard/invoice/details';
 

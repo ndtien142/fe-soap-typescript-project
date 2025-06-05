@@ -8,8 +8,8 @@ import cssStyles from '../../../../utils/cssStyles';
 // hooks
 import useAuth from '../../../../hooks/useAuth';
 // components
-import MyAvatar from '../../../../components/MyAvatar';
-import Image from '../../../../components/Image';
+import MyAvatar from '../../../../common/components/MyAvatar';
+import Image from '../../../../common/components/Image';
 
 // ----------------------------------------------------------------------
 

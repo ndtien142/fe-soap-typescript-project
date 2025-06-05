@@ -4,8 +4,8 @@ import { Avatar, Typography, DialogContent } from '@mui/material';
 // @types
 import { Participant } from '../../../@types/chat';
 // components
-import Iconify from '../../../components/Iconify';
-import { DialogAnimate } from '../../../components/animate';
+import Iconify from '../../../common/components/Iconify';
+import { DialogAnimate } from '../../../common/components/animate';
 
 // ----------------------------------------------------------------------
 

@@ -27,17 +27,17 @@ import useTable, { getComparator, emptyRows } from '../../hooks/useTable';
 // @types
 import { Product } from '../../@types/product';
 // components
-import Page from '../../components/Page';
-import Iconify from '../../components/Iconify';
-import Scrollbar from '../../components/Scrollbar';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../common/components/Page';
+import Iconify from '../../common/components/Iconify';
+import Scrollbar from '../../common/components/Scrollbar';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
 import {
   TableNoData,
   TableSkeleton,
   TableEmptyRows,
   TableHeadCustom,
   TableSelectedActions,
-} from '../../components/table';
+} from '../../common/components/table';
 // sections
 import {
   ProductTableRow,

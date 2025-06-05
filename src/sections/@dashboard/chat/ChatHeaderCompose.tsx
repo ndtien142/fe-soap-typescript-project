@@ -7,8 +7,8 @@ import { Box, Avatar, TextField, Typography, Autocomplete, Chip } from '@mui/mat
 // @types
 import { Participant } from '../../../@types/chat';
 // components
-import Iconify from '../../../components/Iconify';
-import SearchNotFound from '../../../components/SearchNotFound';
+import Iconify from '../../../common/components/Iconify';
+import SearchNotFound from '../../../common/components/SearchNotFound';
 
 // ----------------------------------------------------------------------
 

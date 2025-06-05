@@ -7,7 +7,7 @@ import useSettings from '../../hooks/useSettings';
 // _mock_
 import { _appFeatured, _appAuthors, _appInstalled, _appRelated, _appInvoices } from '../../_mock';
 // components
-import Page from '../../components/Page';
+import Page from '../../common/components/Page';
 // sections
 import {
   AppWidget,

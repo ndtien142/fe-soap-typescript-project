@@ -3,7 +3,7 @@ import { LngLat } from 'react-map-gl';
 // @mui
 import { Typography } from '@mui/material';
 // components
-import { ControlPanelStyle } from '../../../components/map';
+import { ControlPanelStyle } from '../../../common/components/map';
 
 // ----------------------------------------------------------------------
 

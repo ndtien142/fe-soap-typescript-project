@@ -3,8 +3,8 @@ import { Dialog, ListItemButton, Stack, Typography, Button } from '@mui/material
 // @types
 import { InvoiceAddress } from '../../../../@types/invoice';
 // components
-import Iconify from '../../../../components/Iconify';
-import Scrollbar from '../../../../components/Scrollbar';
+import Iconify from '../../../../common/components/Iconify';
+import Scrollbar from '../../../../common/components/Scrollbar';
 
 // ----------------------------------------------------------------------
 

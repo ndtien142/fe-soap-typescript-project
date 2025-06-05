@@ -14,11 +14,11 @@ import {
 // @types
 import { Friend } from '../../../../@types/user';
 // components
-import Iconify from '../../../../components/Iconify';
-import InputStyle from '../../../../components/InputStyle';
-import MenuPopover from '../../../../components/MenuPopover';
-import SocialsButton from '../../../../components/SocialsButton';
-import SearchNotFound from '../../../../components/SearchNotFound';
+import Iconify from '../../../../common/components/Iconify';
+import InputStyle from '../../../../common/components/InputStyle';
+import MenuPopover from '../../../../common/components/MenuPopover';
+import SocialsButton from '../../../../common/components/SocialsButton';
+import SearchNotFound from '../../../../common/components/SearchNotFound';
 
 // ----------------------------------------------------------------------
 

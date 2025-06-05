@@ -8,8 +8,8 @@ import { resetCart } from '../../../../redux/slices/product';
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // components
-import Iconify from '../../../../components/Iconify';
-import { DialogAnimate } from '../../../../components/animate';
+import Iconify from '../../../../common/components/Iconify';
+import { DialogAnimate } from '../../../../common/components/animate';
 // assets
 import { OrderCompleteIllustration } from '../../../../assets';
 

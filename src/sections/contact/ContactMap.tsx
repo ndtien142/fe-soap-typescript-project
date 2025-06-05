@@ -6,8 +6,8 @@ import { Typography } from '@mui/material';
 // config
 import { MAPBOX_API } from '../../config';
 // components
-import Iconify from '../../components/Iconify';
-import { MapControl, MapMarker, MapPopup } from '../../components/map';
+import Iconify from '../../common/components/Iconify';
+import { MapControl, MapMarker, MapPopup } from '../../common/components/map';
 
 // ----------------------------------------------------------------------
 

@@ -1,7 +1,7 @@
 import { useState, memo } from 'react';
 import Map from 'react-map-gl';
 // components
-import { MapControl, MapBoxProps } from '../../../components/map';
+import { MapControl, MapBoxProps } from '../../../common/components/map';
 //
 import ControlPanel from './ControlPanel';
 

@@ -5,8 +5,8 @@ import { Grid, Link, Divider, Container, Typography, Stack } from '@mui/material
 // routes
 import { PATH_PAGE } from '../../routes/paths';
 // components
-import Logo from '../../components/Logo';
-import SocialsButton from '../../components/SocialsButton';
+import Logo from '../../common/components/Logo';
+import SocialsButton from '../../common/components/SocialsButton';
 
 // ----------------------------------------------------------------------
 

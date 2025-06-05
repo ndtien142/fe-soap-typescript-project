@@ -10,7 +10,7 @@ import { deleteColumn, updateColumn, addTask, deleteTask } from '../../../redux/
 // @types
 import { KanbanColumn as Column, KanbanCard } from '../../../@types/kanban';
 // components
-import Iconify from '../../../components/Iconify';
+import Iconify from '../../../common/components/Iconify';
 //
 import KanbanAddTask from './KanbanTaskAdd';
 import KanbanTaskCard from './KanbanTaskCard';

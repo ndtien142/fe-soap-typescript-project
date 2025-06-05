@@ -2,7 +2,7 @@ import { memo } from 'react';
 // @mui
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 // components
-import { ControlPanelStyle } from '../../../components/map';
+import { ControlPanelStyle } from '../../../common/components/map';
 
 // ----------------------------------------------------------------------
 

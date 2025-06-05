@@ -4,7 +4,7 @@ import { Grid, Container } from '@mui/material';
 // _mock
 import { _mapContact } from '../_mock';
 // components
-import Page from '../components/Page';
+import Page from '../common/components/Page';
 // sections
 import { ContactHero, ContactForm, ContactMap } from '../sections/contact';
 

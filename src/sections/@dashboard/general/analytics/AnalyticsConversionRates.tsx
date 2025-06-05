@@ -5,7 +5,7 @@ import { Box, Card, CardHeader, CardProps } from '@mui/material';
 // utils
 import { fNumber } from '../../../../utils/formatNumber';
 // components
-import { BaseOptionChart } from '../../../../components/chart';
+import { BaseOptionChart } from '../../../../common/components/chart';
 
 // ----------------------------------------------------------------------
 

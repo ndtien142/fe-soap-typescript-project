@@ -6,10 +6,10 @@ import { Box, Stack, Paper, Avatar, BoxProps, Typography, CardHeader } from '@mu
 // utils
 import { fDateTime } from '../../../../utils/formatTime';
 // components
-import Label from '../../../../components/Label';
-import Image from '../../../../components/Image';
-import Iconify from '../../../../components/Iconify';
-import { CarouselArrows } from '../../../../components/carousel';
+import Label from '../../../../common/components/Label';
+import Image from '../../../../common/components/Image';
+import Iconify from '../../../../common/components/Iconify';
+import { CarouselArrows } from '../../../../common/components/carousel';
 
 // ----------------------------------------------------------------------
 

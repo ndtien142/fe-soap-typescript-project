@@ -3,9 +3,9 @@ import { m } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import { Box, Container, Stack, InputAdornment } from '@mui/material';
 // components
-import Iconify from '../../components/Iconify';
-import InputStyle from '../../components/InputStyle';
-import { MotionContainer, TextAnimate, varFade } from '../../components/animate';
+import Iconify from '../../common/components/Iconify';
+import InputStyle from '../../common/components/InputStyle';
+import { MotionContainer, TextAnimate, varFade } from '../../common/components/animate';
 
 // ----------------------------------------------------------------------
 

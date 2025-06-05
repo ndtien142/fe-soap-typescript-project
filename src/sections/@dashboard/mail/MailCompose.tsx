@@ -14,8 +14,8 @@ import {
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // components
-import Iconify from '../../../components/Iconify';
-import Editor from '../../../components/editor';
+import Iconify from '../../../common/components/Iconify';
+import Editor from '../../../common/components/editor';
 
 // ----------------------------------------------------------------------
 

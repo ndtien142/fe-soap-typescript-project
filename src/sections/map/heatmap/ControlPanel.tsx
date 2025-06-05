@@ -4,7 +4,7 @@ import { Box, Slider, Switch, Typography } from '@mui/material';
 // utils
 import { fDate } from '../../../utils/formatTime';
 // components
-import { ControlPanelStyle } from '../../../components/map';
+import { ControlPanelStyle } from '../../../common/components/map';
 
 // ----------------------------------------------------------------------
 

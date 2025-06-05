@@ -9,8 +9,8 @@ import { getFileFullName, getFileThumb } from '../../../utils/getFileFormat';
 // @types
 import { Conversation, Message } from '../../../@types/chat';
 // components
-import Iconify from '../../../components/Iconify';
-import Scrollbar from '../../../components/Scrollbar';
+import Iconify from '../../../common/components/Iconify';
+import Scrollbar from '../../../common/components/Scrollbar';
 
 // ----------------------------------------------------------------------
 

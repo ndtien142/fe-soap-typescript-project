@@ -7,7 +7,7 @@ import { fCurrency } from '../../../../utils/formatNumber';
 // @types
 import { UserInvoice } from '../../../../@types/user';
 // components
-import Iconify from '../../../../components/Iconify';
+import Iconify from '../../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

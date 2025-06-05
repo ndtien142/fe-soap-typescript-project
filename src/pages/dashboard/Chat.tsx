@@ -9,8 +9,8 @@ import { PATH_DASHBOARD } from '../../routes/paths';
 // hooks
 import useSettings from '../../hooks/useSettings';
 // components
-import Page from '../../components/Page';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../common/components/Page';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
 // sections
 import { ChatSidebar, ChatWindow } from '../../sections/@dashboard/chat';
 

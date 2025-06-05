@@ -3,8 +3,8 @@ import { ReactElement } from 'react';
 import { styled } from '@mui/material/styles';
 import { Card, Button, Typography, Box, Stack } from '@mui/material';
 // components
-import Label from '../../components/Label';
-import Iconify from '../../components/Iconify';
+import Label from '../../common/components/Label';
+import Iconify from '../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

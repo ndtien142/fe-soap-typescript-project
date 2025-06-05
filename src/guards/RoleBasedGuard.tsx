@@ -4,7 +4,7 @@ import { Container, Typography } from '@mui/material';
 // hooks
 import useAuth from '../hooks/useAuth';
 // components
-import { MotionContainer, varBounce } from '../components/animate';
+import { MotionContainer, varBounce } from '../common/components/animate';
 // assets
 import { ForbiddenIllustration } from '../assets';
 

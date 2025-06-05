@@ -2,7 +2,7 @@ import { memo } from 'react';
 import DeckGL, { ArcLayer } from 'deck.gl';
 import Map from 'react-map-gl';
 // components
-import { MapControl, MapBoxProps } from '../../components/map';
+import { MapControl, MapBoxProps } from '../../common/components/map';
 
 // ----------------------------------------------------------------------
 

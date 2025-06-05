@@ -6,7 +6,7 @@ import useSettings from '../../hooks/useSettings';
 // _mock_
 import { _bookings, _bookingNew, _bookingsOverview, _bookingReview } from '../../_mock';
 // components
-import Page from '../../components/Page';
+import Page from '../../common/components/Page';
 // sections
 import {
   BookingDetails,

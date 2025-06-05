@@ -10,8 +10,8 @@ import cssStyles from '../../utils/cssStyles';
 // config
 import { HEADER } from '../../config';
 // components
-import Logo from '../../components/Logo';
-import Label from '../../components/Label';
+import Logo from '../../common/components/Logo';
+import Label from '../../common/components/Label';
 //
 import MenuDesktop from './MenuDesktop';
 import MenuMobile from './MenuMobile';

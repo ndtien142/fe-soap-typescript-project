@@ -17,7 +17,7 @@ import uuidv4 from '../../../utils/uuidv4';
 // @types
 import { KanbanCard } from '../../../@types/kanban';
 // components
-import Iconify from '../../../components/Iconify';
+import Iconify from '../../../common/components/Iconify';
 //
 import KanbanTaskDisplayTime from './KanbanTaskDisplayTime';
 import KanbanContactsDialog from './KanbanContactsDialog';

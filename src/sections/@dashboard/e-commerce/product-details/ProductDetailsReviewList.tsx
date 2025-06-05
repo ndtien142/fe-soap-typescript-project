@@ -7,7 +7,7 @@ import { fShortenNumber } from '../../../../utils/formatNumber';
 // @types
 import { Product, ProductReview } from '../../../../@types/product';
 // components
-import Iconify from '../../../../components/Iconify';
+import Iconify from '../../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

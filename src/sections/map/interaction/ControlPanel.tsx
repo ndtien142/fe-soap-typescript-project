@@ -3,9 +3,9 @@ import { memo } from 'react';
 import { styled } from '@mui/material/styles';
 import { Switch, InputBase, Typography } from '@mui/material';
 // @types
-import { MapSettingKeys, MapSettings } from '../../../components/map/type';
+import { MapSettingKeys, MapSettings } from '../../../common/components/map/type';
 // components
-import { ControlPanelStyle } from '../../../components/map';
+import { ControlPanelStyle } from '../../../common/components/map';
 
 // ----------------------------------------------------------------------
 

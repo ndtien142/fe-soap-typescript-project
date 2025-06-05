@@ -9,9 +9,9 @@ import useSettings from '../../hooks/useSettings';
 // _mock_
 import { _userPayment, _userAddressBook, _userInvoices, _userAbout } from '../../_mock';
 // components
-import Page from '../../components/Page';
-import Iconify from '../../components/Iconify';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../common/components/Page';
+import Iconify from '../../common/components/Iconify';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
 // sections
 import {
   AccountGeneral,

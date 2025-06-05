@@ -3,7 +3,7 @@ import { Box, Card, Button, Typography, Stack, Paper } from '@mui/material';
 // @types
 import { UserAddressBook } from '../../../../@types/user';
 // components
-import Iconify from '../../../../components/Iconify';
+import Iconify from '../../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

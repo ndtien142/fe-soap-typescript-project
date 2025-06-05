@@ -5,7 +5,7 @@ import { Avatar, Box, Typography } from '@mui/material';
 // @types
 import { Conversation, Message } from '../../../@types/chat';
 // components
-import Image from '../../../components/Image';
+import Image from '../../../common/components/Image';
 
 // ----------------------------------------------------------------------
 

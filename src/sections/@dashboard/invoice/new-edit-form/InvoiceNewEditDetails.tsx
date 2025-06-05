@@ -9,8 +9,8 @@ import { fNumber, fCurrency } from '../../../../utils/formatNumber';
 // @types
 import { InvoiceItem } from '../../../../@types/invoice';
 // components
-import Iconify from '../../../../components/Iconify';
-import { RHFSelect, RHFTextField } from '../../../../components/hook-form';
+import Iconify from '../../../../common/components/Iconify';
+import { RHFSelect, RHFTextField } from '../../../../common/components/hook-form';
 
 // ----------------------------------------------------------------------
 

@@ -7,7 +7,7 @@ import LogoOnlyLayout from '../../layouts/LogoOnlyLayout';
 // routes
 import { PATH_AUTH } from '../../routes/paths';
 // components
-import Page from '../../components/Page';
+import Page from '../../common/components/Page';
 // sections
 import { ResetPasswordForm } from '../../sections/auth/reset-password';
 

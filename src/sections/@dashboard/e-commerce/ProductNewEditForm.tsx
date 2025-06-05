@@ -23,7 +23,7 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 // @types
 import { Product } from '../../../@types/product';
 // components
-import { CustomFile } from '../../../components/upload';
+import { CustomFile } from '../../../common/components/upload';
 import {
   FormProvider,
   RHFSwitch,
@@ -32,7 +32,7 @@ import {
   RHFTextField,
   RHFRadioGroup,
   RHFUploadMultiFile,
-} from '../../../components/hook-form';
+} from '../../../common/components/hook-form';
 
 // ----------------------------------------------------------------------
 

@@ -6,8 +6,8 @@ import { Box, Card, Typography, Stack, CardProps } from '@mui/material';
 // utils
 import { fNumber, fPercent } from '../../../../utils/formatNumber';
 // components
-import Iconify from '../../../../components/Iconify';
-import { BaseOptionChart } from '../../../../components/chart';
+import Iconify from '../../../../common/components/Iconify';
+import { BaseOptionChart } from '../../../../common/components/chart';
 
 // ----------------------------------------------------------------------
 

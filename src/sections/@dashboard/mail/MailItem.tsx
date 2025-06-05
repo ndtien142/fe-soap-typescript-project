@@ -14,9 +14,9 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 // @types
 import { Mail } from '../../../@types/mail';
 // components
-import Label from '../../../components/Label';
-import Avatar from '../../../components/Avatar';
-import Iconify from '../../../components/Iconify';
+import Label from '../../../common/components/Label';
+import Avatar from '../../../common/components/Avatar';
+import Iconify from '../../../common/components/Iconify';
 //
 import MailItemAction from './MailItemAction';
 

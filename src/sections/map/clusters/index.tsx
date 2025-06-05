@@ -9,7 +9,7 @@ import Map, {
 } from 'react-map-gl';
 import { Point } from 'geojson';
 // components
-import { MapBoxProps } from '../../../components/map';
+import { MapBoxProps } from '../../../common/components/map';
 //
 import { clusterLayer, clusterCountLayer, unclusteredPointLayer } from './layers';
 

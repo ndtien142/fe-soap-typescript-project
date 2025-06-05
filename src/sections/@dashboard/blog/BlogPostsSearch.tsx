@@ -15,10 +15,10 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 // @types
 import { Post } from '../../../@types/blog';
 // components
-import Image from '../../../components/Image';
-import Iconify from '../../../components/Iconify';
-import InputStyle from '../../../components/InputStyle';
-import SearchNotFound from '../../../components/SearchNotFound';
+import Image from '../../../common/components/Image';
+import Iconify from '../../../common/components/Iconify';
+import InputStyle from '../../../common/components/InputStyle';
+import SearchNotFound from '../../../common/components/SearchNotFound';
 
 // ----------------------------------------------------------------------
 

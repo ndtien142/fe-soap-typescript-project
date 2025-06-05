@@ -7,7 +7,7 @@ import useResponsive from '../../../hooks/useResponsive';
 // @types
 import { Conversation, Participant } from '../../../@types/chat';
 // components
-import Iconify from '../../../components/Iconify';
+import Iconify from '../../../common/components/Iconify';
 //
 import ChatRoomAttachment from './ChatRoomAttachment';
 import ChatRoomOneParticipant from './ChatRoomOneParticipant';

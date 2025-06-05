@@ -4,8 +4,8 @@ import { styled } from '@mui/material/styles';
 // @mui
 import { Button, Typography, Container } from '@mui/material';
 // components
-import Page from '../components/Page';
-import { MotionContainer, varBounce } from '../components/animate';
+import Page from '../common/components/Page';
+import { MotionContainer, varBounce } from '../common/components/animate';
 // assets
 import { SeverErrorIllustration } from '../assets';
 

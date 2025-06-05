@@ -16,8 +16,8 @@ import {
 // utils
 import { fDateTime } from '../../../../utils/formatTime';
 // components
-import Iconify from '../../../../components/Iconify';
-import { CarouselArrows } from '../../../../components/carousel';
+import Iconify from '../../../../common/components/Iconify';
+import { CarouselArrows } from '../../../../common/components/carousel';
 
 // ----------------------------------------------------------------------
 

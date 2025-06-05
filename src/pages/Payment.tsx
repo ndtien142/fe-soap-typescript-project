@@ -4,7 +4,7 @@ import { Box, Grid, Container, Typography } from '@mui/material';
 // hooks
 import useResponsive from '../hooks/useResponsive';
 // components
-import Page from '../components/Page';
+import Page from '../common/components/Page';
 // sections
 import { PaymentSummary, PaymentMethods, PaymentBillingAddress } from '../sections/payment';
 

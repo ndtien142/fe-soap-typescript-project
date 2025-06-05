@@ -16,7 +16,7 @@ import {
   CardActionArea,
 } from '@mui/material';
 // components
-import Iconify from '../../components/Iconify';
+import Iconify from '../../common/components/Iconify';
 //
 import { MenuProps, MenuItemProps } from './type';
 

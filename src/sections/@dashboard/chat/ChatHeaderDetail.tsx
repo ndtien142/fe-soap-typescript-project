@@ -7,8 +7,8 @@ import { fToNow } from '../../../utils/formatTime';
 // @types
 import { Participant } from '../../../@types/chat';
 // components
-import Iconify from '../../../components/Iconify';
-import BadgeStatus from '../../../components/BadgeStatus';
+import Iconify from '../../../common/components/Iconify';
+import BadgeStatus from '../../../common/components/BadgeStatus';
 
 // ----------------------------------------------------------------------
 

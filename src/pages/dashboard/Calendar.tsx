@@ -26,10 +26,10 @@ import useResponsive from '../../hooks/useResponsive';
 // @types
 import { CalendarView } from '../../@types/calendar';
 // components
-import Page from '../../components/Page';
-import Iconify from '../../components/Iconify';
-import { DialogAnimate } from '../../components/animate';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../common/components/Page';
+import Iconify from '../../common/components/Iconify';
+import { DialogAnimate } from '../../common/components/animate';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
 // sections
 import { CalendarForm, CalendarStyle, CalendarToolbar } from '../../sections/@dashboard/calendar';
 

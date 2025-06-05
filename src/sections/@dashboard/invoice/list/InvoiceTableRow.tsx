@@ -9,10 +9,10 @@ import { fCurrency } from '../../../../utils/formatNumber';
 // @types
 import { Invoice } from '../../../../@types/invoice';
 // components
-import Label from '../../../../components/Label';
-import Avatar from '../../../../components/Avatar';
-import Iconify from '../../../../components/Iconify';
-import { TableMoreMenu } from '../../../../components/table';
+import Label from '../../../../common/components/Label';
+import Avatar from '../../../../common/components/Avatar';
+import Iconify from '../../../../common/components/Iconify';
+import { TableMoreMenu } from '../../../../common/components/table';
 
 // ----------------------------------------------------------------------
 

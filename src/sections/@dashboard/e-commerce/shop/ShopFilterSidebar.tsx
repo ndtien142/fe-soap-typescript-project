@@ -19,10 +19,14 @@ import {
 // config
 import { NAVBAR } from '../../../../config';
 // components
-import Iconify from '../../../../components/Iconify';
-import Scrollbar from '../../../../components/Scrollbar';
-import { ColorManyPicker } from '../../../../components/color-utils';
-import { RHFMultiCheckbox, RHFRadioGroup, RHFSlider } from '../../../../components/hook-form';
+import Iconify from '../../../../common/components/Iconify';
+import Scrollbar from '../../../../common/components/Scrollbar';
+import { ColorManyPicker } from '../../../../common/components/color-utils';
+import {
+  RHFMultiCheckbox,
+  RHFRadioGroup,
+  RHFSlider,
+} from '../../../../common/components/hook-form';
 
 // ----------------------------------------------------------------------
 

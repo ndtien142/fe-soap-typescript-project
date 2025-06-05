@@ -5,7 +5,7 @@ import { fShortenNumber } from '../../../utils/formatNumber';
 // @types
 import { Post } from '../../../@types/blog';
 // components
-import Iconify from '../../../components/Iconify';
+import Iconify from '../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

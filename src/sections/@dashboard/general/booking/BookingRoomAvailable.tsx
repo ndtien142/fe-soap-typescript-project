@@ -6,7 +6,7 @@ import { Card, CardHeader, Stack, Box, Typography, CardProps } from '@mui/materi
 // utils
 import { fNumber } from '../../../../utils/formatNumber';
 // components
-import { BaseOptionChart } from '../../../../components/chart';
+import { BaseOptionChart } from '../../../../common/components/chart';
 
 // ----------------------------------------------------------------------
 

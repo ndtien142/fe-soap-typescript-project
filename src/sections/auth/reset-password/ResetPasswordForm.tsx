@@ -9,7 +9,7 @@ import { LoadingButton } from '@mui/lab';
 // routes
 import { PATH_AUTH } from '../../../routes/paths';
 // components
-import { FormProvider, RHFTextField } from '../../../components/hook-form';
+import { FormProvider, RHFTextField } from '../../../common/components/hook-form';
 
 // ----------------------------------------------------------------------
 

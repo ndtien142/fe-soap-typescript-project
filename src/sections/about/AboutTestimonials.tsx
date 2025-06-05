@@ -8,8 +8,8 @@ import useResponsive from '../../hooks/useResponsive';
 import cssStyles from '../../utils/cssStyles';
 import { fDate } from '../../utils/formatTime';
 // components
-import Iconify from '../../components/Iconify';
-import { MotionViewport, varFade } from '../../components/animate';
+import Iconify from '../../common/components/Iconify';
+import { MotionViewport, varFade } from '../../common/components/animate';
 
 // ----------------------------------------------------------------------
 

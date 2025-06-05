@@ -13,7 +13,7 @@ import {
   ThemeDirection,
   ThemeColorPresets,
   SettingsContextProps,
-} from '../components/settings/type';
+} from '../common/components/settings/type';
 
 // ----------------------------------------------------------------------
 

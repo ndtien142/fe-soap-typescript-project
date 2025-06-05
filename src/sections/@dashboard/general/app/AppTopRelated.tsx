@@ -4,10 +4,10 @@ import { Box, Card, Rating, CardHeader, Typography, Stack, CardProps } from '@mu
 // utils
 import { fCurrency, fShortenNumber } from '../../../../utils/formatNumber';
 // components
-import Label from '../../../../components/Label';
-import Image from '../../../../components/Image';
-import Iconify from '../../../../components/Iconify';
-import Scrollbar from '../../../../components/Scrollbar';
+import Label from '../../../../common/components/Label';
+import Image from '../../../../common/components/Image';
+import Iconify from '../../../../common/components/Iconify';
+import Scrollbar from '../../../../common/components/Scrollbar';
 
 // ----------------------------------------------------------------------
 

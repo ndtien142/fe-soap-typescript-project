@@ -4,9 +4,9 @@ import { Card, CardHeader, Typography, Stack, StackProps, CardProps } from '@mui
 // utils
 import { fShortenNumber } from '../../../../utils/formatNumber';
 // components
-import Image from '../../../../components/Image';
-import Iconify from '../../../../components/Iconify';
-import Scrollbar from '../../../../components/Scrollbar';
+import Image from '../../../../common/components/Image';
+import Iconify from '../../../../common/components/Iconify';
+import Scrollbar from '../../../../common/components/Scrollbar';
 
 // ----------------------------------------------------------------------
 

@@ -20,10 +20,10 @@ import useDateRangePicker from '../../../hooks/useDateRangePicker';
 // /@types
 import { KanbanCard } from '../../../@types/kanban';
 // components
-import Label from '../../../components/Label';
-import Iconify from '../../../components/Iconify';
-import Scrollbar from '../../../components/Scrollbar';
-import { IconButtonAnimate } from '../../../components/animate';
+import Label from '../../../common/components/Label';
+import Iconify from '../../../common/components/Iconify';
+import Scrollbar from '../../../common/components/Scrollbar';
+import { IconButtonAnimate } from '../../../common/components/animate';
 //
 import KanbanTaskDisplayTime from './KanbanTaskDisplayTime';
 import KanbanTaskCommentList from './KanbanTaskCommentList';

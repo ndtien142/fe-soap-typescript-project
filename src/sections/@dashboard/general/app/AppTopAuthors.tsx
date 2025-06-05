@@ -5,7 +5,7 @@ import { Box, Stack, Card, Avatar, CardHeader, Typography, CardProps } from '@mu
 // utils
 import { fShortenNumber } from '../../../../utils/formatNumber';
 // components
-import Iconify from '../../../../components/Iconify';
+import Iconify from '../../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

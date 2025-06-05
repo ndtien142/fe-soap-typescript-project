@@ -4,9 +4,9 @@ import { Button, Stack, Container, Typography, InputAdornment } from '@mui/mater
 // hooks
 import useCountdown from '../hooks/useCountdown';
 // components
-import Page from '../components/Page';
-import InputStyle from '../components/InputStyle';
-import SocialsButton from '../components/SocialsButton';
+import Page from '../common/components/Page';
+import InputStyle from '../common/components/InputStyle';
+import SocialsButton from '../common/components/SocialsButton';
 // assets
 import { ComingSoonIllustration } from '../assets';
 

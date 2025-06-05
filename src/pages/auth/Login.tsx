@@ -9,9 +9,9 @@ import { PATH_AUTH } from '../../routes/paths';
 import useAuth from '../../hooks/useAuth';
 import useResponsive from '../../hooks/useResponsive';
 // components
-import Page from '../../components/Page';
-import Logo from '../../components/Logo';
-import Image from '../../components/Image';
+import Page from '../../common/components/Page';
+import Logo from '../../common/components/Logo';
+import Image from '../../common/components/Image';
 // sections
 import { LoginForm } from '../../sections/auth/login';
 

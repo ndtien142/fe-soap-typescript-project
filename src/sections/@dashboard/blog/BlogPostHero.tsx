@@ -8,8 +8,8 @@ import { fDate } from '../../../utils/formatTime';
 // @types
 import { Post } from '../../../@types/blog';
 // components
-import Image from '../../../components/Image';
-import Iconify from '../../../components/Iconify';
+import Image from '../../../common/components/Image';
+import Iconify from '../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

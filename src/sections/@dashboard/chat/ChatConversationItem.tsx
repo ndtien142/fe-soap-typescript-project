@@ -5,7 +5,7 @@ import { Box, Avatar, ListItemButton, ListItemText, ListItemAvatar } from '@mui/
 // @types
 import { Conversation } from '../../../@types/chat';
 //
-import BadgeStatus from '../../../components/BadgeStatus';
+import BadgeStatus from '../../../common/components/BadgeStatus';
 
 // ----------------------------------------------------------------------
 

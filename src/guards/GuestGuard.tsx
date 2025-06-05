@@ -5,7 +5,7 @@ import useAuth from '../hooks/useAuth';
 // routes
 import { PATH_DASHBOARD } from '../routes/paths';
 // components
-import LoadingScreen from '../components/LoadingScreen';
+import LoadingScreen from '../common/components/LoadingScreen';
 
 // ----------------------------------------------------------------------
 

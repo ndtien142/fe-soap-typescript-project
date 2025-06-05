@@ -13,10 +13,10 @@ import axios from '../../utils/axios';
 // @types
 import { Post } from '../../@types/blog';
 // components
-import Page from '../../components/Page';
-import Markdown from '../../components/Markdown';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
-import { SkeletonPost } from '../../components/skeleton';
+import Page from '../../common/components/Page';
+import Markdown from '../../common/components/Markdown';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
+import { SkeletonPost } from '../../common/components/skeleton';
 // sections
 import {
   BlogPostHero,

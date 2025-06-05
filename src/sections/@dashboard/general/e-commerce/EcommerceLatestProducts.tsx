@@ -3,9 +3,9 @@ import { Box, Link, Card, CardHeader, Typography, Stack, CardProps } from '@mui/
 // utils
 import { fCurrency } from '../../../../utils/formatNumber';
 //
-import Image from '../../../../components/Image';
-import Scrollbar from '../../../../components/Scrollbar';
-import { ColorPreview } from '../../../../components/color-utils';
+import Image from '../../../../common/components/Image';
+import Scrollbar from '../../../../common/components/Scrollbar';
+import { ColorPreview } from '../../../../common/components/color-utils';
 
 // ----------------------------------------------------------------------
 

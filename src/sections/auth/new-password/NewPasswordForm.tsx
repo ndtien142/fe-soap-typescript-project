@@ -11,8 +11,8 @@ import { LoadingButton } from '@mui/lab';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
-import Iconify from '../../../components/Iconify';
-import { FormProvider, RHFTextField } from '../../../components/hook-form';
+import Iconify from '../../../common/components/Iconify';
+import { FormProvider, RHFTextField } from '../../../common/components/hook-form';
 
 // ----------------------------------------------------------------------
 

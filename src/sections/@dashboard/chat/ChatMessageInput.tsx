@@ -7,8 +7,8 @@ import uuidv4 from '../../../utils/uuidv4';
 // @types
 import { SendMessage } from '../../../@types/chat';
 // components
-import Iconify from '../../../components/Iconify';
-import { EmojiPicker } from '../../../components/emoji-picker';
+import Iconify from '../../../common/components/Iconify';
+import { EmojiPicker } from '../../../common/components/emoji-picker';
 
 // ----------------------------------------------------------------------
 

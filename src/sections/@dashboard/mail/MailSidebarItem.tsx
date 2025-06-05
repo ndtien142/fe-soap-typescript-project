@@ -8,7 +8,7 @@ import { MailLabel } from '../../../@types/mail';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
-import Iconify from '../../../components/Iconify';
+import Iconify from '../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

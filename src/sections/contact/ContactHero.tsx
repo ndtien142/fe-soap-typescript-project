@@ -3,7 +3,7 @@ import { m } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import { Box, Container, Typography, Grid } from '@mui/material';
 //
-import { TextAnimate, MotionContainer, varFade } from '../../components/animate';
+import { TextAnimate, MotionContainer, varFade } from '../../common/components/animate';
 
 // ----------------------------------------------------------------------
 

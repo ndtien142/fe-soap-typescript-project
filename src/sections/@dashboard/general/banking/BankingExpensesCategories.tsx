@@ -6,7 +6,7 @@ import { Box, Card, Stack, Divider, CardHeader, Typography, CardProps } from '@m
 // hooks
 import useResponsive from '../../../../hooks/useResponsive';
 // components
-import { BaseOptionChart } from '../../../../components/chart';
+import { BaseOptionChart } from '../../../../common/components/chart';
 
 // ----------------------------------------------------------------------
 

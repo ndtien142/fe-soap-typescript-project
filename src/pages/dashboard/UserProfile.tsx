@@ -12,9 +12,9 @@ import useSettings from '../../hooks/useSettings';
 // _mock_
 import { _userAbout, _userFeeds, _userFriends, _userGallery, _userFollowers } from '../../_mock';
 // components
-import Page from '../../components/Page';
-import Iconify from '../../components/Iconify';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../common/components/Page';
+import Iconify from '../../common/components/Iconify';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
 // sections
 import {
   Profile,

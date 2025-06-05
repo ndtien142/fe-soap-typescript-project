@@ -15,10 +15,10 @@ import {
 // hooks
 import useAuth from '../../../hooks/useAuth';
 // components
-import Iconify from '../../../components/Iconify';
-import MyAvatar from '../../../components/MyAvatar';
-import MenuPopover from '../../../components/MenuPopover';
-import BadgeStatus, { BadgeStatusEnum } from '../../../components/BadgeStatus';
+import Iconify from '../../../common/components/Iconify';
+import MyAvatar from '../../../common/components/MyAvatar';
+import MenuPopover from '../../../common/components/MenuPopover';
+import BadgeStatus, { BadgeStatusEnum } from '../../../common/components/BadgeStatus';
 
 // ----------------------------------------------------------------------
 

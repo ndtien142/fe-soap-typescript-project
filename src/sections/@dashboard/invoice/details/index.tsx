@@ -19,9 +19,9 @@ import { fCurrency } from '../../../../utils/formatNumber';
 // _mock_
 import { Invoice } from '../../../../@types/invoice';
 // components
-import Label from '../../../../components/Label';
-import Image from '../../../../components/Image';
-import Scrollbar from '../../../../components/Scrollbar';
+import Label from '../../../../common/components/Label';
+import Image from '../../../../common/components/Image';
+import Scrollbar from '../../../../common/components/Scrollbar';
 //
 import InvoiceToolbar from './InvoiceToolbar';
 

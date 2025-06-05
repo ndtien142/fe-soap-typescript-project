@@ -9,9 +9,9 @@ import cssStyles from '../../../utils/cssStyles';
 // config
 import { HEADER, NAVBAR } from '../../../config';
 // components
-import Logo from '../../../components/Logo';
-import Iconify from '../../../components/Iconify';
-import { IconButtonAnimate } from '../../../components/animate';
+import Logo from '../../../common/components/Logo';
+import Iconify from '../../../common/components/Iconify';
+import { IconButtonAnimate } from '../../../common/components/animate';
 //
 import Searchbar from './Searchbar';
 import AccountPopover from './AccountPopover';

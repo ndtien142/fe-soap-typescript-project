@@ -8,8 +8,8 @@ import { fCurrency, fPercent } from '../../../../utils/formatNumber';
 // theme
 import { ColorSchema } from '../../../../theme/palette';
 // components
-import Iconify from '../../../../components/Iconify';
-import { BaseOptionChart } from '../../../../components/chart';
+import Iconify from '../../../../common/components/Iconify';
+import { BaseOptionChart } from '../../../../common/components/chart';
 
 // ----------------------------------------------------------------------
 

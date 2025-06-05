@@ -7,8 +7,8 @@ import useSettings from '../../hooks/useSettings';
 // _mock_
 import { _userCards } from '../../_mock';
 // components
-import Page from '../../components/Page';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../common/components/Page';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
 // sections
 import { UserCard } from '../../sections/@dashboard/user/cards';
 

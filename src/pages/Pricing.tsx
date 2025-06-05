@@ -4,7 +4,7 @@ import { Box, Grid, Switch, Container, Typography, Stack } from '@mui/material';
 // _mock_
 import { _pricingPlans } from '../_mock';
 // components
-import Page from '../components/Page';
+import Page from '../common/components/Page';
 // sections
 import { PricingPlanCard } from '../sections/pricing';
 

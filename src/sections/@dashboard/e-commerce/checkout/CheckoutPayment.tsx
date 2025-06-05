@@ -16,8 +16,8 @@ import {
   applyShipping,
 } from '../../../../redux/slices/product';
 // components
-import Iconify from '../../../../components/Iconify';
-import { FormProvider } from '../../../../components/hook-form';
+import Iconify from '../../../../common/components/Iconify';
+import { FormProvider } from '../../../../common/components/hook-form';
 //
 import CheckoutSummary from './CheckoutSummary';
 import CheckoutDelivery from './CheckoutDelivery';

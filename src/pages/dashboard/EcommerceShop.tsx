@@ -14,9 +14,9 @@ import { Product, ProductFilter } from '../../@types/product';
 // hooks
 import useSettings from '../../hooks/useSettings';
 // components
-import Page from '../../components/Page';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
-import { FormProvider } from '../../components/hook-form';
+import Page from '../../common/components/Page';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
+import { FormProvider } from '../../common/components/hook-form';
 // sections
 import {
   ShopTagFiltered,

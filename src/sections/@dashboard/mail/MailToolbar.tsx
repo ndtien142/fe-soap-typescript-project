@@ -4,8 +4,8 @@ import { Box, Tooltip, Checkbox, Typography, IconButton, InputAdornment } from '
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // components
-import Iconify from '../../../components/Iconify';
-import InputStyle from '../../../components/InputStyle';
+import Iconify from '../../../common/components/Iconify';
+import InputStyle from '../../../common/components/InputStyle';
 
 // ----------------------------------------------------------------------
 

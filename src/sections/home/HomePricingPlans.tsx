@@ -15,9 +15,9 @@ import {
 // _mock_
 import { _homePlans } from '../../_mock';
 // components
-import Image from '../../components/Image';
-import Iconify from '../../components/Iconify';
-import { varFade, MotionViewport } from '../../components/animate';
+import Image from '../../common/components/Image';
+import Iconify from '../../common/components/Iconify';
+import { varFade, MotionViewport } from '../../common/components/animate';
 
 // ----------------------------------------------------------------------
 

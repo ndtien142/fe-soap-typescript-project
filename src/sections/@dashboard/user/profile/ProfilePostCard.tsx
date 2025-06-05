@@ -24,10 +24,10 @@ import useAuth from '../../../../hooks/useAuth';
 import { fDate } from '../../../../utils/formatTime';
 import { fShortenNumber } from '../../../../utils/formatNumber';
 // components
-import Image from '../../../../components/Image';
-import Iconify from '../../../../components/Iconify';
-import MyAvatar from '../../../../components/MyAvatar';
-import { EmojiPicker } from '../../../../components/emoji-picker';
+import Image from '../../../../common/components/Image';
+import Iconify from '../../../../common/components/Iconify';
+import MyAvatar from '../../../../common/components/MyAvatar';
+import { EmojiPicker } from '../../../../common/components/emoji-picker';
 
 // ----------------------------------------------------------------------
 

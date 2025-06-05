@@ -8,7 +8,7 @@ import useToggle from '../../../../hooks/useToggle';
 // _mock
 import { _invoiceAddressFrom, _invoiceAddressTo } from '../../../../_mock';
 // components
-import Iconify from '../../../../components/Iconify';
+import Iconify from '../../../../common/components/Iconify';
 //
 import InvoiceAddressListDialog from './InvoiceAddressListDialog';
 

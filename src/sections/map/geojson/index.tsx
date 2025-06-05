@@ -4,7 +4,7 @@ import Map, { Source, Layer, FillLayer, MapLayerMouseEvent } from 'react-map-gl'
 import { useTheme, alpha } from '@mui/material/styles';
 import { Box, Typography } from '@mui/material';
 // components
-import { MapControl, MapBoxProps } from '../../../components/map';
+import { MapControl, MapBoxProps } from '../../../common/components/map';
 //
 import { updatePercentiles } from './utils';
 import ControlPanel from './ControlPanel';

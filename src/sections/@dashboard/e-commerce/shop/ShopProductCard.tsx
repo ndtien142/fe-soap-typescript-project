@@ -9,9 +9,9 @@ import { fCurrency } from '../../../../utils/formatNumber';
 // @types
 import { Product } from '../../../../@types/product';
 // components
-import Label from '../../../../components/Label';
-import Image from '../../../../components/Image';
-import { ColorPreview } from '../../../../components/color-utils';
+import Label from '../../../../common/components/Label';
+import Image from '../../../../common/components/Image';
+import { ColorPreview } from '../../../../common/components/color-utils';
 
 // ----------------------------------------------------------------------
 

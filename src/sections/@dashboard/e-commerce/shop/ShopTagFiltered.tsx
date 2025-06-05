@@ -7,7 +7,7 @@ import getColorName from '../../../../utils/getColorName';
 // @type
 import { ProductFilter } from '../../../../@types/product';
 // components
-import Iconify from '../../../../components/Iconify';
+import Iconify from '../../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

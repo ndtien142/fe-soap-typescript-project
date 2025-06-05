@@ -14,8 +14,8 @@ import { LoadingButton } from '@mui/lab';
 // @types
 import { CreditCard } from '../../../../@types/user';
 // components
-import Image from '../../../../components/Image';
-import Iconify from '../../../../components/Iconify';
+import Image from '../../../../common/components/Image';
+import Iconify from '../../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

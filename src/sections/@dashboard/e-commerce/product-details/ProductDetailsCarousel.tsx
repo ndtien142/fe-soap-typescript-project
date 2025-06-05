@@ -6,9 +6,9 @@ import { Box } from '@mui/material';
 // @types
 import { Product } from '../../../../@types/product';
 //
-import Image from '../../../../components/Image';
-import LightboxModal from '../../../../components/LightboxModal';
-import { CarouselArrowIndex } from '../../../../components/carousel';
+import Image from '../../../../common/components/Image';
+import LightboxModal from '../../../../common/components/LightboxModal';
+import { CarouselArrowIndex } from '../../../../common/components/carousel';
 
 // ----------------------------------------------------------------------
 

@@ -12,8 +12,8 @@ import { fDateTimeSuffix } from '../../../utils/formatTime';
 // @types
 import { Mail } from '../../../@types/mail';
 // components
-import Avatar from '../../../components/Avatar';
-import Iconify from '../../../components/Iconify';
+import Avatar from '../../../common/components/Avatar';
+import Iconify from '../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

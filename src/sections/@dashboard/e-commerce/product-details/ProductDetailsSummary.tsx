@@ -12,11 +12,11 @@ import { fShortenNumber, fCurrency } from '../../../../utils/formatNumber';
 // @types
 import { Product, CartItem } from '../../../../@types/product';
 // components
-import Label from '../../../../components/Label';
-import Iconify from '../../../../components/Iconify';
-import SocialsButton from '../../../../components/SocialsButton';
-import { ColorSinglePicker } from '../../../../components/color-utils';
-import { FormProvider, RHFSelect } from '../../../../components/hook-form';
+import Label from '../../../../common/components/Label';
+import Iconify from '../../../../common/components/Iconify';
+import SocialsButton from '../../../../common/components/SocialsButton';
+import { ColorSinglePicker } from '../../../../common/components/color-utils';
+import { FormProvider, RHFSelect } from '../../../../common/components/hook-form';
 
 // ----------------------------------------------------------------------
 

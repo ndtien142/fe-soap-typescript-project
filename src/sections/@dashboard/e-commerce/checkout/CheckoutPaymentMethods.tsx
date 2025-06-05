@@ -22,8 +22,8 @@ import useResponsive from '../../../../hooks/useResponsive';
 // @types
 import { CardOption, PaymentOption } from '../../../../@types/product';
 // components
-import Image from '../../../../components/Image';
-import Iconify from '../../../../components/Iconify';
+import Image from '../../../../common/components/Image';
+import Iconify from '../../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

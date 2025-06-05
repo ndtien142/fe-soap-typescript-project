@@ -13,10 +13,10 @@ import { PATH_DASHBOARD } from '../../routes/paths';
 // @types
 import { Post } from '../../@types/blog';
 // components
-import Page from '../../components/Page';
-import Iconify from '../../components/Iconify';
-import { SkeletonPostItem } from '../../components/skeleton';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../common/components/Page';
+import Iconify from '../../common/components/Iconify';
+import { SkeletonPostItem } from '../../common/components/skeleton';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
 // sections
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../../sections/@dashboard/blog';
 

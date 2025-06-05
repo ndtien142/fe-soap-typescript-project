@@ -6,7 +6,7 @@ import { Box, Switch, Typography } from '@mui/material';
 // _mock_
 import MAP_STYLE from '../../../_mock/map/map-style-basic-v8.json';
 // components
-import { ControlPanelStyle } from '../../../components/map';
+import { ControlPanelStyle } from '../../../common/components/map';
 
 // ----------------------------------------------------------------------
 

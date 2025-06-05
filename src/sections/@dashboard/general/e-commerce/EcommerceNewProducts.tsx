@@ -4,8 +4,8 @@ import { alpha, useTheme, styled } from '@mui/material/styles';
 import { Box, Card, Button, CardContent, Typography, CardProps } from '@mui/material';
 
 // components
-import Image from '../../../../components/Image';
-import { CarouselDots } from '../../../../components/carousel';
+import Image from '../../../../common/components/Image';
+import { CarouselDots } from '../../../../common/components/carousel';
 
 // ----------------------------------------------------------------------
 

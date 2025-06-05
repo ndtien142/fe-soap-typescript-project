@@ -13,9 +13,9 @@ import {
 // @types
 import { Participant as TParticipant } from '../../../@types/chat';
 // components
-import Iconify from '../../../components/Iconify';
-import Scrollbar from '../../../components/Scrollbar';
-import BadgeStatus from '../../../components/BadgeStatus';
+import Iconify from '../../../common/components/Iconify';
+import Scrollbar from '../../../common/components/Scrollbar';
+import BadgeStatus from '../../../common/components/BadgeStatus';
 //
 import ChatRoomPopup from './ChatRoomPopup';
 

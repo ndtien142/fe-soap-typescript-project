@@ -4,7 +4,7 @@ import { Box, Link, Container, Typography } from '@mui/material';
 // layouts
 import LogoOnlyLayout from '../../layouts/LogoOnlyLayout';
 // components
-import Page from '../../components/Page';
+import Page from '../../common/components/Page';
 // sections
 import { NewPasswordForm } from '../../sections/auth/new-password';
 // assets

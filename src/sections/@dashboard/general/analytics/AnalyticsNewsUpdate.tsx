@@ -13,9 +13,9 @@ import {
 // utils
 import { fToNow } from '../../../../utils/formatTime';
 // components
-import Image from '../../../../components/Image';
-import Iconify from '../../../../components/Iconify';
-import Scrollbar from '../../../../components/Scrollbar';
+import Image from '../../../../common/components/Image';
+import Iconify from '../../../../common/components/Iconify';
+import Scrollbar from '../../../../common/components/Scrollbar';
 
 // ----------------------------------------------------------------------
 

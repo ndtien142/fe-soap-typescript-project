@@ -12,7 +12,7 @@ import {
   _ecommerceLatestProducts,
 } from '../../_mock';
 // components
-import Page from '../../components/Page';
+import Page from '../../common/components/Page';
 // sections
 import {
   EcommerceNewProducts,

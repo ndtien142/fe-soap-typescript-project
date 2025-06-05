@@ -12,7 +12,7 @@ import {
   IconButton,
 } from '@mui/material';
 // components
-import Iconify from '../../../../components/Iconify';
+import Iconify from '../../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

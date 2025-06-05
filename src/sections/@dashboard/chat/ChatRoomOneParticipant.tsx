@@ -4,7 +4,7 @@ import { Box, Avatar, Button, Divider, Collapse, Typography } from '@mui/materia
 // @types
 import { Participant } from '../../../@types/chat';
 // components
-import Iconify from '../../../components/Iconify';
+import Iconify from '../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

@@ -5,8 +5,8 @@ import { Button, MenuItem, Typography } from '@mui/material';
 import { useDispatch, useSelector } from '../../../../redux/store';
 import { sortByProducts } from '../../../../redux/slices/product';
 // components
-import Iconify from '../../../../components/Iconify';
-import MenuPopover from '../../../../components/MenuPopover';
+import Iconify from '../../../../common/components/Iconify';
+import MenuPopover from '../../../../common/components/MenuPopover';
 
 // ----------------------------------------------------------------------
 

@@ -24,7 +24,7 @@ import {
   RHFSelect,
   RHFTextField,
   RHFRadioGroup,
-} from '../../../../components/hook-form';
+} from '../../../../common/components/hook-form';
 
 // ----------------------------------------------------------------------
 

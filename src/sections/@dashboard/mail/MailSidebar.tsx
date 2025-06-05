@@ -9,9 +9,9 @@ import useResponsive from '../../../hooks/useResponsive';
 // config
 import { NAVBAR } from '../../../config';
 // components
-import Iconify from '../../../components/Iconify';
-import Scrollbar from '../../../components/Scrollbar';
-import { SkeletonMailSidebarItem } from '../../../components/skeleton';
+import Iconify from '../../../common/components/Iconify';
+import Scrollbar from '../../../common/components/Scrollbar';
+import { SkeletonMailSidebarItem } from '../../../common/components/skeleton';
 //
 import MailSidebarItem from './MailSidebarItem';
 

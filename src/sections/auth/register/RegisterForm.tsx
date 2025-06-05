@@ -10,8 +10,8 @@ import { LoadingButton } from '@mui/lab';
 import useAuth from '../../../hooks/useAuth';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';
 // components
-import Iconify from '../../../components/Iconify';
-import { FormProvider, RHFTextField } from '../../../components/hook-form';
+import Iconify from '../../../common/components/Iconify';
+import { FormProvider, RHFTextField } from '../../../common/components/hook-form';
 
 // ----------------------------------------------------------------------
 

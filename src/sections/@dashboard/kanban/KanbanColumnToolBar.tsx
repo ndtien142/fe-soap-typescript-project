@@ -4,8 +4,8 @@ import { Stack, OutlinedInput, MenuItem, IconButton, Typography, Button } from '
 // hooks
 import useToggle from '../../../hooks/useToggle';
 // components
-import Iconify from '../../../components/Iconify';
-import MenuPopover from '../../../components/MenuPopover';
+import Iconify from '../../../common/components/Iconify';
+import MenuPopover from '../../../common/components/MenuPopover';
 //
 import KanbanConfirmDialog from './KanbanConfirmDialog';
 

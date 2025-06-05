@@ -7,8 +7,8 @@ import { getFileType, getFileName, getFileThumb } from '../../../utils/getFileFo
 // @types
 import { Mail } from '../../../@types/mail';
 // components
-import Iconify from '../../../components/Iconify';
-import Scrollbar from '../../../components/Scrollbar';
+import Iconify from '../../../common/components/Iconify';
+import Scrollbar from '../../../common/components/Scrollbar';
 
 // ----------------------------------------------------------------------
 

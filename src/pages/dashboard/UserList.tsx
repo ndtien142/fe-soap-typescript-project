@@ -30,16 +30,16 @@ import { UserManager } from '../../@types/user';
 // _mock_
 import { _userList } from '../../_mock';
 // components
-import Page from '../../components/Page';
-import Iconify from '../../components/Iconify';
-import Scrollbar from '../../components/Scrollbar';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../common/components/Page';
+import Iconify from '../../common/components/Iconify';
+import Scrollbar from '../../common/components/Scrollbar';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
 import {
   TableNoData,
   TableEmptyRows,
   TableHeadCustom,
   TableSelectedActions,
-} from '../../components/table';
+} from '../../common/components/table';
 // sections
 import { UserTableToolbar, UserTableRow } from '../../sections/@dashboard/user/list';
 

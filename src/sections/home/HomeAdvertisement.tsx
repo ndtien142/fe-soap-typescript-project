@@ -3,8 +3,8 @@ import { m } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import { Button, Box, Container, Typography } from '@mui/material';
 // components
-import Image from '../../components/Image';
-import { MotionViewport, varFade } from '../../components/animate';
+import Image from '../../common/components/Image';
+import { MotionViewport, varFade } from '../../common/components/animate';
 
 // ----------------------------------------------------------------------
 

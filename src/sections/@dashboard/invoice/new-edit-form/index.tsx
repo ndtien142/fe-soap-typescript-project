@@ -14,7 +14,7 @@ import { Invoice, InvoiceAddress } from '../../../../@types/invoice';
 // mock
 import { _invoiceAddressFrom } from '../../../../_mock';
 // components
-import { FormProvider } from '../../../../components/hook-form';
+import { FormProvider } from '../../../../common/components/hook-form';
 //
 import InvoiceNewEditDetails from './InvoiceNewEditDetails';
 import InvoiceNewEditAddress from './InvoiceNewEditAddress';

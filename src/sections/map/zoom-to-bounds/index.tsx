@@ -2,7 +2,7 @@ import { useRef, memo } from 'react';
 import Map, { MapboxStyle, MapRef, MapLayerMouseEvent } from 'react-map-gl';
 import bbox from '@turf/bbox';
 // components
-import { MapBoxProps } from '../../../components/map';
+import { MapBoxProps } from '../../../common/components/map';
 //
 import MAP_STYLE from './map-style';
 

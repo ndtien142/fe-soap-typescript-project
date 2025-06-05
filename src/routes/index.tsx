@@ -13,7 +13,7 @@ import AuthGuard from '../guards/AuthGuard';
 // config
 import { PATH_AFTER_LOGIN } from '../config';
 // components
-import LoadingScreen from '../components/LoadingScreen';
+import LoadingScreen from '../common/components/LoadingScreen';
 
 // ----------------------------------------------------------------------
 

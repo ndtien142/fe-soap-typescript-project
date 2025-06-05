@@ -6,8 +6,8 @@ import { fToNow } from '../../../utils/formatTime';
 // @types
 import { CardComment } from '../../../@types/kanban';
 // components
-import Image from '../../../components/Image';
-import LightboxModal from '../../../components/LightboxModal';
+import Image from '../../../common/components/Image';
+import LightboxModal from '../../../common/components/LightboxModal';
 
 // ----------------------------------------------------------------------
 

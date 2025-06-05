@@ -25,7 +25,7 @@ import {
 // utils
 import { fCurrency } from '../../../../utils/formatNumber';
 // components
-import { CarouselArrows } from '../../../../components/carousel';
+import { CarouselArrows } from '../../../../common/components/carousel';
 
 // ----------------------------------------------------------------------
 

@@ -2,7 +2,7 @@
 import { styled } from '@mui/material/styles';
 import { Divider } from '@mui/material';
 // components
-import Page from '../components/Page';
+import Page from '../common/components/Page';
 // sections
 import { AboutHero, AboutWhat, AboutTeam, AboutVision, AboutTestimonials } from '../sections/about';
 

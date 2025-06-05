@@ -7,9 +7,9 @@ import useResponsive from '../../../hooks/useResponsive';
 // /@types
 import { KanbanCard } from '../../../@types/kanban';
 // components
-import Iconify from '../../../components/Iconify';
-import MenuPopover from '../../../components/MenuPopover';
-import { IconButtonAnimate } from '../../../components/animate';
+import Iconify from '../../../common/components/Iconify';
+import MenuPopover from '../../../common/components/MenuPopover';
+import { IconButtonAnimate } from '../../../common/components/animate';
 //
 import KanbanConfirmDialog from './KanbanConfirmDialog';
 

@@ -6,7 +6,7 @@ import useSettings from '../../hooks/useSettings';
 // _mock_
 import { _analyticPost, _analyticOrderTimeline, _analyticTraffic } from '../../_mock';
 // components
-import Page from '../../components/Page';
+import Page from '../../common/components/Page';
 // sections
 import {
   AnalyticsTasks,

@@ -15,11 +15,11 @@ import { CartItem } from '../../@types/product';
 // hooks
 import useSettings from '../../hooks/useSettings';
 // components
-import Page from '../../components/Page';
-import Iconify from '../../components/Iconify';
-import Markdown from '../../components/Markdown';
-import { SkeletonProduct } from '../../components/skeleton';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../common/components/Page';
+import Iconify from '../../common/components/Iconify';
+import Markdown from '../../common/components/Markdown';
+import { SkeletonProduct } from '../../common/components/skeleton';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
 // sections
 import {
   ProductDetailsSummary,

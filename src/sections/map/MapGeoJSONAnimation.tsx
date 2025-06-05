@@ -4,7 +4,7 @@ import Map, { Layer, LayerProps, Source } from 'react-map-gl';
 // @mui
 import { useTheme } from '@mui/material/styles';
 // components
-import { MapControl, MapBoxProps } from '../../components/map';
+import { MapControl, MapBoxProps } from '../../common/components/map';
 
 // ----------------------------------------------------------------------
 

@@ -6,10 +6,10 @@ import { Box, Typography, Stack, MenuItem, IconButton, SxProps } from '@mui/mate
 // utils
 import { fCurrency } from '../../../../utils/formatNumber';
 // components
-import Image from '../../../../components/Image';
-import Iconify from '../../../../components/Iconify';
-import MenuPopover from '../../../../components/MenuPopover';
-import { CarouselDots } from '../../../../components/carousel';
+import Image from '../../../../common/components/Image';
+import Iconify from '../../../../common/components/Iconify';
+import MenuPopover from '../../../../common/components/MenuPopover';
+import { CarouselDots } from '../../../../common/components/carousel';
 
 // ----------------------------------------------------------------------
 

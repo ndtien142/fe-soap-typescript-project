@@ -2,7 +2,7 @@ import { memo } from 'react';
 // @mui
 import { Slider, Typography } from '@mui/material';
 // components
-import { ControlPanelStyle } from '../../../components/map';
+import { ControlPanelStyle } from '../../../common/components/map';
 
 // ----------------------------------------------------------------------
 

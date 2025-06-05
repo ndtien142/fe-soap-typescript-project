@@ -14,8 +14,8 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 // @types
 import { Contact } from '../../../@types/chat';
 // components
-import Iconify from '../../../components/Iconify';
-import Scrollbar from '../../../components/Scrollbar';
+import Iconify from '../../../common/components/Iconify';
+import Scrollbar from '../../../common/components/Scrollbar';
 //
 import ChatAccount from './ChatAccount';
 import ChatSearchResults from './ChatSearchResults';

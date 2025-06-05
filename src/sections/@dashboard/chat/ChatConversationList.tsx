@@ -6,7 +6,7 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 // @types
 import { Conversation } from '../../../@types/chat';
 // components
-import { SkeletonConversationItem } from '../../../components/skeleton';
+import { SkeletonConversationItem } from '../../../common/components/skeleton';
 //
 import ChatConversationItem from './ChatConversationItem';
 

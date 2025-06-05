@@ -6,7 +6,7 @@ import { fShortenNumber } from '../../../../utils/formatNumber';
 // theme
 import { ColorSchema } from '../../../../theme/palette';
 // components
-import Iconify from '../../../../components/Iconify';
+import Iconify from '../../../../common/components/Iconify';
 
 // ----------------------------------------------------------------------
 

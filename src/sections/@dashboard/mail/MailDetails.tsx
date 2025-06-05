@@ -7,8 +7,8 @@ import { Box, Divider, Typography } from '@mui/material';
 import { useDispatch, useSelector } from '../../../redux/store';
 import { getMail } from '../../../redux/slices/mail';
 //
-import Markdown from '../../../components/Markdown';
-import Scrollbar from '../../../components/Scrollbar';
+import Markdown from '../../../common/components/Markdown';
+import Scrollbar from '../../../common/components/Scrollbar';
 import MailDetailsToolbar from './MailDetailsToolbar';
 import MailDetailsReplyInput from './MailDetailsReplyInput';
 import MailDetailsAttachments from './MailDetailsAttachments';

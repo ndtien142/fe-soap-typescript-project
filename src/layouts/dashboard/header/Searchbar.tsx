@@ -18,10 +18,10 @@ import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import cssStyles from '../../../utils/cssStyles';
 import flattenArray from '../../../utils/flattenArray';
 // components
-import Iconify from '../../../components/Iconify';
-import { NavListProps } from '../../../components/nav-section';
-import { IconButtonAnimate } from '../../../components/animate';
-import SearchNotFound from '../../../components/SearchNotFound';
+import Iconify from '../../../common/components/Iconify';
+import { NavListProps } from '../../../common/components/nav-section';
+import { IconButtonAnimate } from '../../../common/components/animate';
+import SearchNotFound from '../../../common/components/SearchNotFound';
 //
 import NavConfig from '../navbar/NavConfig';
 

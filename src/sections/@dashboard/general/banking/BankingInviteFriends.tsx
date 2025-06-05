@@ -2,7 +2,7 @@
 import { styled, alpha } from '@mui/material/styles';
 import { Box, Stack, Typography, Button, OutlinedInput, BoxProps } from '@mui/material';
 // components
-import Image from '../../../../components/Image';
+import Image from '../../../../common/components/Image';
 
 // ----------------------------------------------------------------------
 

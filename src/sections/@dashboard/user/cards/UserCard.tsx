@@ -7,9 +7,9 @@ import { fShortenNumber } from '../../../../utils/formatNumber';
 // @types
 import { UserData } from '../../../../@types/user';
 // components
-import Image from '../../../../components/Image';
-import SocialsButton from '../../../../components/SocialsButton';
-import SvgIconStyle from '../../../../components/SvgIconStyle';
+import Image from '../../../../common/components/Image';
+import SocialsButton from '../../../../common/components/SocialsButton';
+import SvgIconStyle from '../../../../common/components/SvgIconStyle';
 
 // ----------------------------------------------------------------------
 

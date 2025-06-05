@@ -4,7 +4,7 @@ import { Stack, Button, Typography } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
 import useLocales from '../../../hooks/useLocales';
 // routes
-import { PATH_DOCS } from '../../../routes/paths';
+import { PATH_DOCS } from '../../../common/routes/paths';
 // assets
 import { DocIllustration } from '../../../assets';
 

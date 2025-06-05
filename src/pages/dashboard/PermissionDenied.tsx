@@ -12,7 +12,7 @@ import {
 // hooks
 import useSettings from '../../hooks/useSettings';
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from '../../common/routes/paths';
 // components
 import Page from '../../common/components/Page';
 import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';

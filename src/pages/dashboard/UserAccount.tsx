@@ -2,7 +2,7 @@ import { capitalCase } from 'change-case';
 // @mui
 import { Container, Tab, Box, Tabs } from '@mui/material';
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from '../../common/routes/paths';
 // hooks
 import useTabs from '../../hooks/useTabs';
 import useSettings from '../../hooks/useSettings';

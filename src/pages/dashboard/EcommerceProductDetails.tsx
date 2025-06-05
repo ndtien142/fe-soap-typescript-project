@@ -9,7 +9,7 @@ import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { useDispatch, useSelector } from '../../redux/store';
 import { getProduct, addCart, onGotoStep } from '../../redux/slices/product';
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from '../../common/routes/paths';
 // @types
 import { CartItem } from '../../@types/product';
 // hooks

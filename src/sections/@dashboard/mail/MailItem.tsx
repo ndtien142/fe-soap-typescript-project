@@ -10,7 +10,7 @@ import useResponsive from '../../../hooks/useResponsive';
 import { fDate } from '../../../common/utils/formatTime';
 import createAvatar from '../../../common/utils/createAvatar';
 // routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../common/routes/paths';
 // @types
 import { Mail } from '../../../@types/mail';
 // components

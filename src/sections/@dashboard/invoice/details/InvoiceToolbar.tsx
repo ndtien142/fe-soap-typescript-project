@@ -14,7 +14,7 @@ import {
 // hooks
 import useToggle from '../../../../hooks/useToggle';
 // routes
-import { PATH_DASHBOARD } from '../../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../../common/routes/paths';
 // @types
 import { Invoice } from '../../../../@types/invoice';
 // components

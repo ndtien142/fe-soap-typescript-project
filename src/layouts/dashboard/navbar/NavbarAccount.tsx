@@ -5,7 +5,7 @@ import { Box, Link, Typography } from '@mui/material';
 // hooks
 import useAuth from '../../../hooks/useAuth';
 // routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../common/routes/paths';
 // components
 import MyAvatar from '../../../common/components/MyAvatar';
 

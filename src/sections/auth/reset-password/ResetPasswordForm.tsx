@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { Stack } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // routes
-import { PATH_AUTH } from '../../../routes/paths';
+import { PATH_AUTH } from '../../../common/routes/paths';
 // components
 import { FormProvider, RHFTextField } from '../../../common/components/hook-form';
 

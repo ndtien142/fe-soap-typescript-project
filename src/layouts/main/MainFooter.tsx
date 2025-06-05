@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Grid, Link, Divider, Container, Typography, Stack } from '@mui/material';
 // routes
-import { PATH_PAGE } from '../../routes/paths';
+import { PATH_PAGE } from '../../common/routes/paths';
 // components
 import Logo from '../../common/components/Logo';
 import SocialsButton from '../../common/components/SocialsButton';

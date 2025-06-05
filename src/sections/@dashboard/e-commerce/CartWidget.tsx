@@ -6,7 +6,7 @@ import { Badge } from '@mui/material';
 // redux
 import { useSelector } from '../../../redux/store';
 // routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../common/routes/paths';
 // components
 import Iconify from '../../../common/components/Iconify';
 

@@ -3,7 +3,7 @@ import { enUS, frFR, zhCN, viVN, arSD } from '@mui/material/locale';
 // components
 import { SettingsValueProps } from './common/components/settings/type';
 // routes
-import { PATH_DASHBOARD } from './routes/paths';
+import { PATH_DASHBOARD } from './common/routes/paths';
 
 // API
 // ----------------------------------------------------------------------

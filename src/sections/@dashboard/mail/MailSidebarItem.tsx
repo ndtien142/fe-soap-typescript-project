@@ -6,7 +6,7 @@ import { ICON } from '../../../config';
 // @types
 import { MailLabel } from '../../../@types/mail';
 // routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../common/routes/paths';
 // components
 import Iconify from '../../../common/components/Iconify';
 

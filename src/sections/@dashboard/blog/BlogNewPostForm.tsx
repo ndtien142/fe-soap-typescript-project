@@ -19,7 +19,7 @@ import {
   Autocomplete,
 } from '@mui/material';
 // routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../common/routes/paths';
 // components
 import { CustomFile } from '../../../common/components/upload';
 import {

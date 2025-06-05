@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 // @mui
 import { Container } from '@mui/material';
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from '../../common/routes/paths';
 // _mock_
 import { _invoices } from '../../_mock';
 // hooks

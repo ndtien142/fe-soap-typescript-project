@@ -12,7 +12,7 @@ import {
   decreaseQuantity,
 } from '../../../../redux/slices/product';
 // routes
-import { PATH_DASHBOARD } from '../../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../../common/routes/paths';
 // components
 import Iconify from '../../../../common/components/Iconify';
 import Scrollbar from '../../../../common/components/Scrollbar';

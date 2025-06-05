@@ -11,7 +11,7 @@ import { Box, Card, Grid, Stack, Switch, Typography, FormControlLabel } from '@m
 // utils
 import { fData } from '../../../common/utils/formatNumber';
 // routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../common/routes/paths';
 // @types
 import { UserManager } from '../../../@types/user';
 // _mock

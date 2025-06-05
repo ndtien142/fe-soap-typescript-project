@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import { Box, Link, Card, Avatar, Typography, CardContent, Stack } from '@mui/material';
 // routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../common/routes/paths';
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // utils

@@ -8,7 +8,7 @@ import { Container, Typography, Stack } from '@mui/material';
 import { useDispatch, useSelector } from '../../redux/store';
 import { getProducts, filterProducts } from '../../redux/slices/product';
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from '../../common/routes/paths';
 // @types
 import { Product, ProductFilter } from '../../@types/product';
 // hooks

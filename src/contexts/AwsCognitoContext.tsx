@@ -9,7 +9,7 @@ import {
 // utils
 import axios from '../common/utils/axios';
 // routes
-import { PATH_AUTH } from '../routes/paths';
+import { PATH_AUTH } from '../common/routes/paths';
 // @types
 import { ActionMap, AuthState, AuthUser, AWSCognitoContextType } from '../@types/auth';
 //

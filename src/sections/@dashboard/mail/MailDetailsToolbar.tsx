@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Box, Link, Tooltip, Typography, IconButton } from '@mui/material';
 // routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../common/routes/paths';
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // utils

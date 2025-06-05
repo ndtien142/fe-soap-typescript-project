@@ -7,7 +7,7 @@ import { Box, Card, Link, Container, Typography, Tooltip } from '@mui/material';
 import useAuth from '../../hooks/useAuth';
 import useResponsive from '../../hooks/useResponsive';
 // routes
-import { PATH_AUTH } from '../../routes/paths';
+import { PATH_AUTH } from '../../common/routes/paths';
 // components
 import Page from '../../common/components/Page';
 import Logo from '../../common/components/Logo';

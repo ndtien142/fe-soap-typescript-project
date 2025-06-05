@@ -6,7 +6,7 @@ import { Container, Card } from '@mui/material';
 import { useDispatch } from '../../redux/store';
 import { getLabels } from '../../redux/slices/mail';
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from '../../common/routes/paths';
 // hooks
 import useSettings from '../../hooks/useSettings';
 // components

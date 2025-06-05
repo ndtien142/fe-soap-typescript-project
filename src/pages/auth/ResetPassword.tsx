@@ -5,7 +5,7 @@ import { Button, Container, Typography } from '@mui/material';
 // layouts
 import LogoOnlyLayout from '../../layouts/LogoOnlyLayout';
 // routes
-import { PATH_AUTH } from '../../routes/paths';
+import { PATH_AUTH } from '../../common/routes/paths';
 // components
 import Page from '../../common/components/Page';
 // sections

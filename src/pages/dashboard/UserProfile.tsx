@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { Tab, Box, Card, Tabs, Container } from '@mui/material';
 // routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_DASHBOARD } from '../../common/routes/paths';
 // hooks
 import useAuth from '../../hooks/useAuth';
 import useTabs from '../../hooks/useTabs';

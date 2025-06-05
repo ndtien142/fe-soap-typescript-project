@@ -1,5 +1,5 @@
 // routes
-import Router from './routes';
+import Router from './common/routes';
 // theme
 import ThemeProvider from './theme';
 // components

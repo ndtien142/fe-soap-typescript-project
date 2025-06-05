@@ -19,7 +19,7 @@ import {
   InputAdornment,
 } from '@mui/material';
 // routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../common/routes/paths';
 // @types
 import { Product } from '../../../@types/product';
 // components

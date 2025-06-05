@@ -3,7 +3,7 @@ import { Auth0Client } from '@auth0/auth0-spa-js';
 // @types
 import { ActionMap, AuthState, AuthUser, Auth0ContextType } from '../@types/auth';
 // routes
-import { PATH_AUTH } from '../routes/paths';
+import { PATH_AUTH } from '../common/routes/paths';
 //
 import { AUTH0_API } from '../config';
 

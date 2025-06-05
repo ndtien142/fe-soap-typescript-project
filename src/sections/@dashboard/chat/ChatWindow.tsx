@@ -13,7 +13,7 @@ import {
   resetActiveConversation,
 } from '../../../redux/slices/chat';
 // routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../common/routes/paths';
 // @types
 import { Conversation, Participant, SendMessage } from '../../../@types/chat';
 //

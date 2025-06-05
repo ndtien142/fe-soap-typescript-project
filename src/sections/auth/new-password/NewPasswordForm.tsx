@@ -9,7 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Stack, IconButton, OutlinedInput, InputAdornment, FormHelperText } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../common/routes/paths';
 // components
 import Iconify from '../../../common/components/Iconify';
 import { FormProvider, RHFTextField } from '../../../common/components/hook-form';

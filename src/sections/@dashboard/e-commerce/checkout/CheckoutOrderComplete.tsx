@@ -6,7 +6,7 @@ import { Box, Link, Button, Divider, Typography, Stack, DialogProps } from '@mui
 import { useDispatch } from '../../../../redux/store';
 import { resetCart } from '../../../../redux/slices/product';
 // routes
-import { PATH_DASHBOARD } from '../../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../../common/routes/paths';
 // components
 import Iconify from '../../../../common/components/Iconify';
 import { DialogAnimate } from '../../../../common/components/animate';

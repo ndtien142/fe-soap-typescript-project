@@ -5,8 +5,8 @@ import { Box, Grid, Link, Paper, Rating, Container, Typography } from '@mui/mate
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // utils
-import cssStyles from '../../utils/cssStyles';
-import { fDate } from '../../utils/formatTime';
+import cssStyles from '../../common/utils/cssStyles';
+import { fDate } from '../../common/utils/formatTime';
 // components
 import Iconify from '../../common/components/Iconify';
 import { MotionViewport, varFade } from '../../common/components/animate';

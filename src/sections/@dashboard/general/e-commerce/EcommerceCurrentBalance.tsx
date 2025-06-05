@@ -1,7 +1,7 @@
 // @mui
 import { Button, Card, Typography, Stack, CardProps } from '@mui/material';
 // utils
-import { fCurrency } from '../../../../utils/formatNumber';
+import { fCurrency } from '../../../../common/utils/formatNumber';
 
 // ----------------------------------------------------------------------
 

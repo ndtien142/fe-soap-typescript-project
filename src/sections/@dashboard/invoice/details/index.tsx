@@ -14,8 +14,8 @@ import {
   TableContainer,
 } from '@mui/material';
 // utils
-import { fDate } from '../../../../utils/formatTime';
-import { fCurrency } from '../../../../utils/formatNumber';
+import { fDate } from '../../../../common/utils/formatTime';
+import { fCurrency } from '../../../../common/utils/formatNumber';
 // _mock_
 import { Invoice } from '../../../../@types/invoice';
 // components

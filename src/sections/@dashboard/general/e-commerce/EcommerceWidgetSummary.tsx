@@ -4,7 +4,7 @@ import ReactApexChart from 'react-apexcharts';
 import { alpha, styled } from '@mui/material/styles';
 import { Box, Card, Typography, Stack, CardProps } from '@mui/material';
 // utils
-import { fNumber, fPercent } from '../../../../utils/formatNumber';
+import { fNumber, fPercent } from '../../../../common/utils/formatNumber';
 // components
 import Iconify from '../../../../common/components/Iconify';
 import { BaseOptionChart } from '../../../../common/components/chart';

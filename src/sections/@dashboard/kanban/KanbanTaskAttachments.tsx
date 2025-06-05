@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 import { alpha, styled } from '@mui/material/styles';
 import { Box, IconButton } from '@mui/material';
 // utils
-import getFileData from '../../../utils/getFileData';
+import getFileData from '../../../common/utils/getFileData';
 // components
 import Image from '../../../common/components/Image';
 import Iconify from '../../../common/components/Iconify';

@@ -3,7 +3,7 @@ import sumBy from 'lodash/sumBy';
 import { styled } from '@mui/material/styles';
 import { Grid, Rating, Button, Typography, LinearProgress, Stack, Link } from '@mui/material';
 // utils
-import { fShortenNumber } from '../../../../utils/formatNumber';
+import { fShortenNumber } from '../../../../common/utils/formatNumber';
 // @types
 import { Product } from '../../../../@types/product';
 // components

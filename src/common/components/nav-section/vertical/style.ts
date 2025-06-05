@@ -9,7 +9,7 @@ import {
   ListItemButtonProps,
 } from '@mui/material';
 // utils
-import cssStyles from '../../../../utils/cssStyles';
+import cssStyles from '../../../utils/cssStyles';
 // config
 import { ICON, NAVBAR } from '../../../../config';
 

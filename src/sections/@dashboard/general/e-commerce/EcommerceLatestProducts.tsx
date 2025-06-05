@@ -1,7 +1,7 @@
 // @mui
 import { Box, Link, Card, CardHeader, Typography, Stack, CardProps } from '@mui/material';
 // utils
-import { fCurrency } from '../../../../utils/formatNumber';
+import { fCurrency } from '../../../../common/utils/formatNumber';
 //
 import Image from '../../../../common/components/Image';
 import Scrollbar from '../../../../common/components/Scrollbar';

@@ -2,8 +2,8 @@
 import { alpha, styled } from '@mui/material/styles';
 import { Box, Typography, IconButton } from '@mui/material';
 // utils
-import cssStyles from '../../../utils/cssStyles';
-import { getFileType, getFileName, getFileThumb } from '../../../utils/getFileFormat';
+import cssStyles from '../../../common/utils/cssStyles';
+import { getFileType, getFileName, getFileThumb } from '../../../common/utils/getFileFormat';
 // @types
 import { Mail } from '../../../@types/mail';
 // components

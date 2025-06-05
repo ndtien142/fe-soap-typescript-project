@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 // @mui
 import { Card, Typography, Box, CardProps } from '@mui/material';
 // utils
-import { fShortenNumber } from '../../../../utils/formatNumber';
+import { fShortenNumber } from '../../../../common/utils/formatNumber';
 
 // ----------------------------------------------------------------------
 

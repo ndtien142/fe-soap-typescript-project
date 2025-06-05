@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import { styled, useTheme, Theme } from '@mui/material/styles';
 import { Box, Typography, Stack, MenuItem, IconButton, SxProps } from '@mui/material';
 // utils
-import { fCurrency } from '../../../../utils/formatNumber';
+import { fCurrency } from '../../../../common/utils/formatNumber';
 // components
 import Image from '../../../../common/components/Image';
 import Iconify from '../../../../common/components/Iconify';

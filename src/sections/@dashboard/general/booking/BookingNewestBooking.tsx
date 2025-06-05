@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Box, Stack, Paper, Avatar, BoxProps, Typography, CardHeader } from '@mui/material';
 // utils
-import { fDateTime } from '../../../../utils/formatTime';
+import { fDateTime } from '../../../../common/utils/formatTime';
 // components
 import Label from '../../../../common/components/Label';
 import Image from '../../../../common/components/Image';

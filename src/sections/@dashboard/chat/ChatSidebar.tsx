@@ -8,7 +8,7 @@ import { useSelector } from '../../../redux/store';
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // utils
-import axios from '../../../utils/axios';
+import axios from '../../../common/utils/axios';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // @types

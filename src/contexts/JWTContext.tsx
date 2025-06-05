@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useEffect, useReducer } from 'react';
 // utils
-import axios from '../utils/axios';
-import { isValidToken, setSession } from '../utils/jwt';
+import axios from '../common/utils/axios';
+import { isValidToken, setSession } from '../common/utils/jwt';
 // @types
 import { ActionMap, AuthState, AuthUser, JWTContextType } from '../@types/auth';
 

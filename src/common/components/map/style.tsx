@@ -3,7 +3,7 @@ import { Popup } from 'react-map-gl';
 import { useTheme, styled } from '@mui/material/styles';
 import { GlobalStyles } from '@mui/material';
 // utils
-import cssStyles from '../../../utils/cssStyles';
+import cssStyles from '../../utils/cssStyles';
 
 // ----------------------------------------------------------------------
 

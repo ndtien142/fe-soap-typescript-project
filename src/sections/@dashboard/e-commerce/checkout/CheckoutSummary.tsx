@@ -12,7 +12,7 @@ import {
   InputAdornment,
 } from '@mui/material';
 // utils
-import { fCurrency } from '../../../../utils/formatNumber';
+import { fCurrency } from '../../../../common/utils/formatNumber';
 // components
 import Iconify from '../../../../common/components/Iconify';
 

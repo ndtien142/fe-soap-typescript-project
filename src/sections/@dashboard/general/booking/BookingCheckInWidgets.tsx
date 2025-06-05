@@ -6,7 +6,7 @@ import { Card, Typography, Stack, Divider, CardProps } from '@mui/material';
 // hooks
 import useResponsive from '../../../../hooks/useResponsive';
 // utils
-import { fNumber } from '../../../../utils/formatNumber';
+import { fNumber } from '../../../../common/utils/formatNumber';
 // components
 import { BaseOptionChart } from '../../../../common/components/chart';
 

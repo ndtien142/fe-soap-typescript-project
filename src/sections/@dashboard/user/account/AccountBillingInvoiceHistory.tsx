@@ -2,8 +2,8 @@ import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { Stack, Link, Button, Typography } from '@mui/material';
 // utils
-import { fDate } from '../../../../utils/formatTime';
-import { fCurrency } from '../../../../utils/formatNumber';
+import { fDate } from '../../../../common/utils/formatTime';
+import { fCurrency } from '../../../../common/utils/formatNumber';
 // @types
 import { UserInvoice } from '../../../../@types/user';
 // components

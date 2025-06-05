@@ -2,7 +2,7 @@ import { useState } from 'react';
 // @mui
 import { Stack, Avatar, Typography } from '@mui/material';
 // utils
-import { fToNow } from '../../../utils/formatTime';
+import { fToNow } from '../../../common/utils/formatTime';
 // @types
 import { CardComment } from '../../../@types/kanban';
 // components

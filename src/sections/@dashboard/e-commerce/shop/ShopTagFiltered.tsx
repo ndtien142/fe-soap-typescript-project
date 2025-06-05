@@ -3,7 +3,7 @@ import { sentenceCase } from 'change-case';
 import { useTheme, styled } from '@mui/material/styles';
 import { Chip, Stack, Button } from '@mui/material';
 // utils
-import getColorName from '../../../../utils/getColorName';
+import getColorName from '../../../../common/utils/getColorName';
 // @type
 import { ProductFilter } from '../../../../@types/product';
 // components

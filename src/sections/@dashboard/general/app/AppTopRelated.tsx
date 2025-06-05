@@ -2,7 +2,7 @@
 import { useTheme } from '@mui/material/styles';
 import { Box, Card, Rating, CardHeader, Typography, Stack, CardProps } from '@mui/material';
 // utils
-import { fCurrency, fShortenNumber } from '../../../../utils/formatNumber';
+import { fCurrency, fShortenNumber } from '../../../../common/utils/formatNumber';
 // components
 import Label from '../../../../common/components/Label';
 import Image from '../../../../common/components/Image';

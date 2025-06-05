@@ -4,7 +4,7 @@ import { Box, Typography } from '@mui/material';
 // @types
 import { Profile } from '../../../../@types/user';
 // utils
-import cssStyles from '../../../../utils/cssStyles';
+import cssStyles from '../../../../common/utils/cssStyles';
 // hooks
 import useAuth from '../../../../hooks/useAuth';
 // components

@@ -15,8 +15,8 @@ import {
 } from '@mui/material';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 // utils
-import cssStyles from '../../../utils/cssStyles';
-import flattenArray from '../../../utils/flattenArray';
+import cssStyles from '../../../common/utils/cssStyles';
+import flattenArray from '../../../common/utils/flattenArray';
 // components
 import Iconify from '../../../common/components/Iconify';
 import { NavListProps } from '../../../common/components/nav-section';

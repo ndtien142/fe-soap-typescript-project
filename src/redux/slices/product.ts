@@ -2,7 +2,7 @@ import sum from 'lodash/sum';
 import uniqBy from 'lodash/uniqBy';
 import { createSlice } from '@reduxjs/toolkit';
 // utils
-import axios from '../../utils/axios';
+import axios from '../../common/utils/axios';
 import { ProductState, CartItem, Product } from '../../@types/product';
 //
 import { dispatch } from '../store';

@@ -1,7 +1,7 @@
 // @mui
 import { Box, Chip, Avatar, Checkbox, AvatarGroup, FormControlLabel } from '@mui/material';
 // utils
-import { fShortenNumber } from '../../../utils/formatNumber';
+import { fShortenNumber } from '../../../common/utils/formatNumber';
 // @types
 import { Post } from '../../../@types/blog';
 // components

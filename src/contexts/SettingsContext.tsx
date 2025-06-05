@@ -2,7 +2,7 @@ import { ReactNode, useEffect, createContext } from 'react';
 // hooks
 import useLocalStorage from '../hooks/useLocalStorage';
 // utils
-import getColorPresets, { colorPresets, defaultPreset } from '../utils/getColorPresets';
+import getColorPresets, { colorPresets, defaultPreset } from '../common/utils/getColorPresets';
 // config
 import { defaultSettings } from '../config';
 // @type

@@ -3,7 +3,7 @@ import { capitalCase } from 'change-case';
 import { styled } from '@mui/material/styles';
 import { Box, Link, Avatar, Typography, AvatarGroup, IconButton } from '@mui/material';
 // utils
-import { fToNow } from '../../../utils/formatTime';
+import { fToNow } from '../../../common/utils/formatTime';
 // @types
 import { Participant } from '../../../@types/chat';
 // components

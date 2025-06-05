@@ -3,8 +3,8 @@ import { m, AnimatePresence } from 'framer-motion';
 import { alpha } from '@mui/material/styles';
 import { List, IconButton, ListItemText, ListItem } from '@mui/material';
 // utils
-import { fData } from '../../../utils/formatNumber';
-import getFileData from '../../../utils/getFileData';
+import { fData } from '../../utils/formatNumber';
+import getFileData from '../../utils/getFileData';
 // type
 import { UploadMultiFileProps } from './type';
 //

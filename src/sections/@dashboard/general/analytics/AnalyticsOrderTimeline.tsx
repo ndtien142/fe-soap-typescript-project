@@ -9,7 +9,7 @@ import {
   TimelineConnector,
 } from '@mui/lab';
 // utils
-import { fDateTime } from '../../../../utils/formatTime';
+import { fDateTime } from '../../../../common/utils/formatTime';
 
 // ----------------------------------------------------------------------
 

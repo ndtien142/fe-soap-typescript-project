@@ -1,7 +1,7 @@
 // hooks
 import useAuth from '../../hooks/useAuth';
 // utils
-import createAvatar from '../../utils/createAvatar';
+import createAvatar from '../utils/createAvatar';
 //
 import Avatar, { Props as AvatarProps } from './Avatar';
 

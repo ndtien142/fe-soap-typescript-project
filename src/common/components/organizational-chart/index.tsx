@@ -3,7 +3,7 @@ import { Tree, TreeNode, TreeProps } from 'react-organizational-chart';
 import { useTheme, Theme } from '@mui/material/styles';
 import { SxProps } from '@mui/material';
 // utils
-import flattenArray from '../../../utils/flattenArray';
+import flattenArray from '../../utils/flattenArray';
 //
 import { ListProps, SubListProps, ItemProps } from './type';
 import { SimpleNode, StandardNode, GroupNode } from './node';

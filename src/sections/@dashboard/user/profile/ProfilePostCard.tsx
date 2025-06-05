@@ -21,8 +21,8 @@ import { UserPost } from '../../../../@types/user';
 // hooks
 import useAuth from '../../../../hooks/useAuth';
 // utils
-import { fDate } from '../../../../utils/formatTime';
-import { fShortenNumber } from '../../../../utils/formatNumber';
+import { fDate } from '../../../../common/utils/formatTime';
+import { fShortenNumber } from '../../../../common/utils/formatNumber';
 // components
 import Image from '../../../../common/components/Image';
 import Iconify from '../../../../common/components/Iconify';

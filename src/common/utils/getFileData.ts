@@ -1,5 +1,5 @@
 // components
-import { CustomFile } from '../common/components/upload/type';
+import { CustomFile } from '../components/upload/type';
 
 // ----------------------------------------------------------------------
 

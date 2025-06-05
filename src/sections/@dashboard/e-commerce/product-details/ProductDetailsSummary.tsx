@@ -8,7 +8,7 @@ import { Box, Link, Stack, Button, Rating, Divider, IconButton, Typography } fro
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // utils
-import { fShortenNumber, fCurrency } from '../../../../utils/formatNumber';
+import { fShortenNumber, fCurrency } from '../../../../common/utils/formatNumber';
 // @types
 import { Product, CartItem } from '../../../../@types/product';
 // components

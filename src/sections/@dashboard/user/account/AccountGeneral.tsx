@@ -10,7 +10,7 @@ import { LoadingButton } from '@mui/lab';
 // hooks
 import useAuth from '../../../../hooks/useAuth';
 // utils
-import { fData } from '../../../../utils/formatNumber';
+import { fData } from '../../../../common/utils/formatNumber';
 // _mock
 import { countries } from '../../../../_mock';
 // components

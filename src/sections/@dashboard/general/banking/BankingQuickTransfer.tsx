@@ -23,7 +23,7 @@ import {
   Slider as MuiSlider,
 } from '@mui/material';
 // utils
-import { fCurrency } from '../../../../utils/formatNumber';
+import { fCurrency } from '../../../../common/utils/formatNumber';
 // components
 import { CarouselArrows } from '../../../../common/components/carousel';
 

@@ -2,7 +2,7 @@
 import { styled } from '@mui/material/styles';
 import { Stack, Button, Tooltip, Typography, IconButton, ToggleButton } from '@mui/material';
 // utils
-import { fDate } from '../../../utils/formatTime';
+import { fDate } from '../../../common/utils/formatTime';
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // @types

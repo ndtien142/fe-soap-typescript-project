@@ -7,8 +7,8 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // utils
-import createAvatar from '../../../utils/createAvatar';
-import { fDateTimeSuffix } from '../../../utils/formatTime';
+import createAvatar from '../../../common/utils/createAvatar';
+import { fDateTimeSuffix } from '../../../common/utils/formatTime';
 // @types
 import { Mail } from '../../../@types/mail';
 // components

@@ -3,7 +3,7 @@ import orderBy from 'lodash/orderBy';
 import { alpha, styled } from '@mui/material/styles';
 import { Box, Stack, Card, Avatar, CardHeader, Typography, CardProps } from '@mui/material';
 // utils
-import { fShortenNumber } from '../../../../utils/formatNumber';
+import { fShortenNumber } from '../../../../common/utils/formatNumber';
 // components
 import Iconify from '../../../../common/components/Iconify';
 

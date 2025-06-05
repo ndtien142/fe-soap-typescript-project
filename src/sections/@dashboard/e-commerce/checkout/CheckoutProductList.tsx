@@ -13,8 +13,8 @@ import {
   TableContainer,
 } from '@mui/material';
 // utils
-import getColorName from '../../../../utils/getColorName';
-import { fCurrency } from '../../../../utils/formatNumber';
+import getColorName from '../../../../common/utils/getColorName';
+import { fCurrency } from '../../../../common/utils/formatNumber';
 // @types
 import { CartItem } from '../../../../@types/product';
 // components

@@ -4,8 +4,8 @@ import flatten from 'lodash/flatten';
 import { styled } from '@mui/material/styles';
 import { Box, Button, Divider, Collapse, Typography } from '@mui/material';
 // utils
-import { fDateTime } from '../../../utils/formatTime';
-import { getFileFullName, getFileThumb } from '../../../utils/getFileFormat';
+import { fDateTime } from '../../../common/utils/formatTime';
+import { getFileFullName, getFileThumb } from '../../../common/utils/getFileFormat';
 // @types
 import { Conversation, Message } from '../../../@types/chat';
 // components

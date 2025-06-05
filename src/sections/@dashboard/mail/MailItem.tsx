@@ -7,8 +7,8 @@ import { useSelector } from '../../../redux/store';
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // utils
-import { fDate } from '../../../utils/formatTime';
-import createAvatar from '../../../utils/createAvatar';
+import { fDate } from '../../../common/utils/formatTime';
+import createAvatar from '../../../common/utils/createAvatar';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // @types

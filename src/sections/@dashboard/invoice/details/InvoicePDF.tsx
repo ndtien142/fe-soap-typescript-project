@@ -1,7 +1,7 @@
 import { Page, View, Text, Image, Document } from '@react-pdf/renderer';
 // utils
-import { fCurrency } from '../../../../utils/formatNumber';
-import { fDate } from '../../../../utils/formatTime';
+import { fCurrency } from '../../../../common/utils/formatNumber';
+import { fDate } from '../../../../common/utils/formatTime';
 // @types
 import { Invoice } from '../../../../@types/invoice';
 //

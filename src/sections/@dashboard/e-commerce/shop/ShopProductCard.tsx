@@ -5,7 +5,7 @@ import { Box, Card, Link, Typography, Stack } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // utils
-import { fCurrency } from '../../../../utils/formatNumber';
+import { fCurrency } from '../../../../common/utils/formatNumber';
 // @types
 import { Product } from '../../../../@types/product';
 // components

@@ -9,7 +9,7 @@ import { PATH_DASHBOARD } from '../../routes/paths';
 import useSettings from '../../hooks/useSettings';
 import useIsMountedRef from '../../hooks/useIsMountedRef';
 // utils
-import axios from '../../utils/axios';
+import axios from '../../common/utils/axios';
 // @types
 import { Post } from '../../@types/blog';
 // components

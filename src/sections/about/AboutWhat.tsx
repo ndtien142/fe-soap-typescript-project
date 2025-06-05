@@ -5,7 +5,7 @@ import { Box, Grid, Button, Container, Typography, LinearProgress } from '@mui/m
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // utils
-import { fPercent } from '../../utils/formatNumber';
+import { fPercent } from '../../common/utils/formatNumber';
 // _mock_
 import { _skills } from '../../_mock';
 // components

@@ -2,8 +2,8 @@ import { useState } from 'react';
 // @mui
 import { Box, List, Button, Rating, Avatar, ListItem, Pagination, Typography } from '@mui/material';
 // utils
-import { fDate } from '../../../../utils/formatTime';
-import { fShortenNumber } from '../../../../utils/formatNumber';
+import { fDate } from '../../../../common/utils/formatTime';
+import { fShortenNumber } from '../../../../common/utils/formatNumber';
 // @types
 import { Product, ProductReview } from '../../../../@types/product';
 // components

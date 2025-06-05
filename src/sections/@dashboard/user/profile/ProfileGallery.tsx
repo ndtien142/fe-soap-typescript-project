@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { Box, Card, IconButton, Typography, CardContent } from '@mui/material';
 // utils
-import { fDate } from '../../../../utils/formatTime';
-import cssStyles from '../../../../utils/cssStyles';
+import { fDate } from '../../../../common/utils/formatTime';
+import cssStyles from '../../../../common/utils/cssStyles';
 // @types
 import { Gallery } from '../../../../@types/user';
 // components

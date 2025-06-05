@@ -14,7 +14,7 @@ import {
   Typography,
 } from '@mui/material';
 // utils
-import { fDateTime } from '../../../../utils/formatTime';
+import { fDateTime } from '../../../../common/utils/formatTime';
 // components
 import Iconify from '../../../../common/components/Iconify';
 import { CarouselArrows } from '../../../../common/components/carousel';

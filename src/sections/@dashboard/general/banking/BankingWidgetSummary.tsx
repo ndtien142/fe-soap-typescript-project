@@ -4,7 +4,7 @@ import ReactApexChart from 'react-apexcharts';
 import { styled, useTheme } from '@mui/material/styles';
 import { Card, Typography, Stack, CardProps } from '@mui/material';
 // utils
-import { fCurrency, fPercent } from '../../../../utils/formatNumber';
+import { fCurrency, fPercent } from '../../../../common/utils/formatNumber';
 // theme
 import { ColorSchema } from '../../../../theme/palette';
 // components

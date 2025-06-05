@@ -4,7 +4,7 @@ import { Box, Avatar, SpeedDial, Typography, SpeedDialAction } from '@mui/materi
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // utils
-import { fDate } from '../../../utils/formatTime';
+import { fDate } from '../../../common/utils/formatTime';
 // @types
 import { Post } from '../../../@types/blog';
 // components

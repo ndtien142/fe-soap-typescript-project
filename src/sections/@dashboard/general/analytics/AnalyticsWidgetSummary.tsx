@@ -2,7 +2,7 @@
 import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography, CardProps } from '@mui/material';
 // utils
-import { fShortenNumber } from '../../../../utils/formatNumber';
+import { fShortenNumber } from '../../../../common/utils/formatNumber';
 // theme
 import { ColorSchema } from '../../../../theme/palette';
 // components

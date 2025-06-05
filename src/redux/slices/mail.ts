@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 // utils
-import axios from '../../utils/axios';
+import axios from '../../common/utils/axios';
 // @types
 import { MailState } from '../../@types/mail';
 //

@@ -13,7 +13,7 @@ import {
 import useToggle from '../../../hooks/useToggle';
 import useDateRangePicker from '../../../hooks/useDateRangePicker';
 // utils
-import uuidv4 from '../../../utils/uuidv4';
+import uuidv4 from '../../../common/utils/uuidv4';
 // @types
 import { KanbanCard } from '../../../@types/kanban';
 // components

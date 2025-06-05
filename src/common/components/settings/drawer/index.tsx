@@ -6,7 +6,7 @@ import { Stack, Divider, Backdrop, Typography, IconButton } from '@mui/material'
 // hooks
 import useSettings from '../../../../hooks/useSettings';
 // utils
-import cssStyles from '../../../../utils/cssStyles';
+import cssStyles from '../../../utils/cssStyles';
 // config
 import { NAVBAR, defaultSettings } from '../../../../config';
 //

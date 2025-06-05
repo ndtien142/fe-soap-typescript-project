@@ -3,7 +3,7 @@ import ReactApexChart from 'react-apexcharts';
 // @mui
 import { Card, Typography, Stack, CardProps } from '@mui/material';
 // utils
-import { fCurrency, fPercent } from '../../../../utils/formatNumber';
+import { fCurrency, fPercent } from '../../../../common/utils/formatNumber';
 // components
 import Iconify from '../../../../common/components/Iconify';
 import { BaseOptionChart } from '../../../../common/components/chart';

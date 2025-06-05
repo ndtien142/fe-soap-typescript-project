@@ -2,8 +2,8 @@
 import { styled } from '@mui/material/styles';
 import { Box, Card, Avatar, Divider, Typography, Stack } from '@mui/material';
 // utils
-import cssStyles from '../../../../utils/cssStyles';
-import { fShortenNumber } from '../../../../utils/formatNumber';
+import cssStyles from '../../../../common/utils/cssStyles';
+import { fShortenNumber } from '../../../../common/utils/formatNumber';
 // @types
 import { UserData } from '../../../../@types/user';
 // components

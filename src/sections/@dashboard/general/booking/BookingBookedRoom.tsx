@@ -1,7 +1,7 @@
 // @mui
 import { Card, CardHeader, Typography, Stack, LinearProgress, Box, CardProps } from '@mui/material';
 // utils
-import { fShortenNumber } from '../../../../utils/formatNumber';
+import { fShortenNumber } from '../../../../common/utils/formatNumber';
 
 // ----------------------------------------------------------------------
 

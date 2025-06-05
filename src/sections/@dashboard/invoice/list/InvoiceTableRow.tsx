@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Checkbox, TableRow, TableCell, Typography, Stack, Link, MenuItem } from '@mui/material';
 // utils
-import { fDate } from '../../../../utils/formatTime';
-import createAvatar from '../../../../utils/createAvatar';
-import { fCurrency } from '../../../../utils/formatNumber';
+import { fDate } from '../../../../common/utils/formatTime';
+import createAvatar from '../../../../common/utils/createAvatar';
+import { fCurrency } from '../../../../common/utils/formatNumber';
 // @types
 import { Invoice } from '../../../../@types/invoice';
 // components

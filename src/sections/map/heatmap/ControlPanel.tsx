@@ -2,7 +2,7 @@ import { memo } from 'react';
 // @mui
 import { Box, Slider, Switch, Typography } from '@mui/material';
 // utils
-import { fDate } from '../../../utils/formatTime';
+import { fDate } from '../../../common/utils/formatTime';
 // components
 import { ControlPanelStyle } from '../../../common/components/map';
 

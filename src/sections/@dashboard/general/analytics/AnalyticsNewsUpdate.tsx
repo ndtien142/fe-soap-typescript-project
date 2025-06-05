@@ -11,7 +11,7 @@ import {
   CardProps,
 } from '@mui/material';
 // utils
-import { fToNow } from '../../../../utils/formatTime';
+import { fToNow } from '../../../../common/utils/formatTime';
 // components
 import Image from '../../../../common/components/Image';
 import Iconify from '../../../../common/components/Iconify';

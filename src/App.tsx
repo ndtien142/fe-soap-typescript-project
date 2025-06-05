@@ -1,7 +1,7 @@
 // routes
 import Router from './common/routes';
 // theme
-import ThemeProvider from './theme';
+import ThemeProvider from './common/theme';
 // components
 import ThemeSettings from './common/components/settings';
 import { ChartStyle } from './common/components/chart';

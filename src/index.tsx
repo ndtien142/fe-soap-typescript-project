@@ -1,5 +1,5 @@
 // i18n
-import './locales/i18n';
+import './common/locales/i18n';
 
 // highlight
 import './common/utils/highlight';
@@ -34,15 +34,15 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 // redux
-import { store, persistor } from './redux/store';
+import { store, persistor } from './common/redux/store';
 // contexts
-import { SettingsProvider } from './contexts/SettingsContext';
-import { CollapseDrawerProvider } from './contexts/CollapseDrawerContext';
+import { SettingsProvider } from './common/contexts/SettingsContext';
+import { CollapseDrawerProvider } from './common/contexts/CollapseDrawerContext';
 
 // Check our docs
 // https://docs-minimals.vercel.app/authentication/ts-version
 
-import { AuthProvider } from './contexts/JWTContext';
+import { AuthProvider } from './common/contexts/JWTContext';
 // import { AuthProvider } from './contexts/Auth0Context';
 // import { AuthProvider } from './contexts/FirebaseContext';
 // import { AuthProvider } from './contexts/AwsCognitoContext';

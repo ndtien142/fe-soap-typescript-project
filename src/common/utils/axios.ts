@@ -3,7 +3,7 @@ import { setAccessToken } from '../../auth/login/auth.slice';
 import { setIsExpired } from '../../auth/login/login.slice';
 // config
 import { HOST_API } from '../../config';
-import { store } from '../../redux/store';
+import { store } from '../redux/store';
 import { PATH_AUTH } from '../routes/paths';
 
 // ----------------------------------------------------------------------

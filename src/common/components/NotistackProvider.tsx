@@ -5,9 +5,9 @@ import { SnackbarProvider, SnackbarKey } from 'notistack';
 import { alpha, useTheme } from '@mui/material/styles';
 import { Box, GlobalStyles, Collapse } from '@mui/material';
 // hooks
-import useSettings from '../../hooks/useSettings';
+import useSettings from '../hooks/useSettings';
 // theme
-import { ColorSchema } from '../../theme/palette';
+import { ColorSchema } from '../theme/palette';
 //
 import Iconify from './Iconify';
 import { IconButtonAnimate } from './animate';

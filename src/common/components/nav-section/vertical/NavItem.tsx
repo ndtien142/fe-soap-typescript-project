@@ -1,9 +1,9 @@
 // @mui
 import { Box, Tooltip, ListItemButtonProps } from '@mui/material';
 // hooks
-import useLocales from '../../../../hooks/useLocales';
+import useLocales from '../../../hooks/useLocales';
 // guards
-import RoleBasedGuard from '../../../../guards/RoleBasedGuard';
+import RoleBasedGuard from '../../../guards/RoleBasedGuard';
 //
 import Iconify from '../../Iconify';
 //

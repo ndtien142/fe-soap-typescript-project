@@ -1,5 +1,5 @@
 // _mock_
-import { _megaMenuProducts } from '../../../_mock';
+import { _megaMenuProducts } from '../../_mock';
 // @types
 import { MegaMenuItemProps } from './type';
 // components

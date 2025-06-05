@@ -2,7 +2,7 @@
 import { alpha, Theme, useTheme } from '@mui/material/styles';
 import { SxProps, Typography, Card, Box, Stack, Avatar } from '@mui/material';
 // theme
-import { ColorSchema } from '../../../../theme/palette';
+import { ColorSchema } from '../../../theme/palette';
 //
 import Label from '../../Label';
 //

@@ -1,5 +1,5 @@
 // hooks
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../hooks/useAuth';
 // utils
 import createAvatar from '../utils/createAvatar';
 //

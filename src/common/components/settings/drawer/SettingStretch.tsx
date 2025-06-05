@@ -2,7 +2,7 @@
 import { styled } from '@mui/material/styles';
 import { CardActionArea, Stack } from '@mui/material';
 // hooks
-import useSettings from '../../../../hooks/useSettings';
+import useSettings from '../../../hooks/useSettings';
 //
 import Iconify from '../../Iconify';
 

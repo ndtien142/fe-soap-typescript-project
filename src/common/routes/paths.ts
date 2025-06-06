@@ -36,6 +36,11 @@ export const PATH_PAGE = {
 
 export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
+  equipment: {
+    listGroup: path(ROOTS_AUTH, '/group-equipment'),
+    view: (groupEquipmentCode: string) =>
+      path(ROOTS_DASHBOARD, `/group-equipment/${groupEquipmentCode}`),
+  },
   general: {
     app: path(ROOTS_DASHBOARD, '/app'),
     ecommerce: path(ROOTS_DASHBOARD, '/ecommerce'),

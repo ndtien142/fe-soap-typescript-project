@@ -3,9 +3,12 @@ import { Navigate, useLocation } from 'react-router-dom';
 // hooks
 import useAuth from '../hooks/useAuth';
 // pages
-import Login from '../pages/auth/Login';
+
 // components
 import LoadingScreen from '../components/LoadingScreen';
+import Login from 'src/auth/login/Login';
+import { useSelector } from '../redux/store';
+import { selectIsAuthenticated } from 'src/auth/login/auth.slice';
 
 // ----------------------------------------------------------------------
 
@@ -14,7 +17,9 @@ type AuthGuardProps = {
 };
 
 export default function AuthGuard({ children }: AuthGuardProps) {
-  const { isAuthenticated, isInitialized } = useAuth();
+  const { isInitialized } = useAuth();
+
+  const isAuthenticated = useSelector(selectIsAuthenticated);
 
   const { pathname } = useLocation();
 

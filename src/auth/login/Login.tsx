@@ -102,7 +102,7 @@ export default function Login() {
                 sx={{ flexGrow: 1, justifyItems: 'space-between' }}
               >
                 <Typography color={'green'} variant="h4">
-                  Công ty vật liệu xây dựng NDTIEN
+                  Hệ thống quản lý tài sản hỗ trợ phòng quản trị trường PTIT
                 </Typography>
               </Stack>
             </Stack>

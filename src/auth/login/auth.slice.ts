@@ -34,8 +34,7 @@ export const authLoginSlice = createSlice({
 });
 
 export const { setLogin, setLogout, setAccessToken, setRefreshToken } = authLoginSlice.actions;
-export const loginSelector = (state: RootState) => state.auth.isAuthenticated;
-export const logoutSelector = (state: RootState) => state.auth.isAuthenticated;
+export const selectIsAuthenticated = (state: RootState) => state.auth.isAuthenticated;
 export const accessTokenSelector = (state: RootState) => state.auth.accessToken;
 export const refreshTokenSelector = (state: RootState) => state.auth.refreshToken;
 

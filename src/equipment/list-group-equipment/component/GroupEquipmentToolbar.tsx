@@ -5,8 +5,8 @@ import Iconify from 'src/common/components/Iconify';
 const INPUT_WIDTH = 160;
 
 type Props = {
-  optionsManufacturer: string[]; // Hãng
-  optionsType: string[]; // Loại
+  optionsManufacturer: string[];
+  optionsType: string[];
   filterManufacturer: string;
   filterType: string;
   filterNameOrCode: string;

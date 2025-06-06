@@ -47,6 +47,16 @@ const navConfig = [
   {
     subheader: 'management',
     items: [
+      // Group Equipment
+      {
+        title: 'Nhóm thiết bị',
+        path: PATH_DASHBOARD.equipment.listGroup,
+        icon: ICONS.kanban,
+        children: [
+          { title: 'Danh sách', path: PATH_DASHBOARD.equipment.listGroup },
+          { title: 'Tạo nhóm thiết bị', path: PATH_DASHBOARD.equipment.new },
+        ],
+      },
       // USER
       {
         title: 'user',

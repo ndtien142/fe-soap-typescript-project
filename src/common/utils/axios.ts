@@ -4,7 +4,7 @@ import { HOST_API } from '../../config';
 import { store } from '../redux/store';
 import { PATH_AUTH } from '../routes/paths';
 import { toQueryString } from './common.util';
-import { setAccessToken } from 'src/auth/login/auth.slice';
+import { setAccessToken, setRefreshToken } from 'src/auth/login/auth.slice';
 import { setIsExpired } from 'src/auth/login/login.slice';
 
 // ----------------------------------------------------------------------
@@ -21,14 +21,15 @@ axiosInstance.interceptors.response.use(
   (response) => response.data,
   (error) => {
     const { response } = error;
-    const refreshToken = store.getState()?.authLogin.refreshToken;
+    const refreshToken = store.getState()?.auth.refreshToken;
     if (response?.status === 4001) {
       axiosInstance2
         .post<any, { accessToken: string }>('/refresh-token', {
           refreshToken: refreshToken,
         })
         .then((res: any) => {
-          store.dispatch(setAccessToken('Bearer ' + res?.data?.accessToken));
+          store.dispatch(setAccessToken('Bearer ' + res?.data?.metadata?.tokens?.accessToken));
+          store.dispatch(setRefreshToken(res?.data?.metadata?.tokens?.refreshToken));
         })
         .catch((e) => {
           store.dispatch(setIsExpired(true));
@@ -40,15 +41,15 @@ axiosInstance.interceptors.response.use(
 );
 
 axiosInstance.interceptors.request.use(async (config) => {
-  const token = store.getState()?.authLogin.accessToken;
-  const userId = store.getState()?.authLogin.userId;
+  const token = store.getState()?.auth.accessToken;
+  const userCode = store.getState()?.auth.user.userCode;
   if (token) {
     try {
       // @ts-ignore
       config.headers = {
         ...config.headers,
         authorization: token,
-        'x-user-code': userId,
+        'x-user-code': userCode,
       };
     } catch (e) {
       console.log(e);

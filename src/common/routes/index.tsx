@@ -14,6 +14,8 @@ import AuthGuard from '../guards/AuthGuard';
 import { PATH_AFTER_LOGIN } from '../../config';
 // components
 import LoadingScreen from '../components/LoadingScreen';
+import { useSelector } from '../redux/store';
+import { selectIsAuthenticated } from 'src/auth/login/auth.slice';
 
 // ----------------------------------------------------------------------
 
@@ -22,7 +24,9 @@ const Loadable = (Component: ElementType) => (props: any) => {
   const { pathname } = useLocation();
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { isAuthenticated } = useAuth();
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+
+  console.log('is authenticated: ', isAuthenticated);
 
   const isDashboard = pathname.includes('/dashboard') && isAuthenticated;
 
@@ -66,9 +70,9 @@ export default function Router() {
     {
       path: 'dashboard',
       element: (
-        <GuestGuard>
+        <AuthGuard>
           <DashboardLayout />
-        </GuestGuard>
+        </AuthGuard>
       ),
       children: [
         { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
@@ -88,6 +92,13 @@ export default function Router() {
             { path: 'product/new', element: <EcommerceProductCreate /> },
             { path: 'product/:name/edit', element: <EcommerceProductEdit /> },
             { path: 'checkout', element: <EcommerceCheckout /> },
+          ],
+        },
+        {
+          path: 'group-equipment',
+          children: [
+            { element: <Navigate to="/dashboard/group-equipment/list" replace />, index: true },
+            { path: 'list', element: <GroupEquipmentList /> },
           ],
         },
         {
@@ -182,6 +193,9 @@ const NewPassword = Loadable(lazy(() => import('../pages/auth/NewPassword')));
 const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')));
 
 // DASHBOARD
+
+// EQUIPMENT
+const GroupEquipmentList = Loadable(lazy(() => import('../../equipment/list-group-equipment')));
 
 // GENERAL
 const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));

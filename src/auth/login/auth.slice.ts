@@ -30,13 +30,17 @@ export const authLoginSlice = createSlice({
     setLogout: (state, action: PayloadAction<boolean>) => {
       state.isAuthenticated = action.payload;
     },
+    setUser: (state, action: PayloadAction<IUser>) => {
+      state.user = action.payload;
+    },
   },
 });
 
-export const { setLogin, setLogout, setAccessToken, setRefreshToken } = authLoginSlice.actions;
-export const loginSelector = (state: RootState) => state.auth.isAuthenticated;
-export const logoutSelector = (state: RootState) => state.auth.isAuthenticated;
-export const accessTokenSelector = (state: RootState) => state.auth.accessToken;
-export const refreshTokenSelector = (state: RootState) => state.auth.refreshToken;
+export const { setLogin, setLogout, setAccessToken, setRefreshToken, setUser } =
+  authLoginSlice.actions;
+export const selectIsAuthenticated = (state: RootState) => state.auth.isAuthenticated;
+export const selectAccessToken = (state: RootState) => state.auth.accessToken;
+export const selectRefreshToken = (state: RootState) => state.auth.refreshToken;
+export const selectUser = (state: RootState) => state.auth.user;
 
 export default authLoginSlice.reducer;

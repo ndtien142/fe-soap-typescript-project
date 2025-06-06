@@ -6,6 +6,9 @@
 // ----------------------------------------------------------------------
 
 const vn = {
+  equipment: {
+    listGroupEquipment: 'Danh sách nhóm thiết bị',
+  },
   expired: `Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.`,
   login: 'Đăng nhập',
   logout: 'Đăng xuất',

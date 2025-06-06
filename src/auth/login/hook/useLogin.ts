@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { dispatch } from 'src/common/redux/store';
-import { setAccessToken, setLogin, setRefreshToken } from '../auth.slice';
+import { setAccessToken, setLogin, setRefreshToken, setUser } from '../auth.slice';
 import { ILoginCallback, IAuth } from '../interface';
 import { getAuth } from '../service';
 
@@ -14,6 +14,7 @@ export const useAuthLogin = ({ onError, onSuccess }: ILoginCallback) => {
       if (!response) throw new Error('No response');
       const { data } = response;
       dispatch(setAccessToken('' + data?.metadata?.tokens?.accessToken));
+      dispatch(setUser(data?.metadata?.user));
       dispatch(setRefreshToken(data?.metadata?.tokens?.refreshToken));
       dispatch(setLogin(true));
       onSuccess();

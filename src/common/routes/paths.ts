@@ -37,9 +37,11 @@ export const PATH_PAGE = {
 export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
   equipment: {
-    listGroup: path(ROOTS_AUTH, '/group-equipment'),
+    root: path(ROOTS_DASHBOARD, '/group-equipment'),
+    listGroup: path(ROOTS_DASHBOARD, '/group-equipment/list'),
     view: (groupEquipmentCode: string) =>
       path(ROOTS_DASHBOARD, `/group-equipment/${groupEquipmentCode}`),
+    new: path(ROOTS_DASHBOARD, '/group-equipment/new'),
   },
   general: {
     app: path(ROOTS_DASHBOARD, '/app'),

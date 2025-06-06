@@ -95,6 +95,13 @@ export default function Router() {
           ],
         },
         {
+          path: 'group-equipment',
+          children: [
+            { element: <Navigate to="/dashboard/group-equipment/list" replace />, index: true },
+            { path: 'list', element: <GroupEquipmentList /> },
+          ],
+        },
+        {
           path: 'user',
           children: [
             { element: <Navigate to="/dashboard/user/profile" replace />, index: true },
@@ -186,6 +193,9 @@ const NewPassword = Loadable(lazy(() => import('../pages/auth/NewPassword')));
 const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')));
 
 // DASHBOARD
+
+// EQUIPMENT
+const GroupEquipmentList = Loadable(lazy(() => import('../../equipment/list-group-equipment')));
 
 // GENERAL
 const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));

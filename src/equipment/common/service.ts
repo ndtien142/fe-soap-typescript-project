@@ -4,10 +4,13 @@ import {
   API_EQUIPMENT_TYPE,
 } from 'src/common/constant/api.constant';
 import axiosInstance from 'src/common/utils/axios';
-import { IGroupEquipmentParams, IGroupEquipmentResponse } from './equipmentGroup.interface';
 import { ISimpleParams } from 'src/common/@types/common.interface';
 import { IListManufacturerResponse } from 'src/common/@types/equipment/manufacturer.interface';
 import { IListEquipmentTypeResponse } from 'src/common/@types/equipment/equipmentType.interface';
+import {
+  IGroupEquipmentParams,
+  IGroupEquipmentResponse,
+} from '../list-group-equipment/equipmentGroup.interface';
 
 export const getListEquipmentGroup = (params: IGroupEquipmentParams) =>
   axiosInstance.get<unknown, IGroupEquipmentResponse>(API_EQUIPMENT_GROUP, {

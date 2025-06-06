@@ -28,8 +28,8 @@ import { TABLE_HEAD_GROUP_EQUIPMENT } from './constant';
 import { TableEmptyRows, TableHeadCustom, TableNoData } from 'src/common/components/table';
 import GroupEquipmentRow from './component/GroupEquipmentRow';
 import { useGetListEquipmentGroup } from './hooks/useGetListGroupEquipment';
-import { useGetListManufacturer } from './hooks/useGetListManufacture';
-import { useGetListEquipmentType } from './hooks/useGetListTypeEquipment';
+import { useGetListManufacturer } from '../common/hooks/useGetListManufacture';
+import { useGetListEquipmentType } from '../common/hooks/useGetListTypeEquipment';
 
 const ListGroupEquipment = () => {
   const { themeStretch } = useSettings();

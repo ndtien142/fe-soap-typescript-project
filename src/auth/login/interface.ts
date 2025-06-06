@@ -1,3 +1,5 @@
+import { IUser } from 'src/common/@types/user/user.interface';
+
 export type IAuth = {
   username: string;
   password: string;
@@ -32,10 +34,7 @@ export interface IResLogin {
         accessToken: string;
         refreshToken: string;
       };
-      user: {
-        userCode: string;
-        username: string;
-      };
+      user: IUser;
     };
   };
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ICallbackFunction } from 'src/common/@types/common.interface';
 import { IGroupEquipmentParams, IGroupEquipmentResponse } from '../equipmentGroup.interface';
-import { getListEquipmentGroup } from '../service';
+import { getListEquipmentGroup } from 'src/equipment/common/service';
 
 export const useGetListEquipmentGroup = ({ onSuccess, onError }: ICallbackFunction) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);

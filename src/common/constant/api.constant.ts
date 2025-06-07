@@ -9,3 +9,4 @@ export const API_POLICIES = '/policies';
 export const API_EQUIPMENT_GROUP = '/group-equipment';
 export const API_EQUIPMENT_MANUFACTURER = '/equipment-manufacturer';
 export const API_EQUIPMENT_TYPE = '/equipment-type';
+export const API_UNIT_OF_MEASURE = '/unit-of-measure';

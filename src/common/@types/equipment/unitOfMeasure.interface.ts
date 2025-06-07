@@ -1,19 +1,20 @@
 import { PaginationMeta } from '../common.interface';
 
-export interface IEquipmentType {
+export interface IUnitOfMeasure {
   id: number;
   name: string;
-  description: string;
-  prefix: string;
+  description?: string;
   isActive: boolean;
+  isDeleted: boolean;
 }
 
-export interface IListEquipmentTypeResponse {
+export interface IListUnitOfMeasureResponse {
   status: number;
   message: string;
   metadata: {
     code: number;
-    metadata: IEquipmentType[];
+    message: string;
+    metadata: IUnitOfMeasure[];
     meta: PaginationMeta;
   };
 }

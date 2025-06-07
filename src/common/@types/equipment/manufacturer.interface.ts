@@ -10,10 +10,10 @@ export interface IManufacturer {
 }
 
 export interface IListManufacturerResponse {
-  code: number;
+  status: number;
   message: string;
   metadata: {
-    status: number;
+    code: number;
     metadata: IManufacturer[];
     meta: PaginationMeta;
   };

@@ -43,6 +43,13 @@ export const PATH_DASHBOARD = {
       path(ROOTS_DASHBOARD, `/group-equipment/${groupEquipmentCode}`),
     new: path(ROOTS_DASHBOARD, '/group-equipment/new'),
   },
+  importReceipt: {
+    root: path(ROOTS_DASHBOARD, '/import-receipt'),
+    list: path(ROOTS_DASHBOARD, '/import-receipt/list'),
+    new: path(ROOTS_DASHBOARD, '/import-receipt/new'),
+    view: (id: string) => path(ROOTS_DASHBOARD, `/import-receipt/${id}`),
+    edit: (id: string) => path(ROOTS_DASHBOARD, `/import-receipt/${id}/edit`),
+  },
   general: {
     app: path(ROOTS_DASHBOARD, '/app'),
     ecommerce: path(ROOTS_DASHBOARD, '/ecommerce'),

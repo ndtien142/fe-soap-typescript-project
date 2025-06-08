@@ -57,6 +57,16 @@ const navConfig = [
           { title: 'Tạo nhóm thiết bị', path: PATH_DASHBOARD.equipment.new },
         ],
       },
+      // IMPORT RECEIPT
+      {
+        title: 'Phiếu nhập thiết bị',
+        path: PATH_DASHBOARD.importReceipt.root,
+        icon: ICONS.invoice,
+        children: [
+          { title: 'Danh sách', path: PATH_DASHBOARD.importReceipt.list },
+          { title: 'Tạo phiếu nhập', path: PATH_DASHBOARD.importReceipt.new },
+        ],
+      },
       // USER
       {
         title: 'user',

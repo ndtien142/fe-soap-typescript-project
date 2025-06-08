@@ -50,6 +50,27 @@ export const PATH_DASHBOARD = {
     view: (id: string) => path(ROOTS_DASHBOARD, `/import-receipt/${id}`),
     edit: (id: string) => path(ROOTS_DASHBOARD, `/import-receipt/${id}/edit`),
   },
+  equipmentType: {
+    root: path(ROOTS_DASHBOARD, '/type-equipment'),
+    list: path(ROOTS_DASHBOARD, '/type-equipment/list'),
+    view: (equipmentTypeCode: string) =>
+      path(ROOTS_DASHBOARD, `/type-equipment/${equipmentTypeCode}`),
+    new: path(ROOTS_DASHBOARD, '/type-equipment/new'),
+  },
+  equipmentManufacturer: {
+    root: path(ROOTS_DASHBOARD, '/manufacturer-equipment'),
+    list: path(ROOTS_DASHBOARD, '/manufacturer-equipment/list'),
+    view: (equipmentManufacturerCode: string) =>
+      path(ROOTS_DASHBOARD, `/manufacturer-equipment/${equipmentManufacturerCode}`),
+    new: path(ROOTS_DASHBOARD, '/manufacturer-equipment/new'),
+  },
+  equipmentUnitOfMeasure: {
+    root: path(ROOTS_DASHBOARD, '/unit-of-measure'),
+    list: path(ROOTS_DASHBOARD, '/unit-of-measure/list'),
+    view: (unitOfMeasureCode: string) =>
+      path(ROOTS_DASHBOARD, `/unit-of-measure/${unitOfMeasureCode}`),
+    new: path(ROOTS_DASHBOARD, '/unit-of-measure/new'),
+  },
   general: {
     app: path(ROOTS_DASHBOARD, '/app'),
     ecommerce: path(ROOTS_DASHBOARD, '/ecommerce'),

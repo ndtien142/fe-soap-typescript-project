@@ -106,12 +106,12 @@ export default function Router() {
           path: 'user',
           children: [
             { element: <Navigate to="/dashboard/user/profile" replace />, index: true },
-            { path: 'profile', element: <UserProfile /> },
-            { path: 'cards', element: <UserCards /> },
+            // { path: 'profile', element: <UserProfile /> },
+            // { path: 'cards', element: <UserCards /> },
             { path: 'list', element: <UserList /> },
             { path: 'new', element: <UserCreate /> },
             { path: ':name/edit', element: <UserCreate /> },
-            { path: 'account', element: <UserAccount /> },
+            // { path: 'account', element: <UserAccount /> },
           ],
         },
         {
@@ -234,11 +234,11 @@ const BlogPost = Loadable(lazy(() => import('../pages/dashboard/BlogPost')));
 const BlogNewPost = Loadable(lazy(() => import('../pages/dashboard/BlogNewPost')));
 
 // USER
-const UserProfile = Loadable(lazy(() => import('../pages/dashboard/UserProfile')));
-const UserCards = Loadable(lazy(() => import('../pages/dashboard/UserCards')));
-const UserList = Loadable(lazy(() => import('../pages/dashboard/UserList')));
-const UserAccount = Loadable(lazy(() => import('../pages/dashboard/UserAccount')));
-const UserCreate = Loadable(lazy(() => import('../pages/dashboard/UserCreate')));
+// const UserProfile = Loadable(lazy(() => import('../../management-user/')));
+// const UserCards = Loadable(lazy(() => import('../pages/dashboard/UserCards')));
+const UserList = Loadable(lazy(() => import('../../management-user/list/UserList')));
+// const UserAccount = Loadable(lazy(() => import('../pages/dashboard/UserAccount')));
+const UserCreate = Loadable(lazy(() => import('../../management-user/create')));
 
 // APP
 const Chat = Loadable(lazy(() => import('../pages/dashboard/Chat')));

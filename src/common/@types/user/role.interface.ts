@@ -1,3 +1,5 @@
+import { PaginationMeta } from '../common.interface';
+
 export interface IRole {
   id: string; // Unique identifier for the role
   name: string; // Name of the role, e.g., 'Admin', 'User'
@@ -8,9 +10,11 @@ export interface IRole {
   isActive: boolean; // Indicates if the role is currently active
 }
 
-export interface IRoleResponse {
-  roles: IRole[]; // Array of roles
-  totalCount: number; // Total number of roles available
-  page: number; // Current page number
-  pageSize: number; // Number of roles per page
+export interface IRoleListResponse {
+  message: string;
+  status: number;
+  metadata: {
+    metadata: IRole[];
+    meta: PaginationMeta;
+  };
 }

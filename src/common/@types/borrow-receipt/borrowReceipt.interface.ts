@@ -52,3 +52,15 @@ export interface IListBorrowReceiptResponse {
     meta: PaginationMeta;
   };
 }
+
+export interface IBorrowReceiptRequest {
+  borrowDate: string;
+  returnDate: string;
+  note?: string;
+  roomId: string;
+  type: 'specific' | 'random';
+  groups: {
+    groupEquipmentCode: string;
+    quantity: number;
+  }[];
+}

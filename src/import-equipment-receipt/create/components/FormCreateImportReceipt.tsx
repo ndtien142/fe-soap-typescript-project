@@ -1,6 +1,5 @@
 import * as Yup from 'yup';
-import { useSnackbar } from 'notistack';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,27 +8,12 @@ import { Card, Grid, Stack, TextField, Typography, Autocomplete, Button } from '
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
 import { FormProvider, RHFEditor, RHFTextField } from 'src/common/components/hook-form';
 import Iconify from 'src/common/components/Iconify';
-
-// Dummy suppliers
-const suppliers = [
-  {
-    id: 1,
-    name: 'Supplier A',
-    address: '123 ABC St',
-    phone: '0123456789',
-    email: 'a@example.com',
-  },
-  {
-    id: 2,
-    name: 'Supplier B',
-    address: '456 DEF St',
-    phone: '0987654321',
-    email: 'b@example.com',
-  },
-];
-
-// Dummy group equipment options
-const groupEquipmentOptions = ['Equipment A', 'Equipment B', 'Equipment C'];
+import { IFormImportReceiptProps, ImportReceiptFormValues } from '../interface';
+import { useGetListSuppliers } from 'src/import-equipment-receipt/common/hooks/useGetListSupplier';
+import { useGetListEquipmentGroup } from 'src/equipment/list-group-equipment/hooks/useGetListGroupEquipment';
+import axiosInstance from 'src/common/utils/axios';
+import { API_IMPORT_RECEIPT } from 'src/common/constant/api.constant';
+import { default as useMessage } from 'src/common/hooks/useMessage';
 
 const LabelStyle = (props: any) => (
   <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
@@ -37,32 +21,23 @@ const LabelStyle = (props: any) => (
   </Typography>
 );
 
-type ImportReceiptFormValues = {
-  name: string;
-  supplier: {
-    id: number | null;
-  };
-  supplierAddress?: string;
-  supplierPhone?: string;
-  supplierEmail?: string;
-  items: {
-    code: string;
-    price: number;
-    quantity: number;
-  }[];
-  dateOfReceived: string;
-  dateOfOrder: string;
-  note: string;
-};
-
-type Props = {
-  isEdit?: boolean;
-  currentReceipt?: ImportReceiptFormValues;
-};
-
-export default function FormCreateImportReceipt({ isEdit = false, currentReceipt }: Props) {
+export default function FormCreateImportReceipt({
+  isEdit = false,
+  currentReceipt,
+}: IFormImportReceiptProps) {
   const navigate = useNavigate();
-  const { enqueueSnackbar } = useSnackbar();
+  const { showErrorSnackbar, showSuccessSnackbar } = useMessage();
+  const {
+    data: suppliers,
+    isLoading: isLoadingSuppliers,
+    fetchData: fetchSuppliers,
+  } = useGetListSuppliers({ onError: () => {}, onSuccess: () => {} });
+
+  const {
+    data: equipmentGroups,
+    isLoading: isLoadingEquipmentGroups,
+    fetchData: fetchEquipmentGroups,
+  } = useGetListEquipmentGroup({ onError: () => {}, onSuccess: () => {} });
 
   const Schema = Yup.object().shape({
     name: Yup.string().required('Tên phiếu nhập là bắt buộc'),
@@ -132,9 +107,28 @@ export default function FormCreateImportReceipt({ isEdit = false, currentReceipt
     reset(defaultValues);
   }, [isEdit, currentReceipt, reset, defaultValues]);
 
+  const [searchText, setSearchText] = useState('');
+
+  useEffect(() => {
+    fetchSuppliers({
+      page: 1,
+      limit: 20,
+    });
+  }, []);
+
+  useEffect(() => {
+    fetchEquipmentGroups({
+      page: 1,
+      limit: 20,
+      searchText: searchText,
+    });
+  }, [searchText]);
+
+  console.log(equipmentGroups);
+  console.log(suppliers);
+
   const onSubmit = async (data: ImportReceiptFormValues) => {
     try {
-      // Prepare request body as required
       const requestBody = {
         name: data.name,
         supplier: { id: data.supplier.id ?? 0 },
@@ -147,12 +141,20 @@ export default function FormCreateImportReceipt({ isEdit = false, currentReceipt
         dateOfOrder: data.dateOfOrder,
         note: data.note,
       };
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      reset();
-      enqueueSnackbar(!isEdit ? 'Create success!' : 'Update success!');
-      navigate(PATH_DASHBOARD.importReceipt.list);
+
+      const response = await axiosInstance.post(API_IMPORT_RECEIPT, requestBody);
+
+      if (response.status === 201 || response.status === 200) {
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        reset();
+        showSuccessSnackbar(!isEdit ? 'Create success!' : 'Update success!');
+        navigate(PATH_DASHBOARD.importReceipt.list);
+      } else {
+        showErrorSnackbar('Unexpected response status');
+      }
     } catch (error) {
       console.error(error);
+      showErrorSnackbar('Failed to submit data. Please try again!');
     }
   };
 
@@ -265,12 +267,22 @@ export default function FormCreateImportReceipt({ isEdit = false, currentReceipt
           <Card sx={{ p: 3 }}>
             <LabelStyle>Danh sách thiết bị</LabelStyle>
             <Autocomplete
-              options={groupEquipmentOptions}
-              renderInput={(params) => <TextField {...params} label="Tìm kiếm thiết bị nhập vào" />}
+              options={equipmentGroups || []}
+              getOptionLabel={(option) => option?.name || ''}
+              isOptionEqualToValue={(option, value) => option.code === value.code}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Tìm kiếm thiết bị nhập vào"
+                  onChange={(e) => setSearchText(e.target.value)}
+                  value={searchText}
+                />
+              )}
+              onInputChange={(_, value) => setSearchText(value)}
               onChange={(_, newValue) => {
-                if (newValue) {
+                if (newValue && newValue.code) {
                   append({
-                    code: newValue,
+                    code: newValue.code,
                     price: 0,
                     quantity: 1,
                   });

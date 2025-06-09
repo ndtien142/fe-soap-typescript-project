@@ -22,10 +22,10 @@ import Scrollbar from 'src/common/components/Scrollbar';
 import useTable, { emptyRows, getComparator } from 'src/common/hooks/useTable';
 import { TableEmptyRows, TableHeadCustom, TableNoData } from 'src/common/components/table';
 import { useGetListBorrowReceipt } from '../common/hooks/useGetListBorrowReceipt';
-import BorrowEquipmentRow from '../common/components/BorrowEquipmentRow';
-import BorrowEquipmentToolbar from '../common/components/BorrowEquipmentToolbar';
+import BorrowEquipmentRow from './components/BorrowEquipmentRow';
 import { IBorrowReceipt } from 'src/common/@types/borrow-receipt/borrowReceipt.interface';
 import { TABLE_HEAD_BORROW_RECEIPTS } from '../common/constant';
+import BorrowEquipmentToolbar from './components/BorrowEquipmentToolbar';
 
 const BorrowEquipmentList = () => {
   const { themeStretch } = useSettings();

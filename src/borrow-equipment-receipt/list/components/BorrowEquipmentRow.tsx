@@ -3,7 +3,7 @@ import { TableRow, TableCell, Typography, MenuItem, Chip } from '@mui/material';
 import { TableMoreMenu } from 'src/common/components/table';
 import Iconify from 'src/common/components/Iconify';
 import { IBorrowReceipt } from '../../../common/@types/borrow-receipt/borrowReceipt.interface';
-import { BORROW_RECEIPT_STATUS_COLOR } from '../constant';
+import { BORROW_RECEIPT_STATUS_COLOR } from 'src/borrow-equipment-receipt/common/constant';
 
 interface Props {
   receipt: IBorrowReceipt;

@@ -74,12 +74,17 @@ const ListGroupEquipment = () => {
     onSuccess: () => {},
   });
 
-  // Gọi API khi load component
+  // Gọi API khi page, rowsPerPage, filterNameOrCode thay đổi
   useEffect(() => {
     fetchDataGroupEquipment({
-      page: 1,
-      limit: 5,
+      page: page + 1,
+      limit: rowsPerPage,
+      searchText: filterNameOrCode,
     });
+  }, [page, rowsPerPage, filterNameOrCode]);
+
+  // Gọi API cho manufacturer và type khi load component
+  useEffect(() => {
     fetchListManufacture({ page: 1, limit: 100 });
     fetchListEquipmentType({ page: 1, limit: 100 });
   }, []);

@@ -1,7 +1,5 @@
 import { Suspense, lazy, ElementType } from 'react';
 import { Navigate, useRoutes, useLocation } from 'react-router-dom';
-// hooks
-import useAuth from '../hooks/useAuth';
 // layouts
 import MainLayout from '../layouts/main';
 import DashboardLayout from '../layouts/dashboard';
@@ -115,6 +113,16 @@ export default function Router() {
           ],
         },
         {
+          path: 'import-receipt',
+          children: [
+            { element: <Navigate to="/dashboard/import-receipt/list" replace />, index: true },
+            { path: 'list', element: <ImportReceiptList /> },
+            { path: 'new', element: <ImportReceiptCreate /> },
+            { path: ':id', element: <ImportReceiptDetails /> },
+            { path: ':id/edit', element: <ImportReceiptEdit /> },
+          ],
+        },
+        {
           path: 'invoice',
           children: [
             { element: <Navigate to="/dashboard/invoice/list" replace />, index: true },
@@ -176,10 +184,11 @@ export default function Router() {
       path: '/',
       element: <MainLayout />,
       children: [
-        { element: <HomePage />, index: true },
-        { path: 'about-us', element: <About /> },
-        { path: 'contact-us', element: <Contact /> },
-        { path: 'faqs', element: <Faqs /> },
+        { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
+        // { element: <HomePage />, index: true },
+        // { path: 'about-us', element: <About /> },
+        // { path: 'contact-us', element: <Contact /> },
+        // { path: 'faqs', element: <Faqs /> },
       ],
     },
     { path: '*', element: <Navigate to="/404" replace /> },
@@ -198,6 +207,12 @@ const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')));
 // EQUIPMENT
 const GroupEquipmentList = Loadable(lazy(() => import('../../equipment/list-group-equipment')));
 const GroupEquipmentCreate = Loadable(lazy(() => import('../../equipment/create-group-equipment')));
+
+// IMPORT RECEIPT
+const ImportReceiptList = Loadable(lazy(() => import('../../import-equipment-receipt/list')));
+const ImportReceiptCreate = Loadable(lazy(() => import('../../import-equipment-receipt/create')));
+const ImportReceiptDetails = Loadable(lazy(() => import('../../import-equipment-receipt/view')));
+const ImportReceiptEdit = Loadable(lazy(() => import('../../import-equipment-receipt/edit')));
 
 // GENERAL
 const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));

@@ -25,3 +25,6 @@ export const API_UNIT_OF_MEASURE = '/unit-of-measure';
 // IMPORT RECEIPT CONSTANT
 export const API_IMPORT_RECEIPT = '/import-receipt';
 export const API_SUPPLIER = '/supplier';
+
+// BORROW RECEIPT CONSTANT
+export const API_BORROW_RECEIPT = '/borrow-receipt';

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { TableRow, TableCell, Typography, MenuItem } from '@mui/material';
-import Label from 'src/common/components/Label';
+import { TableRow, TableCell, Typography, MenuItem, Chip } from '@mui/material';
 import { TableMoreMenu } from 'src/common/components/table';
 import Iconify from 'src/common/components/Iconify';
 import { IImportReceipt } from 'src/common/@types/import-receipt/import-receipt.interface';
+import { IMPORT_RECEIPT_STATUS_COLOR } from 'src/import-equipment-receipt/common/importReceipt.constant';
 // types
 
 type Props = {
@@ -58,12 +58,12 @@ export default function ImportReceiptRow({ row, onViewRow, onEditRow }: Props) {
       </TableCell>
 
       <TableCell align="left">
-        <Label
-          variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
-          color={status === 'received' ? 'success' : status === 'requested' ? 'warning' : 'default'}
-        >
-          {status === 'received' ? 'Đã nhận' : 'Yêu cầu'}
-        </Label>
+        <Chip
+          label={status}
+          color={IMPORT_RECEIPT_STATUS_COLOR[status] || 'default'}
+          size="small"
+          sx={{ textTransform: 'capitalize' }}
+        />
       </TableCell>
 
       <TableCell align="left">{note}</TableCell>

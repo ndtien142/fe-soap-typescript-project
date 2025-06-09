@@ -118,7 +118,7 @@ export default function Router() {
             { element: <Navigate to="/dashboard/import-receipt/list" replace />, index: true },
             { path: 'list', element: <ImportReceiptList /> },
             { path: 'new', element: <ImportReceiptCreate /> },
-            // { path: ':id', element: <ImportReceiptDetails /> },
+            { path: ':id', element: <ImportReceiptDetails /> },
             // { path: ':id/edit', element: <ImportReceiptEdit /> },
           ],
         },
@@ -211,6 +211,7 @@ const GroupEquipmentCreate = Loadable(lazy(() => import('../../equipment/create-
 // IMPORT RECEIPT
 const ImportReceiptList = Loadable(lazy(() => import('../../import-equipment-receipt/list')));
 const ImportReceiptCreate = Loadable(lazy(() => import('../../import-equipment-receipt/create')));
+const ImportReceiptDetails = Loadable(lazy(() => import('../../import-equipment-receipt/view')));
 
 // GENERAL
 const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));

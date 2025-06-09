@@ -2,6 +2,7 @@ import { ISupplier } from './supplier.interface';
 
 export interface IImportReceipt {
   id: number;
+  name: string;
   dateOfOrder: string;
   dateOfReceived: string;
   dateOfActualReceived: string | null;

@@ -17,7 +17,7 @@ import Page from 'src/common/components/Page';
 import Iconify from 'src/common/components/Iconify';
 import useSettings from 'src/common/hooks/useSettings';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import Scrollbar from 'src/common/components/Scrollbar';
 import useTable, { emptyRows, getComparator } from 'src/common/hooks/useTable';
 import { TableEmptyRows, TableHeadCustom, TableNoData } from 'src/common/components/table';
@@ -34,6 +34,7 @@ import { IImportReceipt } from 'src/common/@types/import-receipt/import-receipt.
 
 const ListImportReceipts = () => {
   const { themeStretch } = useSettings();
+  const navigate = useNavigate();
 
   const [filterCode, setFilterCode] = useState('');
   const [filterSupplier, setFilterSupplier] = useState('');
@@ -163,8 +164,13 @@ const ListImportReceipts = () => {
                           <ImportReceiptRow
                             key={row.id}
                             row={row}
-                            onEditRow={() => {}}
-                            onViewRow={() => {}}
+                            onEditRow={() => {
+                              navigate(`${PATH_DASHBOARD.importReceipt.edit}/${row.id}`);
+                            }}
+                            onViewRow={() => {
+                              console.log('View row', row);
+                              navigate(PATH_DASHBOARD.importReceipt.view(String(row.id)));
+                            }}
                           />
                         ))}
 

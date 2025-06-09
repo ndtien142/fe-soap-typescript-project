@@ -53,5 +53,5 @@ export interface IImportReceiptParams {
   status?: string;
   supplierId?: number;
   requestedUserId?: number;
-  search?: string;
+  searchText?: string;
 }

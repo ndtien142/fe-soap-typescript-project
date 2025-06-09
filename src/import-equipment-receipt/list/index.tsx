@@ -70,8 +70,16 @@ const ListImportReceipts = () => {
     onError: () => {},
   });
 
+  // Fetch data when page, rowsPerPage, or filterCode changes
   useEffect(() => {
-    fetchData({ page: 1, limit: 20 });
+    fetchData({
+      page: page + 1,
+      limit: rowsPerPage,
+      searchText: filterCode,
+    });
+  }, [page, rowsPerPage, filterCode]);
+
+  useEffect(() => {
     fetchSuppliers({ page: 1, limit: 20 }); // lấy danh sách supplier
   }, []);
 

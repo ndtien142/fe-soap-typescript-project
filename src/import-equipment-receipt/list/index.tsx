@@ -165,7 +165,7 @@ const ListImportReceipts = () => {
                             key={row.id}
                             row={row}
                             onEditRow={() => {
-                              navigate(`${PATH_DASHBOARD.importReceipt.edit}/${row.id}`);
+                              navigate(PATH_DASHBOARD.importReceipt.edit(String(row.id)));
                             }}
                             onViewRow={() => {
                               console.log('View row', row);

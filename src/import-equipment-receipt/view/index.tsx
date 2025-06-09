@@ -4,12 +4,12 @@ import HeaderBreadcrumbs from 'src/common/components/HeaderBreadcrumbs';
 import Page from 'src/common/components/Page';
 import useSettings from 'src/common/hooks/useSettings';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
-import ViewImportReceipt from './components/ViewImportReceipt';
+import ImportReceiptDetail from '../common/components/details';
 import { useGetDetailImportReceipt } from '../common/hooks/useGetDetailImportReceipt';
 
 const ViewImportReceiptContainer = () => {
   const { themeStretch } = useSettings();
-  const { data, loading, error, fetchDetail } = useGetDetailImportReceipt();
+  const { data, isLoading, fetchDetail } = useGetDetailImportReceipt();
 
   useEffect(() => {
     const id = window.location.pathname.split('/').pop();
@@ -17,8 +17,6 @@ const ViewImportReceiptContainer = () => {
       fetchDetail(id);
     }
   }, [fetchDetail]);
-
-  console.log('Import Receipt Data:', data);
 
   return (
     <Page title="Danh sách phiếu nhập thiết bị">
@@ -32,7 +30,7 @@ const ViewImportReceiptContainer = () => {
           ]}
         />
         {data && (
-          <ViewImportReceipt
+          <ImportReceiptDetail
             importReceipt={{
               ...data,
               name: data.name ?? '',

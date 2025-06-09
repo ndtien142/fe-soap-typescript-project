@@ -4,7 +4,7 @@ import HeaderBreadcrumbs from 'src/common/components/HeaderBreadcrumbs';
 import Page from 'src/common/components/Page';
 import useSettings from 'src/common/hooks/useSettings';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
-import FormCreateImportReceipt from './components/FormCreateImportReceipt';
+import ImportReceiptNewEditForm from '../common/components/new-edit-form';
 
 const CreateNewImportReceiptContainer = () => {
   const { themeStretch } = useSettings();
@@ -19,7 +19,7 @@ const CreateNewImportReceiptContainer = () => {
             { name: 'Danh sách' },
           ]}
         />
-        <FormCreateImportReceipt />
+        <ImportReceiptNewEditForm />
       </Container>
     </Page>
   );

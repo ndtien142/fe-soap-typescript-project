@@ -28,7 +28,7 @@ import {
   TABLE_HEAD_IMPORT_RECEIPTS,
 } from '../common/importReceipt.constant';
 import ImportReceiptRow from './components/ImportReceiptRow';
-import ImportReceiptToolbar from './components/ImportReceiptToolbar';
+import ImportReceiptTableToolbar from '../common/components/list/ImportReceiptTableToolbar';
 import { useGetListSuppliers } from '../common/hooks/useGetListSupplier';
 import { IImportReceipt } from 'src/common/@types/import-receipt/import-receipt.interface';
 
@@ -39,6 +39,8 @@ const ListImportReceipts = () => {
   const [filterCode, setFilterCode] = useState('');
   const [filterSupplier, setFilterSupplier] = useState('');
   const [filterStatus, setFilterStatus] = useState('');
+  const [filterStartDate, setFilterStartDate] = useState<Date | null>(null);
+  const [filterEndDate, setFilterEndDate] = useState<Date | null>(null);
 
   const {
     dense,
@@ -102,6 +104,16 @@ const ListImportReceipts = () => {
     setPage(0);
   };
 
+  const handleFilterStartDate = (value: Date | null) => {
+    setFilterStartDate(value);
+    setPage(0);
+  };
+
+  const handleFilterEndDate = (value: Date | null) => {
+    setFilterEndDate(value);
+    setPage(0);
+  };
+
   const isNotFound = !dataFiltered.length;
 
   return (
@@ -127,18 +139,16 @@ const ListImportReceipts = () => {
         />
 
         <Card>
-          <ImportReceiptToolbar
-            optionsSupplier={supplierList.map((supplier) => ({
-              value: supplier.id,
-              label: supplier.name,
-            }))}
-            optionsStatus={IMPORT_RECEIPT_STATUS_OPTIONS}
-            filterSupplier={filterSupplier}
+          <ImportReceiptTableToolbar
+            optionsStatus={IMPORT_RECEIPT_STATUS_OPTIONS.map((option) => option.value)}
+            filterName={filterCode}
             filterStatus={filterStatus}
-            filterCode={filterCode}
-            onFilterSupplier={handleFilterSupplier}
+            filterStartDate={filterStartDate}
+            filterEndDate={filterEndDate}
+            onFilterName={handleFilterCode}
             onFilterStatus={handleFilterStatus}
-            onFilterCode={handleFilterCode}
+            onFilterStartDate={handleFilterStartDate}
+            onFilterEndDate={handleFilterEndDate}
           />
 
           {isLoading ? (

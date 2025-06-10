@@ -28,3 +28,7 @@ export const API_SUPPLIER = '/supplier';
 
 // BORROW RECEIPT CONSTANT
 export const API_BORROW_RECEIPT = '/borrow-receipt';
+
+// DEPARTMENT CONSTANT
+export const API_DEPARTMENT = '/department';
+export const API_ROOM = '/room';

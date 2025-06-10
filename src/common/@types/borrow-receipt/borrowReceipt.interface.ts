@@ -1,5 +1,5 @@
 import { PaginationMeta } from '../common.interface';
-import { IRoom } from '../department/deparment.interface';
+import { IRoomOfBorrowReceipt } from '../department/department.interface';
 
 export interface IBorrowReceipt {
   id: number;
@@ -9,7 +9,7 @@ export interface IBorrowReceipt {
   returnDate: string | null;
   status: string;
   note: string;
-  room: IRoom;
+  room: IRoomOfBorrowReceipt;
   requestedBy: IRequestUser;
   requestItems: IBorrowReceiptItem[];
 }

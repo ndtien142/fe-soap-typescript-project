@@ -41,6 +41,8 @@ export default function BorrowNewEditDetails() {
                   label="Nhóm thiết bị"
                   sx={{ minWidth: 180 }}
                   disabled={isLoading}
+                  InputLabelProps={{ shrink: true }}
+                  SelectProps={{ native: false, sx: { textTransform: 'capitalize' } }}
                 >
                   <MenuItem value="">Chọn nhóm</MenuItem>
                   {isLoading ? (

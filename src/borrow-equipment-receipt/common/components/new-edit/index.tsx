@@ -4,11 +4,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Card, Stack } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
-import BorrowNewEditRoom from './BorrowNewEditRoom';
 import BorrowNewEditStatusDate from './BorrowNewEditStatusDate';
 import BorrowNewEditDetails from './BorrowNewEditDetails';
 import { IBorrowReceiptRequest } from '../../../../common/@types/borrow-receipt/borrowReceipt.interface';
 import { FormProvider } from '../../../../common/components/hook-form';
+import BorrowFormRoom from './BorrowFormRoom';
 // ----------------------------------------------------------------------
 
 type Props = {
@@ -102,7 +102,7 @@ const BorrowReceiptNewEditForm = ({ isEdit, currentBorrowReceipt }: Props) => {
   return (
     <FormProvider methods={methods}>
       <Card>
-        <BorrowNewEditRoom />
+        <BorrowFormRoom />
         <BorrowNewEditStatusDate />
         <BorrowNewEditDetails />
       </Card>

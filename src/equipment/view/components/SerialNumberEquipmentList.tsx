@@ -10,9 +10,14 @@ import {
   CircularProgress,
   TablePagination,
   Box,
+  IconButton,
+  Tooltip,
 } from '@mui/material';
 import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { IEquipmentGroupDetail } from 'src/common/@types/equipment/equipment.interface';
+import Iconify from 'src/common/components/Iconify';
+import { PATH_DASHBOARD } from 'src/common/routes/paths';
 
 type Props = {
   data?: IEquipmentGroupDetail | null;
@@ -23,6 +28,8 @@ export default function SerialNumberEquipmentList({ data, isLoading }: Props) {
   // Pagination state
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
 
   if (isLoading) {
     return <CircularProgress />;
@@ -35,8 +42,14 @@ export default function SerialNumberEquipmentList({ data, isLoading }: Props) {
   };
 
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(parseInt(event.target.value, 5));
+    setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+  };
+
+  const handleNavigateDetail = (serialNumber: string) => {
+    if (id && serialNumber) {
+      navigate(PATH_DASHBOARD.equipment?.serialItem(id, serialNumber));
+    }
   };
 
   if (!serials.length) {
@@ -54,9 +67,11 @@ export default function SerialNumberEquipmentList({ data, isLoading }: Props) {
             <TableRow>
               <TableCell>Số serial</TableCell>
               <TableCell>Mô tả</TableCell>
-              <TableCell>Vị trí</TableCell>
+              <TableCell>Phòng</TableCell>
+              <TableCell>Khoa</TableCell>
               <TableCell>Trạng thái</TableCell>
               <TableCell>Ngày sử dụng đầu tiên</TableCell>
+              <TableCell align="center">Thao tác</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -64,7 +79,12 @@ export default function SerialNumberEquipmentList({ data, isLoading }: Props) {
               <TableRow key={item.serialNumber}>
                 <TableCell>{item.serialNumber}</TableCell>
                 <TableCell>{item.description}</TableCell>
-                <TableCell>{item.location || '-'}</TableCell>
+                <TableCell>{item.room && item.room.name ? item.room.name : '-'}</TableCell>
+                <TableCell>
+                  {item.room && item.room.department && item.room.department.name
+                    ? item.room.department.name
+                    : '-'}
+                </TableCell>
                 <TableCell>
                   {item.status === 'in_use'
                     ? 'Đang sử dụng'
@@ -77,11 +97,21 @@ export default function SerialNumberEquipmentList({ data, isLoading }: Props) {
                     ? new Date(item.dayOfFirstUse).toLocaleDateString('vi-VN')
                     : '-'}
                 </TableCell>
+                <TableCell align="center">
+                  <Tooltip title="Xem chi tiết">
+                    <IconButton
+                      color="primary"
+                      onClick={() => handleNavigateDetail(item.serialNumber)}
+                    >
+                      <Iconify icon="eva:eye-outline" />
+                    </IconButton>
+                  </Tooltip>
+                </TableCell>
               </TableRow>
             ))}
             {serials.length === 0 && (
               <TableRow>
-                <TableCell colSpan={5} align="center">
+                <TableCell colSpan={7} align="center">
                   Không có số serial nào.
                 </TableCell>
               </TableRow>

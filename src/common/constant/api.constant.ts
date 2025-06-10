@@ -18,6 +18,7 @@ export const API_USER_GROUP_PERMISSION = '/user-group-permission';
 
 // EQUIPMENT CONSTANT
 export const API_EQUIPMENT_GROUP = '/group-equipment';
+export const API_EQUIPMENT = '/equipment';
 export const API_EQUIPMENT_MANUFACTURER = '/equipment-manufacturer';
 export const API_EQUIPMENT_TYPE = '/equipment-type';
 export const API_UNIT_OF_MEASURE = '/unit-of-measure';

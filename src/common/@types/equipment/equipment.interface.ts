@@ -25,6 +25,56 @@ export interface IEquipmentSerial {
   location: string | null;
   status: 'in_use' | 'available' | string;
   dayOfFirstUse: string | null;
+  room?: {
+    id?: string;
+    name?: string;
+    note?: string;
+    status?: boolean;
+    department?: {
+      id?: string;
+      name?: string;
+    };
+  };
+}
+
+export interface IEquipmentDetailBySerial {
+  serialNumber: string;
+  dayOfFirstUse: string | null;
+  description: string | null;
+  location: string | null;
+  status: string;
+  importReceipt?: {
+    id: number;
+    userCode: string;
+    approvedBy: string | null;
+    receivedAt: string;
+    note: string;
+  };
+  groupEquipment?: {
+    code: string;
+    name: string;
+  };
+  room?: {
+    id: string;
+    name: string;
+    note: string;
+    status: boolean;
+    department: {
+      id: string;
+      name: string;
+    };
+  };
+  image?: string;
+}
+
+export interface IDetailEquipmentSerialResponse {
+  message: string;
+  status: number;
+  metadata: {
+    code: number;
+    message: string;
+    metadata: IEquipmentDetailBySerial;
+  };
 }
 
 export interface IGetEquipmentGroupDetailResponse {

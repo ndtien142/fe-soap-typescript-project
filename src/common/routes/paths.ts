@@ -42,6 +42,8 @@ export const PATH_DASHBOARD = {
     view: (groupEquipmentCode: string) =>
       path(ROOTS_DASHBOARD, `/group-equipment/${groupEquipmentCode}`),
     new: path(ROOTS_DASHBOARD, '/group-equipment/new'),
+    serialItem: (equipmentCode: string, serialNumber: string) =>
+      path(ROOTS_DASHBOARD, `/group-equipment/${equipmentCode}/${serialNumber}`),
   },
   importReceipt: {
     root: path(ROOTS_DASHBOARD, '/import-receipt'),

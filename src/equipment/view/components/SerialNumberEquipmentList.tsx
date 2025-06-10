@@ -18,6 +18,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { IEquipmentGroupDetail } from 'src/common/@types/equipment/equipment.interface';
 import Iconify from 'src/common/components/Iconify';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
+import Label from 'src/common/components/Label';
 
 type Props = {
   data?: IEquipmentGroupDetail | null;
@@ -52,6 +53,31 @@ export default function SerialNumberEquipmentList({ data, isLoading }: Props) {
     }
   };
 
+  // Map status to color and label
+
+  type LabelColor = 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'default';
+
+  const getStatusProps = (status: string): { color: LabelColor; label: string } => {
+    switch (status) {
+      case 'available':
+        return { color: 'success', label: 'Sẵn sàng' };
+      case 'in_use':
+        return { color: 'info', label: 'Đang sử dụng' };
+      case 'under_maintenance':
+        return { color: 'warning', label: 'Bảo trì' };
+      case 'out_of_service':
+        return { color: 'error', label: 'Ngừng hoạt động' };
+      case 'liquidation':
+        return { color: 'default', label: 'Thanh lý' };
+      case 'reserved':
+        return { color: 'primary', label: 'Đã đặt trước' };
+      case 'pending_transfer':
+        return { color: 'secondary', label: 'Chờ chuyển giao' };
+      default:
+        return { color: 'default', label: status };
+    }
+  };
+
   if (!serials.length) {
     return <Typography>Không có số serial nào.</Typography>;
   }
@@ -75,40 +101,41 @@ export default function SerialNumberEquipmentList({ data, isLoading }: Props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {serials.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((item) => (
-              <TableRow key={item.serialNumber}>
-                <TableCell>{item.serialNumber}</TableCell>
-                <TableCell>{item.description}</TableCell>
-                <TableCell>{item.room && item.room.name ? item.room.name : '-'}</TableCell>
-                <TableCell>
-                  {item.room && item.room.department && item.room.department.name
-                    ? item.room.department.name
-                    : '-'}
-                </TableCell>
-                <TableCell>
-                  {item.status === 'in_use'
-                    ? 'Đang sử dụng'
-                    : item.status === 'available'
-                    ? 'Sẵn sàng'
-                    : item.status}
-                </TableCell>
-                <TableCell>
-                  {item.dayOfFirstUse
-                    ? new Date(item.dayOfFirstUse).toLocaleDateString('vi-VN')
-                    : '-'}
-                </TableCell>
-                <TableCell align="center">
-                  <Tooltip title="Xem chi tiết">
-                    <IconButton
-                      color="primary"
-                      onClick={() => handleNavigateDetail(item.serialNumber)}
-                    >
-                      <Iconify icon="eva:eye-outline" />
-                    </IconButton>
-                  </Tooltip>
-                </TableCell>
-              </TableRow>
-            ))}
+            {serials.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((item) => {
+              const { color, label } = getStatusProps(item.status);
+              return (
+                <TableRow key={item.serialNumber}>
+                  <TableCell>{item.serialNumber}</TableCell>
+                  <TableCell>{item.description}</TableCell>
+                  <TableCell>{item.room && item.room.name ? item.room.name : '-'}</TableCell>
+                  <TableCell>
+                    {item.room && item.room.department && item.room.department.name
+                      ? item.room.department.name
+                      : '-'}
+                  </TableCell>
+                  <TableCell>
+                    <Label color={color} sx={{ textTransform: 'capitalize' }}>
+                      {label}
+                    </Label>
+                  </TableCell>
+                  <TableCell>
+                    {item.dayOfFirstUse
+                      ? new Date(item.dayOfFirstUse).toLocaleDateString('vi-VN')
+                      : '-'}
+                  </TableCell>
+                  <TableCell align="center">
+                    <Tooltip title="Xem chi tiết">
+                      <IconButton
+                        color="primary"
+                        onClick={() => handleNavigateDetail(item.serialNumber)}
+                      >
+                        <Iconify icon="eva:eye-outline" />
+                      </IconButton>
+                    </Tooltip>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
             {serials.length === 0 && (
               <TableRow>
                 <TableCell colSpan={7} align="center">

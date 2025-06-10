@@ -26,6 +26,7 @@ const ICONS = {
   analytics: getIcon('ic_analytics'),
   dashboard: getIcon('ic_dashboard'),
   menuItem: getIcon('ic_menu_item'),
+  borrowReceipt: getIcon('ic_borrow_receipt'),
 };
 
 const navConfig = [
@@ -65,6 +66,16 @@ const navConfig = [
         children: [
           { title: 'Danh sách', path: PATH_DASHBOARD.importReceipt.list },
           { title: 'Tạo phiếu nhập', path: PATH_DASHBOARD.importReceipt.new },
+        ],
+      },
+      // BORROW RECEIPT
+      {
+        title: 'Phiếu mượn thiết bị',
+        path: PATH_DASHBOARD.borrowReceipt.root,
+        icon: ICONS.borrowReceipt,
+        children: [
+          { title: 'Danh sách', path: PATH_DASHBOARD.borrowReceipt.list },
+          { title: 'Tạo phiếu mượn', path: PATH_DASHBOARD.borrowReceipt.new },
         ],
       },
       // USER

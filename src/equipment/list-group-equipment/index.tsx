@@ -135,7 +135,6 @@ const ListGroupEquipment = () => {
   };
 
   const handleViewRow = (id: string) => {
-    console.log('View row with ID:', id);
     navigate(PATH_DASHBOARD.equipment.view(id));
   };
 

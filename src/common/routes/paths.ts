@@ -58,6 +58,7 @@ export const PATH_DASHBOARD = {
     new: path(ROOTS_DASHBOARD, '/borrow-receipt/new'),
     view: (id: string) => path(ROOTS_DASHBOARD, `/borrow-receipt/${id}`),
     edit: (id: string) => path(ROOTS_DASHBOARD, `/borrow-receipt/${id}/edit`),
+    scan: (id: string) => path(ROOTS_DASHBOARD, `/borrow-receipt/${id}/scan`),
   },
   equipmentType: {
     root: path(ROOTS_DASHBOARD, '/type-equipment'),

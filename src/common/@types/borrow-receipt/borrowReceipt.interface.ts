@@ -64,3 +64,50 @@ export interface IBorrowReceiptRequest {
     quantity: number;
   }[];
 }
+
+export interface IBorrowReceiptDetail {
+  id: number;
+  userCode: string;
+  returnDate: string | null;
+  status: string;
+  note: string;
+  room: IRoomOfBorrowReceipt;
+  requestedBy: {
+    userCode: string;
+    username: string;
+    phone: string | null;
+    email: string | null;
+  };
+  borrowEquipments: {
+    serialNumber: string;
+    groupEquipmentCode: string;
+    status: string;
+  }[];
+  requestItems: {
+    groupEquipmentCode: string;
+    name: string;
+    quantity: number;
+    note: string | null;
+    type: {
+      id: number;
+      name: string;
+      description: string;
+    };
+    manufacturer: {
+      id: number;
+      name: string;
+      contactInfo: string;
+      address: string;
+    };
+  }[];
+}
+
+export interface IBorrowReceiptDetailResponse {
+  status: number;
+  message: string;
+  metadata: {
+    code: number;
+    message: string;
+    metadata: IBorrowReceiptDetail;
+  };
+}

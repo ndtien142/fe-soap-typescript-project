@@ -98,6 +98,7 @@ export default function Router() {
             { element: <Navigate to="/dashboard/group-equipment/list" replace />, index: true },
             { path: 'list', element: <GroupEquipmentList /> },
             { path: 'new', element: <GroupEquipmentCreate /> },
+            { path: ':id', element: <EquipmentViewPage /> },
           ],
         },
         {
@@ -215,6 +216,7 @@ const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')));
 // EQUIPMENT
 const GroupEquipmentList = Loadable(lazy(() => import('../../equipment/list-group-equipment')));
 const GroupEquipmentCreate = Loadable(lazy(() => import('../../equipment/create-group-equipment')));
+const EquipmentViewPage = Loadable(lazy(() => import('../../equipment/view')));
 
 // IMPORT RECEIPT
 const ImportReceiptList = Loadable(lazy(() => import('../../import-equipment-receipt/list')));

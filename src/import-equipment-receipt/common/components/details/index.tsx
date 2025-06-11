@@ -90,7 +90,9 @@ export default function ImportReceiptDetail({ importReceipt }: Props) {
                 variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
                 color={
                   (status === 'received' && 'success') ||
+                  (status === 'approved' && 'info') ||
                   (status === 'pending' && 'warning') ||
+                  (status === 'rejected' && 'error') ||
                   'default'
                 }
                 sx={{ textTransform: 'uppercase', mb: 1 }}

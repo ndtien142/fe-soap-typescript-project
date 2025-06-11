@@ -64,6 +64,7 @@ const ListGroupEquipment = () => {
     isLoading: isLoadingGroup,
     data: dataGroup,
     fetchData: fetchDataGroupEquipment,
+    meta: metaGroupEquipment,
   } = useGetListEquipmentGroup({ onError: () => {}, onSuccess: () => {} });
   const { data: dataManufacturer, fetchData: fetchListManufacture } = useGetListManufacturer({
     onError: () => {},
@@ -138,6 +139,12 @@ const ListGroupEquipment = () => {
     navigate(PATH_DASHBOARD.equipment.view(id));
   };
 
+  console.log('Table data:', tableData);
+  console.log('Filtered data:', dataFiltered);
+  console.log('Meta data:', metaGroupEquipment);
+  console.log('Manufacturer options:', manufacturerOptions);
+  console.log('Type options:', typeOptions);
+
   return (
     <Page title={`${vn.equipment.listGroupEquipment}`}>
       <Container maxWidth={themeStretch ? false : 'lg'}>
@@ -189,21 +196,14 @@ const ListGroupEquipment = () => {
                       onSort={onSort}
                     />
                     <TableBody>
-                      {dataFiltered
-                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        .map((row) => (
-                          <GroupEquipmentRow
-                            key={row.code}
-                            row={row}
-                            onViewRow={() => handleViewRow(row.code)}
-                            onEditRow={() => handleEditRow(row.code)}
-                          />
-                        ))}
-
-                      <TableEmptyRows
-                        height={denseHeight}
-                        emptyRows={emptyRows(page, rowsPerPage, tableData.length)}
-                      />
+                      {dataFiltered.map((row) => (
+                        <GroupEquipmentRow
+                          key={row.code}
+                          row={row}
+                          onViewRow={() => handleViewRow(row.code)}
+                          onEditRow={() => handleEditRow(row.code)}
+                        />
+                      ))}
 
                       <TableNoData isNotFound={isNotFound} />
                     </TableBody>
@@ -215,7 +215,7 @@ const ListGroupEquipment = () => {
                 <TablePagination
                   rowsPerPageOptions={[5, 10, 25]}
                   component="div"
-                  count={dataFiltered.length}
+                  count={metaGroupEquipment?.totalItems || 0}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onPageChange={onChangePage}

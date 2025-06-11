@@ -52,8 +52,13 @@ export default function ImportNewEditAddress() {
   const allDisabled = isStatusReceived || isStatusApproved || isStatusRejected;
 
   const handleSelectSupplier = (selectedSupplier: any) => {
-    setValue('supplier', selectedSupplier);
+    setValue('supplier', selectedSupplier || {});
+    setValue('supplier', selectedSupplier || {}, { shouldValidate: true, shouldDirty: true });
   };
+
+  console.log('suppler errors', errors);
+
+  const supplierError = errors?.supplier;
 
   return (
     <Stack
@@ -95,6 +100,11 @@ export default function ImportNewEditAddress() {
           phone={supplier.phone}
           email={supplier.email}
         />
+        {supplierError && (
+          <Typography color="error" variant="body2" sx={{ mt: 1 }}>
+            {'Vui lòng chọn nhà cung cấp'}
+          </Typography>
+        )}
       </Stack>
     </Stack>
   );

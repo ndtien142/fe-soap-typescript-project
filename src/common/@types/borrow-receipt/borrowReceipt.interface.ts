@@ -78,28 +78,8 @@ export interface IBorrowReceiptDetail {
     phone: string | null;
     email: string | null;
   };
-  borrowEquipments: {
-    serialNumber: string;
-    groupEquipmentCode: string;
-    status: string;
-  }[];
-  requestItems: {
-    groupEquipmentCode: string;
-    name: string;
-    quantity: number;
-    note: string | null;
-    type: {
-      id: number;
-      name: string;
-      description: string;
-    };
-    manufacturer: {
-      id: number;
-      name: string;
-      contactInfo: string;
-      address: string;
-    };
-  }[];
+  borrowEquipments: IBorrowEquipment[];
+  requestItems: IRequestItem[];
 }
 
 export interface IBorrowReceiptDetailResponse {
@@ -110,4 +90,20 @@ export interface IBorrowReceiptDetailResponse {
     message: string;
     metadata: IBorrowReceiptDetail;
   };
+}
+
+// For scan-borrow-receipt
+export interface IBorrowEquipment {
+  serialNumber: string;
+  groupEquipmentCode: string;
+  status: string;
+}
+
+export interface IRequestItem {
+  groupEquipmentCode: string;
+  name: string;
+  quantity: number;
+  note?: string | null;
+  type?: IEquipmentType;
+  manufacturer?: IManufacturer;
 }

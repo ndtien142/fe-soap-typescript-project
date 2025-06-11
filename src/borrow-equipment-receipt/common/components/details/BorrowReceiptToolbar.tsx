@@ -77,7 +77,8 @@ export default function BorrowReceiptToolbar({ borrowReceipt }: Props) {
   const showApproveReject = borrowReceipt.status === 'requested';
 
   // Show "Processing" button in "approved" status
-  const showProcessing = borrowReceipt.status === 'approved';
+  const showProcessing =
+    borrowReceipt.status === 'approved' || borrowReceipt.status === 'processing';
 
   const handleProcessing = () => {
     // Navigate to scan equipment page, e.g. /dashboard/borrow-receipt/{id}/scan

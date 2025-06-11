@@ -16,7 +16,7 @@ const CreateNewBorrowReceiptContainer = () => {
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             { name: 'Phiếu mượn thiết bị', href: PATH_DASHBOARD.borrowReceipt?.list || '#' },
-            { name: 'Danh sách' },
+            { name: 'Tạo mới' },
           ]}
         />
         <BorrowReceiptNewEditForm />

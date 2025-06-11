@@ -19,6 +19,7 @@ import { IEquipmentGroupDetail } from 'src/common/@types/equipment/equipment.int
 import Iconify from 'src/common/components/Iconify';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
 import Label from 'src/common/components/Label';
+import { QRCodeCanvas } from 'qrcode.react';
 
 type Props = {
   data?: IEquipmentGroupDetail | null;
@@ -92,6 +93,7 @@ export default function SerialNumberEquipmentList({ data, isLoading }: Props) {
           <TableHead>
             <TableRow>
               <TableCell>Số serial</TableCell>
+              <TableCell>QR Code</TableCell>
               <TableCell>Mô tả</TableCell>
               <TableCell>Phòng</TableCell>
               <TableCell>Khoa</TableCell>
@@ -106,6 +108,9 @@ export default function SerialNumberEquipmentList({ data, isLoading }: Props) {
               return (
                 <TableRow key={item.serialNumber}>
                   <TableCell>{item.serialNumber}</TableCell>
+                  <TableCell>
+                    <QRCodeCanvas value={item.serialNumber} size={48} />
+                  </TableCell>
                   <TableCell>{item.description}</TableCell>
                   <TableCell>{item.room && item.room.name ? item.room.name : '-'}</TableCell>
                   <TableCell>

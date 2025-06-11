@@ -109,6 +109,7 @@ export default function Router() {
             { path: 'list', element: <BorrowReceiptList /> },
             { path: 'new', element: <BorrowReceiptCreate /> },
             { path: ':id', element: <BorrowReceiptDetails /> },
+            { path: ':id/scan', element: <BorrowReceiptScanSerialNumber /> },
           ],
         },
         {
@@ -231,6 +232,9 @@ const ImportReceiptEdit = Loadable(lazy(() => import('../../import-equipment-rec
 const BorrowReceiptList = Loadable(lazy(() => import('../../borrow-equipment-receipt/list')));
 const BorrowReceiptCreate = Loadable(lazy(() => import('../../borrow-equipment-receipt/create')));
 const BorrowReceiptDetails = Loadable(lazy(() => import('../../borrow-equipment-receipt/view')));
+const BorrowReceiptScanSerialNumber = Loadable(
+  lazy(() => import('../../borrow-equipment-receipt/scan'))
+);
 
 // GENERAL
 const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));

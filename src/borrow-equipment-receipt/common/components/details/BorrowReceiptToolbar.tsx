@@ -4,7 +4,6 @@ import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
 import {
   Box,
   Stack,
-  Button,
   Dialog,
   Tooltip,
   IconButton,
@@ -17,6 +16,7 @@ import { PATH_DASHBOARD } from 'src/common/routes/paths';
 import Iconify from 'src/common/components/Iconify';
 import BorrowReceiptPDF from './BorrowReceiptPDF';
 import { useApproveBorrow } from '../../hooks/useApproveBorrow';
+import { default as useMessage } from 'src/common/hooks/useMessage';
 
 // ----------------------------------------------------------------------
 
@@ -28,6 +28,8 @@ export default function BorrowReceiptToolbar({ borrowReceipt }: Props) {
   const navigate = useNavigate();
   const { toggle: open, onOpen, onClose } = useToggle();
 
+  const { showErrorSnackbar, showSuccessSnackbar } = useMessage();
+
   // Approve/reject state
   const [loadingApprove, setLoadingApprove] = useState(false);
   const [loadingReject, setLoadingReject] = useState(false);
@@ -36,12 +38,24 @@ export default function BorrowReceiptToolbar({ borrowReceipt }: Props) {
     onSuccess: () => {
       setLoadingApprove(false);
       setLoadingReject(false);
-      // Optionally reload or show success
+      showSuccessSnackbar('Cập nhật phiếu mượn thành công!');
+      window.location.reload();
     },
-    onError: () => {
+    onError: (message) => {
       setLoadingApprove(false);
       setLoadingReject(false);
-      // Optionally show error
+      // Try to extract message from HTML error response
+      let errorMessage = 'Có lỗi xảy ra!';
+      console.log(message);
+      if (message) {
+        const html = message;
+        const match = html.match(/<pre>([\s\S]*?)<\/pre>/);
+        if (match && match[1]) {
+          // Remove HTML tags and decode entities if needed
+          errorMessage = match[1].replace(/<br\s*\/?>/gi, '\n').replace(/&nbsp;/g, ' ');
+        }
+      }
+      showErrorSnackbar(errorMessage);
     },
   });
 

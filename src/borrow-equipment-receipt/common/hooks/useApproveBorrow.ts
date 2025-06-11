@@ -26,7 +26,8 @@ export const useApproveBorrow = ({
       });
       onSuccess();
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'Có lỗi xảy ra';
+      console.error('Error approving or rejecting borrow receipt:', error);
+      const message = error?.response?.data;
       onError(message);
     } finally {
       setIsLoading(false);

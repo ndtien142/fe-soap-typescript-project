@@ -103,17 +103,11 @@ export default function BorrowReceiptToolbar({ borrowReceipt }: Props) {
             fileName={`borrow-receipt-${borrowReceipt.id}`}
             style={{ textDecoration: 'none' }}
           >
-            {({ loading }) => (
-              <Tooltip title="Download">
-                <IconButton>
-                  {loading ? (
-                    <CircularProgress size={24} color="inherit" />
-                  ) : (
-                    <Iconify icon={'eva:download-fill'} />
-                  )}
-                </IconButton>
-              </Tooltip>
-            )}
+            <Tooltip title="Download">
+              <IconButton>
+                <Iconify icon={'eva:download-fill'} />
+              </IconButton>
+            </Tooltip>
           </PDFDownloadLink>
 
           <Tooltip title="Print">

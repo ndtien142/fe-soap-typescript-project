@@ -181,9 +181,13 @@ const ScanBorrowReceiptContainer = () => {
                 scannedByGroup={scannedCountByGroup}
               />
             )}
-            {activeStep === 1 && (
+            {activeStep === 1 && data && (
               // Quét
-              <ScanBorrowReceipt borrowEquipments={borrowEquipments} requestItems={requestItems} />
+              <ScanBorrowReceipt
+                borrowReceipt={data}
+                borrowEquipments={borrowEquipments}
+                requestItems={requestItems}
+              />
             )}
             {activeStep === 2 &&
               // Xác nhận và cung cấp chứng từ

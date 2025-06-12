@@ -33,3 +33,6 @@ export const API_BORROW_RECEIPT = '/borrow-receipt';
 // DEPARTMENT CONSTANT
 export const API_DEPARTMENT = '/department';
 export const API_ROOM = '/room';
+
+// Upload API CONSTANTS
+export const API_UPLOAD_MULTIPLE_IMAGE = '/file-image/equipment/multi';

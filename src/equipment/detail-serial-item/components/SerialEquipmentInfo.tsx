@@ -10,8 +10,11 @@ import {
 } from 'src/common/components/hook-form';
 import { IEquipmentDetailBySerial } from 'src/common/@types/equipment/equipment.interface';
 import { styled } from '@mui/material/styles';
-import { CustomFile } from 'src/common/components/upload';
+import { default as useMessage } from 'src/common/hooks/useMessage';
 import Label from 'src/common/components/Label';
+import useUploadMultiImage from 'src/common/hooks/useUploadMultiImage';
+import axiosInstance from 'src/common/utils/axios';
+import { API_UPLOAD_MULTIPLE_IMAGE } from 'src/common/constant/api.constant';
 
 const LabelStyle = styled(Typography)(({ theme }) => ({
   ...theme.typography.subtitle2,
@@ -47,6 +50,7 @@ export default function SerialEquipmentInfo({
   onSubmit,
   isSubmitting = false,
 }: Props) {
+  const { showErrorSnackbar, showSuccessSnackbar } = useMessage();
   const defaultValues = useMemo<FormValues>(
     () => ({
       serialNumber: serialEquipment.serialNumber || '',
@@ -80,9 +84,16 @@ export default function SerialEquipmentInfo({
     // eslint-disable-next-line
   }, [serialEquipment]);
 
+  const {
+    uploadImages: uploadMultiImages,
+    progress: uploadProgress,
+    error: uploadError,
+  } = useUploadMultiImage();
+
   // Handlers for multi image upload
   const handleDrop = useCallback(
     (acceptedFiles: File[]) => {
+      // Only add to component state, do not upload yet
       const images = watch('images') || [];
       setValue('images', [
         ...images,
@@ -95,6 +106,49 @@ export default function SerialEquipmentInfo({
     },
     [setValue, watch]
   );
+
+  const handleUpload = async () => {
+    const images = watch('images') || [];
+    const filesToUpload = images.filter((img: any) => !img.url);
+    if (!filesToUpload.length) return;
+    try {
+      // Upload to Firebase first
+      const urls = await uploadMultiImages(filesToUpload, {
+        serialNumber: defaultValues.serialNumber,
+        customString: 'owner-image',
+      });
+      // Merge uploaded urls into images array
+      const newImages = images.map((img: any) => {
+        if (!img.url) {
+          const url = urls.shift();
+          return { ...img, url, preview: url };
+        }
+        return img;
+      });
+      setValue('images', newImages);
+
+      // Prepare payload for BE API
+      const payload = {
+        images: newImages
+          .filter((img: any) => img.url)
+          .map((img: any) => ({
+            actionType: 'owner',
+            actionId: null,
+            serialNumber: defaultValues.serialNumber,
+            imageUrl: img.url,
+            note: '', // You can add note if needed
+          })),
+      };
+
+      await axiosInstance.post(API_UPLOAD_MULTIPLE_IMAGE, payload);
+
+      showSuccessSnackbar('Tải ảnh lên thành công!');
+    } catch (err: any) {
+      showErrorSnackbar(err?.message || 'Tải ảnh lên thất bại!');
+    }
+  };
+
+  console.log(watch('images'));
 
   const handleRemoveAll = () => {
     setValue('images', []);
@@ -230,8 +284,23 @@ export default function SerialEquipmentInfo({
                   onDrop={handleDrop}
                   onRemove={handleRemove}
                   onRemoveAll={handleRemoveAll}
-                  onUpload={() => {}}
+                  onUpload={handleUpload}
                 />
+                {/* Show upload progress and error */}
+                {isEdit && (
+                  <>
+                    {uploadProgress > 0 && uploadProgress < 100 && (
+                      <Typography sx={{ mt: 1 }} color="primary">
+                        Đang tải lên: {Math.round(uploadProgress)}%
+                      </Typography>
+                    )}
+                    {uploadError && (
+                      <Typography sx={{ mt: 1 }} color="error">
+                        {uploadError}
+                      </Typography>
+                    )}
+                  </>
+                )}
               </div>
             </Card>
           </Stack>

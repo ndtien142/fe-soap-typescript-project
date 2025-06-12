@@ -16,6 +16,8 @@ import Iconify from 'src/common/components/Iconify';
 import { useDispatch, useSelector } from 'src/common/redux/store';
 import Page from 'src/common/components/Page';
 import HeaderBreadcrumbs from 'src/common/components/HeaderBreadcrumbs';
+import UploadConfirmAndSuccessBorrow from '../common/components/scan-borrow-receipt/UploadConfirmAndSuccessBorrow';
+import BorrowedSuccess from '../common/components/scan-borrow-receipt/BorrowedSuccess';
 
 const STEPS = ['Kiểm tra', 'Quét', 'Xác nhận và cung cấp chứng từ'];
 
@@ -78,6 +80,7 @@ const ScanBorrowReceiptContainer = () => {
 
   const [availableData, setAvailableData] = useState<any[]>([]);
   const [allAvailable, setAllAvailable] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const isComplete = activeStep === STEPS.length;
 
@@ -112,9 +115,6 @@ const ScanBorrowReceiptContainer = () => {
     }
   }, [data, dispatch]);
 
-  console.log('availableList: ', availableList);
-  console.log('allAvailableFlag: ', allAvailableFlag);
-
   useEffect(() => {
     setAvailableData(availableList);
     setAllAvailable(allAvailableFlag);
@@ -122,6 +122,19 @@ const ScanBorrowReceiptContainer = () => {
 
   const handleProcess = () => {
     dispatch(onNextStep());
+  };
+
+  const scannedCountByGroup = requestItems.reduce((acc, req) => {
+    acc[req.groupEquipmentCode] = borrowEquipments.filter(
+      (eq) => eq.groupEquipmentCode === req.groupEquipmentCode
+    ).length;
+    return acc;
+  }, {} as Record<string, number>);
+
+  console.log('scannedCountByGroup: ', scannedCountByGroup);
+
+  const handleConfirmSuccess = () => {
+    setSuccess(true);
   };
 
   return (
@@ -165,16 +178,20 @@ const ScanBorrowReceiptContainer = () => {
                 allAvailable={allAvailable}
                 onProcess={handleProcess}
                 isLoading={isLoadingAvailable}
+                scannedByGroup={scannedCountByGroup}
               />
             )}
             {activeStep === 1 && (
               // Quét
               <ScanBorrowReceipt borrowEquipments={borrowEquipments} requestItems={requestItems} />
             )}
-            {activeStep === 2 && (
+            {activeStep === 2 &&
               // Xác nhận và cung cấp chứng từ
-              <ScanBorrowReceipt borrowEquipments={borrowEquipments} requestItems={requestItems} />
-            )}
+              (!success ? (
+                <UploadConfirmAndSuccessBorrow onSuccess={handleConfirmSuccess} />
+              ) : (
+                <BorrowedSuccess />
+              ))}
           </>
         ) : (
           <h1>1</h1>

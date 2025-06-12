@@ -19,6 +19,12 @@ import {
   IBorrowEquipment,
   IRequestItem,
 } from 'src/common/@types/borrow-receipt/borrowReceipt.interface';
+import axiosInstance from 'src/common/utils/axios';
+import { API_BORROW_RECEIPT } from 'src/common/constant/api.constant';
+import { useParams } from 'react-router-dom';
+import { default as useMessage } from 'src/common/hooks/useMessage';
+import { useDispatch } from 'src/common/redux/store';
+import { triggerRefetch } from 'src/borrow-equipment-receipt/scan/scan.slice';
 
 interface Props {
   borrowEquipments: IBorrowEquipment[];
@@ -66,6 +72,24 @@ const ScanQRCode = ({ borrowEquipments = [], requestItems = [] }: Props) => {
 
   const handleToggleGroup = (code: string) => {
     setOpenGroups((prev) => ({ ...prev, [code]: !prev[code] }));
+  };
+
+  const { id } = useParams<{ id: string }>();
+  const dispatch = useDispatch();
+  const { showErrorSnackbar, showSuccessSnackbar } = useMessage();
+
+  const handleDeleteSerial = async (serialNumber: string) => {
+    if (!id) return;
+    try {
+      await axiosInstance.post(`${API_BORROW_RECEIPT}/delete-scanned-equipment`, {
+        borrowReceiptId: Number(id),
+        serialNumber,
+      });
+      showSuccessSnackbar('Xóa thiết bị thành công!');
+      dispatch(triggerRefetch());
+    } catch (err: any) {
+      showErrorSnackbar(err?.message || 'Xóa thiết bị thất bại!');
+    }
   };
 
   return (
@@ -129,6 +153,7 @@ const ScanQRCode = ({ borrowEquipments = [], requestItems = [] }: Props) => {
                               <TableRow>
                                 <TableCell>Số serial</TableCell>
                                 <TableCell>Trạng thái</TableCell>
+                                <TableCell></TableCell>
                               </TableRow>
                             </TableHead>
                             <TableBody>
@@ -151,12 +176,21 @@ const ScanQRCode = ({ borrowEquipments = [], requestItems = [] }: Props) => {
                                       color={getStatusColor(serial.status) as any}
                                     />
                                   </TableCell>
+                                  <TableCell>
+                                    <IconButton
+                                      color="error"
+                                      size="small"
+                                      onClick={() => handleDeleteSerial(serial.serialNumber)}
+                                    >
+                                      <Iconify icon="eva:trash-2-outline" />
+                                    </IconButton>
+                                  </TableCell>
                                 </TableRow>
                               ))}
                               {(!groupMap[group.groupEquipmentCode] ||
                                 groupMap[group.groupEquipmentCode].length === 0) && (
                                 <TableRow>
-                                  <TableCell colSpan={2}>Không có thiết bị nào.</TableCell>
+                                  <TableCell colSpan={3}>Không có thiết bị nào.</TableCell>
                                 </TableRow>
                               )}
                             </TableBody>

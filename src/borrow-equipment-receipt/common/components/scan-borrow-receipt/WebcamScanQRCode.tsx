@@ -13,13 +13,14 @@ import { triggerRefetch } from 'src/borrow-equipment-receipt/scan/scan.slice';
 type Props = {
   onScan: (result: string) => void;
   onError?: (error: string) => void;
+  disabled?: boolean;
 };
 
 const videoConstraints = {
   facingMode: 'environment',
 };
 
-export default function WebcamScanQRCode({ onScan, onError }: Props) {
+export default function WebcamScanQRCode({ onScan, onError, disabled }: Props) {
   const dispatch = useDispatch();
   const webcamRef = useRef<Webcam>(null);
   const [scanning, setScanning] = useState(true);
@@ -68,6 +69,7 @@ export default function WebcamScanQRCode({ onScan, onError }: Props) {
     } catch (err: any) {
       // Handle error message from BE response (JSON error)
       let msg = err?.message || err?.message || 'Có lỗi xảy ra khi xuất thiết bị';
+      console.log('error: ', error);
       setError(msg);
       setScanning(true);
       showErrorSnackbar(msg);
@@ -78,7 +80,7 @@ export default function WebcamScanQRCode({ onScan, onError }: Props) {
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    if (scanning) {
+    if (scanning && !disabled) {
       interval = setInterval(() => {
         capture();
       }, 500);
@@ -86,7 +88,7 @@ export default function WebcamScanQRCode({ onScan, onError }: Props) {
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [capture, scanning]);
+  }, [capture, scanning, disabled]);
 
   const handleRetry = () => {
     setScanning(true);
@@ -95,7 +97,11 @@ export default function WebcamScanQRCode({ onScan, onError }: Props) {
 
   return (
     <Box sx={{ textAlign: 'center' }}>
-      {scanning ? (
+      {disabled ? (
+        <Typography color="text.secondary" sx={{ mt: 2 }}>
+          Đã quét đủ số lượng thiết bị. Không thể quét thêm.
+        </Typography>
+      ) : scanning ? (
         <>
           <Webcam
             audio={false}

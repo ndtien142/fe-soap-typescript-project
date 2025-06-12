@@ -20,6 +20,7 @@ type Props = {
   allAvailable: boolean;
   onProcess: () => void;
   isLoading?: boolean;
+  scannedByGroup?: Record<string, number>;
 };
 
 export default function AvailableEquipmentCheck({
@@ -27,8 +28,23 @@ export default function AvailableEquipmentCheck({
   allAvailable,
   onProcess,
   isLoading,
+  scannedByGroup,
 }: Props) {
-  console.log('AvailableEquipmentCheck data: ', data);
+  let checkIsAvailable = true;
+
+  if (!allAvailable) {
+    // Check all available with requested + scanned >= availableCount if any of the item is not available will set checkIsAvailable to false
+    checkIsAvailable = data.every((item) => {
+      const scanned = scannedByGroup?.[item.groupEquipmentCode] || 0;
+      console.log('scanned: ', scanned);
+      console.log('availableCount: ', item.availableCount);
+      console.log('item.requested: ', item.requested);
+      return item.availableCount + scanned >= item.requested;
+    });
+  }
+
+  console.log('checkIsAvailable: ', checkIsAvailable);
+
   return (
     <Stack spacing={2}>
       <Card sx={{ p: 2 }}>
@@ -46,6 +62,7 @@ export default function AvailableEquipmentCheck({
                 <TableCell>Hãng</TableCell>
                 <TableCell>Yêu cầu</TableCell>
                 <TableCell>Có sẵn</TableCell>
+                <TableCell>Đã Quét</TableCell>
                 <TableCell>Trạng thái</TableCell>
               </TableRow>
             </TableHead>
@@ -68,10 +85,19 @@ export default function AvailableEquipmentCheck({
                   <TableCell>{row.equipmentManufacturer?.name}</TableCell>
                   <TableCell>{row.requested}</TableCell>
                   <TableCell>{row.availableCount}</TableCell>
+                  <TableCell>{scannedByGroup?.[row.groupEquipmentCode] ?? 0}</TableCell>
                   <TableCell>
                     <Chip
-                      label={row.available ? 'Đủ thiết bị' : 'Không đủ'}
-                      color={row.available ? 'success' : 'error'}
+                      label={
+                        row.available || scannedByGroup?.[row.groupEquipmentCode] === row.requested
+                          ? 'Đủ thiết bị'
+                          : 'Không đủ'
+                      }
+                      color={
+                        row.available || scannedByGroup?.[row.groupEquipmentCode] === row.requested
+                          ? 'success'
+                          : 'error'
+                      }
                       size="small"
                     />
                   </TableCell>
@@ -92,7 +118,7 @@ export default function AvailableEquipmentCheck({
         <Button
           variant="contained"
           color="primary"
-          disabled={!allAvailable || isLoading}
+          disabled={(!allAvailable && !checkIsAvailable) || isLoading}
           onClick={onProcess}
         >
           Tiến hành xuất thiết bị

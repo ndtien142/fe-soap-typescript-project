@@ -14,6 +14,8 @@ import { PATH_AFTER_LOGIN } from '../../config';
 import LoadingScreen from '../components/LoadingScreen';
 import { useSelector } from '../redux/store';
 import { selectIsAuthenticated } from 'src/auth/login/auth.slice';
+import DepartmentList from 'src/management-department/list/DepartmentList';
+import DepartmentCreate from 'src/management-department/create';
 
 // ----------------------------------------------------------------------
 
@@ -122,6 +124,20 @@ export default function Router() {
             // { path: 'account', element: <UserAccount /> },
           ],
         },
+
+        {
+          path: 'department',
+          children: [
+            { element: <Navigate to="/dashboard/department/profile" replace />, index: true },
+            // { path: 'profile', element: <UserProfile /> },
+            // { path: 'cards', element: <UserCards /> },
+            { path: 'list', element: <DepartmentList /> },
+            { path: 'new', element: <DepartmentCreate /> },
+            { path: ':name/edit', element: <DepartmentCreate /> },
+            // { path: 'account', element: <UserAccount /> },
+          ],
+        },
+
         {
           path: 'import-receipt',
           children: [

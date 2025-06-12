@@ -66,7 +66,8 @@ export default function WebcamScanQRCode({ onScan, onError }: Props) {
       dispatch(triggerRefetch());
       showSuccessSnackbar('Xuất thiết bị thành công!');
     } catch (err: any) {
-      const msg = err?.response?.data?.message || err.message || 'Có lỗi xảy ra khi xuất thiết bị';
+      // Handle error message from BE response (JSON error)
+      let msg = err?.message || err?.message || 'Có lỗi xảy ra khi xuất thiết bị';
       setError(msg);
       setScanning(true);
       showErrorSnackbar(msg);

@@ -41,21 +41,12 @@ export default function BorrowReceiptToolbar({ borrowReceipt }: Props) {
       showSuccessSnackbar('Cập nhật phiếu mượn thành công!');
       window.location.reload();
     },
-    onError: (message) => {
+    onError: (message: any) => {
       setLoadingApprove(false);
       setLoadingReject(false);
-      // Try to extract message from HTML error response
-      let errorMessage = 'Có lỗi xảy ra!';
-      console.log(message);
-      if (message) {
-        const html = message;
-        const match = html.match(/<pre>([\s\S]*?)<\/pre>/);
-        if (match && match[1]) {
-          // Remove HTML tags and decode entities if needed
-          errorMessage = match[1].replace(/<br\s*\/?>/gi, '\n').replace(/&nbsp;/g, ' ');
-        }
-      }
-      showErrorSnackbar(errorMessage);
+      // Handle error message from BE response (JSON error)
+      let msg = message?.message || message || 'Có lỗi xảy ra khi xuất thiết bị';
+      showErrorSnackbar(msg);
     },
   });
 

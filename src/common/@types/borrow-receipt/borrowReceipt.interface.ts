@@ -107,3 +107,31 @@ export interface IRequestItem {
   type?: IEquipmentType;
   manufacturer?: IManufacturer;
 }
+
+export interface IAvailableGroupEquipment {
+  groupEquipmentCode: string;
+  groupEquipmentName: string;
+  groupEquipmentDescription: string;
+  equipmentType: {
+    id: number;
+    name: string;
+  };
+  equipmentManufacturer: {
+    id: number;
+    name: string;
+  };
+  requested: number;
+  available: boolean;
+  availableCount: number;
+}
+
+export interface IListAvailableResponse {
+  status: number;
+  message: string;
+  metadata: {
+    code: number;
+    metadata: IAvailableGroupEquipment[];
+    allAvailable: boolean;
+    message: string;
+  };
+}

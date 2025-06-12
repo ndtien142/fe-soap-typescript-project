@@ -1,15 +1,5 @@
 // MUI
-import {
-  Container,
-  Typography,
-  Box,
-  StepConnector,
-  Grid,
-  Stepper,
-  Step,
-  Stack,
-  StepLabel,
-} from '@mui/material';
+import { Container, Box, StepConnector, Grid, Stepper, Step, StepLabel } from '@mui/material';
 import { styled } from '@mui/material/styles';
 // React
 import { useParams } from 'react-router-dom';
@@ -18,13 +8,14 @@ import { useState, useEffect } from 'react';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
 // Components
 import ScanBorrowReceipt from '../common/components/scan-borrow-receipt';
-// Common components
+import AvailableEquipmentCheck from '../common/components/scan-borrow-receipt/AvailableEquipmentCheck';
+import { useGetDetailBorrow } from '../common/hooks/useGetDetailBorrow';
+import { useGetListAvailable } from '../common/hooks/useGetListAvailable';
+import { onNextStep, setBorrowEquipments, setRequestItems } from './scan.slice';
+import Iconify from 'src/common/components/Iconify';
+import { useDispatch, useSelector } from 'src/common/redux/store';
 import Page from 'src/common/components/Page';
 import HeaderBreadcrumbs from 'src/common/components/HeaderBreadcrumbs';
-import Iconify from 'src/common/components/Iconify';
-import { useSelector, useDispatch } from 'src/common/redux/store';
-import { useGetDetailBorrow } from '../common/hooks/useGetDetailBorrow';
-import { setBorrowEquipments, setRequestItems } from './scan.slice';
 
 const STEPS = ['Kiểm tra', 'Quét', 'Xác nhận và cung cấp chứng từ'];
 
@@ -84,6 +75,10 @@ const ScanBorrowReceiptContainer = () => {
     borrowEquipments = [],
     requestItems = [],
   } = useSelector((state) => state.scanBorrowReceipt);
+
+  const [availableData, setAvailableData] = useState<any[]>([]);
+  const [allAvailable, setAllAvailable] = useState(false);
+
   const isComplete = activeStep === STEPS.length;
 
   // Fetch borrow receipt detail and update redux state
@@ -92,9 +87,20 @@ const ScanBorrowReceiptContainer = () => {
     onError: () => {},
   });
 
+  const {
+    isLoading: isLoadingAvailable,
+    data: availableList,
+    allAvailable: allAvailableFlag,
+    fetchData: fetchAvailable,
+  } = useGetListAvailable({
+    onSuccess: () => {},
+    onError: () => {},
+  });
+
   useEffect(() => {
     if (id) {
       fetchData(id);
+      fetchAvailable(id);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, triggerCallApi]);
@@ -105,6 +111,18 @@ const ScanBorrowReceiptContainer = () => {
       dispatch(setRequestItems(data.requestItems || []));
     }
   }, [data, dispatch]);
+
+  console.log('availableList: ', availableList);
+  console.log('allAvailableFlag: ', allAvailableFlag);
+
+  useEffect(() => {
+    setAvailableData(availableList);
+    setAllAvailable(allAvailableFlag);
+  }, [availableList, allAvailableFlag]);
+
+  const handleProcess = () => {
+    dispatch(onNextStep());
+  };
 
   return (
     <Page title="Quét thiết bị mượn">
@@ -142,8 +160,12 @@ const ScanBorrowReceiptContainer = () => {
         {!isComplete ? (
           <>
             {activeStep === 0 && (
-              // Kiểm tra
-              <ScanBorrowReceipt borrowEquipments={borrowEquipments} requestItems={requestItems} />
+              <AvailableEquipmentCheck
+                data={availableData}
+                allAvailable={allAvailable}
+                onProcess={handleProcess}
+                isLoading={isLoadingAvailable}
+              />
             )}
             {activeStep === 1 && (
               // Quét

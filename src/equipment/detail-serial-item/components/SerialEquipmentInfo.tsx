@@ -15,6 +15,7 @@ import Label from 'src/common/components/Label';
 import useUploadMultiImage from 'src/common/hooks/useUploadMultiImage';
 import axiosInstance from 'src/common/utils/axios';
 import { API_UPLOAD_MULTIPLE_IMAGE } from 'src/common/constant/api.constant';
+import SerialImageGallery from './SerialImageGallery';
 
 const LabelStyle = styled(Typography)(({ theme }) => ({
   ...theme.typography.subtitle2,
@@ -162,6 +163,17 @@ export default function SerialEquipmentInfo({
     setValue('images', filteredItems);
   };
 
+  // Prepare initial images from BE response
+  const initialImages =
+    serialEquipment.images && Array.isArray(serialEquipment.images)
+      ? serialEquipment.images.map((img: any) => ({
+          url: img.imageUrl,
+          preview: img.imageUrl,
+          id: img.id,
+          note: img.note,
+        }))
+      : [];
+
   // Map status to color and label
   const getStatusProps = (status: string): { color: LabelColor; label: string } => {
     switch (status) {
@@ -251,6 +263,14 @@ export default function SerialEquipmentInfo({
                   value={defaultValues.departmentName}
                 />
               </Stack>
+            </Card>
+            <Card sx={{ p: 3 }}>
+              <div>
+                <Typography variant="subtitle2" sx={{ mb: 1 }}>
+                  Hình ảnh hiện tại
+                </Typography>
+                <SerialImageGallery images={initialImages} />
+              </div>
             </Card>
           </Stack>
         </Grid>

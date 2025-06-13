@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 // @mui
 import { styled, useTheme } from '@mui/material/styles';
 import {
@@ -12,53 +14,57 @@ import {
   TableCell,
   Typography,
   TableContainer,
+  CircularProgress,
 } from '@mui/material';
 // utils
 import { fDate } from '../../../../common/utils/formatTime';
-import { fCurrency } from '../../../../common/utils/formatNumber';
-// _mock_
-import { Transfer } from '../../../../common/@types/transfer';
+// @types
 // components
 import Label from '../../../../common/components/Label';
 import Image from '../../../../common/components/Image';
 import Scrollbar from '../../../../common/components/Scrollbar';
-//
 import TransferToolbar from './TransferToolbar';
+// hooks
+import { useGetDetailTransferReceipt } from '../../hooks/useGetDetailTransferReceipt';
 
 // ----------------------------------------------------------------------
 
-const RowResultStyle = styled(TableRow)(({ theme }) => ({
-  '& td': {
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-  },
-}));
-
-// ----------------------------------------------------------------------
-
-type Props = {
-  transfer?: Transfer;
-};
-
-export default function TransferDetails({ transfer }: Props) {
+export default function TransferDetails() {
   const theme = useTheme();
+  const { id } = useParams<{ id: string }>();
+  const { data: transfer, isLoading, fetchDetail } = useGetDetailTransferReceipt();
+
+  useEffect(() => {
+    if (id) fetchDetail(id);
+  }, [id]);
+
+  if (isLoading) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', py: 5 }}>
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   if (!transfer) {
-    return null;
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', py: 5 }}>
+        <Typography>Không tìm thấy phiếu điều chuyển</Typography>
+      </Box>
+    );
   }
 
   const {
-    items,
-    taxes,
+    items = [],
     status,
-    dueDate,
-    discount,
+    transferDate,
     transferTo,
-    createDate,
-    totalPrice,
     transferFrom,
-    transferNumber,
-    subTotalPrice,
+    createdBy,
+    responsibleBy,
+    approveBy,
+    id: transferId,
+    notes,
   } = transfer;
 
   return (
@@ -82,17 +88,17 @@ export default function TransferDetails({ transfer }: Props) {
               <Label
                 variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
                 color={
-                  (status === 'paid' && 'success') ||
-                  (status === 'unpaid' && 'warning') ||
-                  (status === 'overdue' && 'error') ||
+                  (status === 'approved' && 'success') ||
+                  (status === 'requested' && 'info') ||
+                  (status === 'rejected' && 'error') ||
+                  (status === 'transferred' && 'warning') ||
                   'default'
                 }
                 sx={{ textTransform: 'uppercase', mb: 1 }}
               >
                 {status}
               </Label>
-
-              <Typography variant="h6">{`INV-${transferNumber}`}</Typography>
+              <Typography variant="h6">{`ID-${transferId}`}</Typography>
             </Box>
           </Grid>
 
@@ -100,136 +106,82 @@ export default function TransferDetails({ transfer }: Props) {
             <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>
               Transfer from
             </Typography>
-            <Typography variant="body2">{transferFrom.name}</Typography>
-            <Typography variant="body2">{transferFrom.address}</Typography>
-            <Typography variant="body2">Phone: {transferFrom.phone}</Typography>
+            <Typography variant="body2">{transferFrom?.name}</Typography>
+            <Typography variant="body2">ID: {transferFrom?.id}</Typography>
           </Grid>
 
           <Grid item xs={12} sm={6} sx={{ mb: 5 }}>
             <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>
               Transfer to
             </Typography>
-            <Typography variant="body2">{transferTo.name}</Typography>
-            <Typography variant="body2">{transferTo.address}</Typography>
-            <Typography variant="body2">Phone: {transferTo.phone}</Typography>
+            <Typography variant="body2">{transferTo?.name}</Typography>
+            <Typography variant="body2">ID: {transferTo?.id}</Typography>
           </Grid>
 
-          <Grid item xs={12} sm={6} sx={{ mb: 5 }}>
+          <Grid item xs={12} sm={3} sx={{ mb: 5 }}>
             <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>
-              date create
+              Ngày chuyển
             </Typography>
-            <Typography variant="body2">{fDate(createDate)}</Typography>
+            <Typography variant="body2">{fDate(transferDate)}</Typography>
           </Grid>
 
-          <Grid item xs={12} sm={6} sx={{ mb: 5 }}>
+          <Grid item xs={12} sm={3} sx={{ mb: 5 }}>
             <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>
-              Due date
+              Người tạo
             </Typography>
-            <Typography variant="body2">{fDate(dueDate)}</Typography>
+            <Typography variant="body2">{createdBy?.username}</Typography>
+          </Grid>
+          <Grid item xs={12} sm={3} sx={{ mb: 5 }}>
+            <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>
+              Người chịu trách nhiệm
+            </Typography>
+            <Typography variant="body2">{responsibleBy?.username}</Typography>
+          </Grid>
+          <Grid item xs={12} sm={3} sx={{ mb: 5 }}>
+            <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>
+              Người duyệt
+            </Typography>
+            <Typography variant="body2">{approveBy?.username}</Typography>
           </Grid>
         </Grid>
 
-        <Scrollbar>
-          <TableContainer sx={{ minWidth: 960 }}>
-            <Table>
-              <TableHead
-                sx={{
-                  borderBottom: (theme) => `solid 1px ${theme.palette.divider}`,
-                  '& th': { backgroundColor: 'transparent' },
-                }}
-              >
-                <TableRow>
-                  <TableCell width={40}>#</TableCell>
-                  <TableCell align="left">Description</TableCell>
-                  <TableCell align="left">Qty</TableCell>
-                  <TableCell align="right">Unit price</TableCell>
-                  <TableCell align="right">Total</TableCell>
-                </TableRow>
-              </TableHead>
-
-              <TableBody>
-                {items.map((row, index) => (
-                  <TableRow
-                    key={index}
-                    sx={{
-                      borderBottom: (theme) => `solid 1px ${theme.palette.divider}`,
-                    }}
-                  >
-                    <TableCell>{index + 1}</TableCell>
-                    <TableCell align="left">
-                      <Box sx={{ maxWidth: 560 }}>
-                        <Typography variant="subtitle2">{row.title}</Typography>
-                        <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-                          {row.description}
-                        </Typography>
-                      </Box>
-                    </TableCell>
-                    <TableCell align="left">{row.quantity}</TableCell>
-                    <TableCell align="right">{fCurrency(row.price)}</TableCell>
-                    <TableCell align="right">{fCurrency(row.price * row.quantity)}</TableCell>
+        {items && items.length > 0 && (
+          <Scrollbar>
+            <TableContainer sx={{ minWidth: 600 }}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>#</TableCell>
+                    <TableCell align="left">Tên thiết bị</TableCell>
+                    <TableCell align="left">Serial</TableCell>
+                    <TableCell align="left">Loại thiết bị</TableCell>
+                    <TableCell align="left">Mô tả</TableCell>
                   </TableRow>
-                ))}
-
-                <RowResultStyle>
-                  <TableCell colSpan={3} />
-                  <TableCell align="right">
-                    <Box sx={{ mt: 2 }} />
-                    <Typography>Subtotal</Typography>
-                  </TableCell>
-                  <TableCell align="right" width={120}>
-                    <Box sx={{ mt: 2 }} />
-                    <Typography>{fCurrency(subTotalPrice)}</Typography>
-                  </TableCell>
-                </RowResultStyle>
-
-                <RowResultStyle>
-                  <TableCell colSpan={3} />
-                  <TableCell align="right">
-                    <Typography>Discount</Typography>
-                  </TableCell>
-                  <TableCell align="right" width={120}>
-                    <Typography sx={{ color: 'error.main' }}>
-                      {discount && fCurrency(-discount)}
-                    </Typography>
-                  </TableCell>
-                </RowResultStyle>
-
-                <RowResultStyle>
-                  <TableCell colSpan={3} />
-                  <TableCell align="right">
-                    <Typography>Taxes</Typography>
-                  </TableCell>
-                  <TableCell align="right" width={120}>
-                    <Typography>{taxes && fCurrency(taxes)}</Typography>
-                  </TableCell>
-                </RowResultStyle>
-
-                <RowResultStyle>
-                  <TableCell colSpan={3} />
-                  <TableCell align="right">
-                    <Typography variant="h6">Total</Typography>
-                  </TableCell>
-                  <TableCell align="right" width={140}>
-                    <Typography variant="h6">{fCurrency(totalPrice)}</Typography>
-                  </TableCell>
-                </RowResultStyle>
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Scrollbar>
+                </TableHead>
+                <TableBody>
+                  {items.map((item, idx) => (
+                    <TableRow key={item.serialNumber}>
+                      <TableCell>{idx + 1}</TableCell>
+                      <TableCell align="left">{item.type?.name}</TableCell>
+                      <TableCell align="left">{item.serialNumber}</TableCell>
+                      <TableCell align="left">{item.type?.name}</TableCell>
+                      <TableCell align="left">{item.description}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Scrollbar>
+        )}
 
         <Divider sx={{ mt: 5 }} />
 
         <Grid container>
           <Grid item xs={12} md={9} sx={{ py: 3 }}>
-            <Typography variant="subtitle2">NOTES</Typography>
+            <Typography variant="subtitle2">GHI CHÚ</Typography>
             <Typography variant="body2">
-              We appreciate your business. Should you need us to add VAT or extra notes let us know!
+              <span dangerouslySetInnerHTML={{ __html: notes || '' }} />
             </Typography>
-          </Grid>
-          <Grid item xs={12} md={3} sx={{ py: 3, textAlign: 'right' }}>
-            <Typography variant="subtitle2">Have a Question?</Typography>
-            <Typography variant="body2">support@minimals.cc</Typography>
           </Grid>
         </Grid>
       </Card>

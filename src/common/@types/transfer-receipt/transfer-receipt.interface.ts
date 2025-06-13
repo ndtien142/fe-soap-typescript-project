@@ -11,6 +11,15 @@ export interface IListTransferReceiptResponse {
   };
 }
 
+export interface IDetailTransferReceiptResponse {
+  status: number;
+  message: string;
+  metadata: {
+    code: number;
+    metadata: ITransferReceipts & { items?: ITransferReceiptItem[] };
+  };
+}
+
 export interface ITransferReceipts {
   id: number;
   transferFrom: IRoom;
@@ -23,6 +32,18 @@ export interface ITransferReceipts {
   notes?: string;
   createdAt: string;
   updatedAt: string;
+  items?: ITransferReceiptItem[]; // Add this line
+}
+
+export interface ITransferReceiptItem {
+  serialNumber: string;
+  description: string;
+  notes?: string | null;
+  images: string[];
+  type: {
+    id: number;
+    name: string;
+  };
 }
 
 export interface IUserShort {

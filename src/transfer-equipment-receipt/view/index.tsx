@@ -1,9 +1,9 @@
 import { Container } from '@mui/material';
-import React, { useEffect } from 'react';
 import HeaderBreadcrumbs from 'src/common/components/HeaderBreadcrumbs';
 import Page from 'src/common/components/Page';
 import useSettings from 'src/common/hooks/useSettings';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
+import TransferDetails from '../common/components/details';
 
 const ViewImportReceiptContainer = () => {
   const { themeStretch } = useSettings();
@@ -18,6 +18,7 @@ const ViewImportReceiptContainer = () => {
             { name: 'Chi tiết' },
           ]}
         />
+        <TransferDetails />
       </Container>
     </Page>
   );

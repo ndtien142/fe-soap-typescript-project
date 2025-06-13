@@ -64,3 +64,74 @@ export interface IBorrowReceiptRequest {
     quantity: number;
   }[];
 }
+
+export interface IBorrowReceiptDetail {
+  id: number;
+  userCode: string;
+  returnDate: string | null;
+  status: string;
+  note: string;
+  room: IRoomOfBorrowReceipt;
+  requestedBy: {
+    userCode: string;
+    username: string;
+    phone: string | null;
+    email: string | null;
+  };
+  borrowEquipments: IBorrowEquipment[];
+  requestItems: IRequestItem[];
+}
+
+export interface IBorrowReceiptDetailResponse {
+  status: number;
+  message: string;
+  metadata: {
+    code: number;
+    message: string;
+    metadata: IBorrowReceiptDetail;
+  };
+}
+
+// For scan-borrow-receipt
+export interface IBorrowEquipment {
+  serialNumber: string;
+  groupEquipmentCode: string;
+  status: string;
+}
+
+export interface IRequestItem {
+  groupEquipmentCode: string;
+  name: string;
+  quantity: number;
+  note?: string | null;
+  type?: IEquipmentType;
+  manufacturer?: IManufacturer;
+}
+
+export interface IAvailableGroupEquipment {
+  groupEquipmentCode: string;
+  groupEquipmentName: string;
+  groupEquipmentDescription: string;
+  equipmentType: {
+    id: number;
+    name: string;
+  };
+  equipmentManufacturer: {
+    id: number;
+    name: string;
+  };
+  requested: number;
+  available: boolean;
+  availableCount: number;
+}
+
+export interface IListAvailableResponse {
+  status: number;
+  message: string;
+  metadata: {
+    code: number;
+    metadata: IAvailableGroupEquipment[];
+    allAvailable: boolean;
+    message: string;
+  };
+}

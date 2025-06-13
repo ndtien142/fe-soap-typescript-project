@@ -6,6 +6,7 @@ import Label from 'src/common/components/Label';
 import { TableMoreMenu } from 'src/common/components/table';
 import Iconify from 'src/common/components/Iconify';
 import { IGroupEquipment } from '../equipmentGroup.interface';
+import { QRCodeCanvas } from 'qrcode.react';
 // components
 
 // ----------------------------------------------------------------------
@@ -51,6 +52,7 @@ Props) {
         <Typography variant="subtitle2" noWrap>
           {code}
         </Typography>
+        <QRCodeCanvas value={code} size={48} style={{ marginTop: 8 }} />
       </TableCell>
 
       <TableCell align="left">{name}</TableCell>

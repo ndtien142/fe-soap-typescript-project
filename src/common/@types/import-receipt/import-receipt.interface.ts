@@ -1,3 +1,4 @@
+import { PaginationMeta } from '../common.interface';
 import { ISupplier } from './supplier.interface';
 
 export interface IImportReceipt {
@@ -33,12 +34,7 @@ export interface IListImportReceiptResponse {
   metadata: {
     code: number;
     metadata: IImportReceipt[];
-    meta: {
-      totalItems: number;
-      totalPages: number;
-      currentPage: number;
-      pageSize: number;
-    };
+    meta: PaginationMeta;
   };
 }
 

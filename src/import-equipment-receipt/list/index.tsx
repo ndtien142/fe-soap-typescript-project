@@ -19,8 +19,8 @@ import useSettings from 'src/common/hooks/useSettings';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import Scrollbar from 'src/common/components/Scrollbar';
-import useTable, { emptyRows, getComparator } from 'src/common/hooks/useTable';
-import { TableEmptyRows, TableHeadCustom, TableNoData } from 'src/common/components/table';
+import useTable, { getComparator } from 'src/common/hooks/useTable';
+import { TableHeadCustom, TableNoData } from 'src/common/components/table';
 import { applySortFilterImportReceipts } from '../common/utils';
 import { useGetListImportReceipts } from '../common/hooks/useGetListImportReceipt';
 import {
@@ -60,7 +60,7 @@ const ListImportReceipts = () => {
   // Dữ liệu từ API
   const [tableData, setTableData] = useState<IImportReceipt[]>([]);
 
-  const { data, isLoading, fetchData } = useGetListImportReceipts({
+  const { data, isLoading, fetchData, meta } = useGetListImportReceipts({
     onSuccess: () => {},
     onError: () => {},
   });
@@ -176,26 +176,19 @@ const ListImportReceipts = () => {
                       onSort={onSort}
                     />
                     <TableBody>
-                      {dataFiltered
-                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        .map((row) => (
-                          <ImportReceiptRow
-                            key={row.id}
-                            row={row}
-                            onEditRow={() => {
-                              navigate(PATH_DASHBOARD.importReceipt.edit(String(row.id)));
-                            }}
-                            onViewRow={() => {
-                              console.log('View row', row);
-                              navigate(PATH_DASHBOARD.importReceipt.view(String(row.id)));
-                            }}
-                          />
-                        ))}
-
-                      <TableEmptyRows
-                        height={denseHeight}
-                        emptyRows={emptyRows(page, rowsPerPage, tableData.length)}
-                      />
+                      {dataFiltered.map((row) => (
+                        <ImportReceiptRow
+                          key={row.id}
+                          row={row}
+                          onEditRow={() => {
+                            navigate(PATH_DASHBOARD.importReceipt.edit(String(row.id)));
+                          }}
+                          onViewRow={() => {
+                            console.log('View row', row);
+                            navigate(PATH_DASHBOARD.importReceipt.view(String(row.id)));
+                          }}
+                        />
+                      ))}
 
                       <TableNoData isNotFound={isNotFound} />
                     </TableBody>
@@ -207,7 +200,7 @@ const ListImportReceipts = () => {
                 <TablePagination
                   rowsPerPageOptions={[5, 10, 25]}
                   component="div"
-                  count={dataFiltered.length}
+                  count={meta?.totalItems || 0}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onPageChange={onChangePage}

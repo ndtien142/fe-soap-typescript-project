@@ -58,6 +58,7 @@ export const PATH_DASHBOARD = {
     new: path(ROOTS_DASHBOARD, '/borrow-receipt/new'),
     view: (id: string) => path(ROOTS_DASHBOARD, `/borrow-receipt/${id}`),
     edit: (id: string) => path(ROOTS_DASHBOARD, `/borrow-receipt/${id}/edit`),
+    scan: (id: string) => path(ROOTS_DASHBOARD, `/borrow-receipt/${id}/scan`),
   },
   equipmentType: {
     root: path(ROOTS_DASHBOARD, '/type-equipment'),
@@ -79,6 +80,20 @@ export const PATH_DASHBOARD = {
     view: (unitOfMeasureCode: string) =>
       path(ROOTS_DASHBOARD, `/unit-of-measure/${unitOfMeasureCode}`),
     new: path(ROOTS_DASHBOARD, '/unit-of-measure/new'),
+  },
+  role: {
+    root: path(ROOTS_DASHBOARD, '/role'),
+    list: path(ROOTS_DASHBOARD, '/role/list'),
+    new: path(ROOTS_DASHBOARD, '/role/new'),
+    view: (roleCode: string) => path(ROOTS_DASHBOARD, `/role/${roleCode}`),
+    edit: (roleCode: string) => path(ROOTS_DASHBOARD, `/role/${roleCode}/edit`),
+  },
+  permission: {
+    root: path(ROOTS_DASHBOARD, '/permission'),
+    list: path(ROOTS_DASHBOARD, '/permission/list'),
+    new: path(ROOTS_DASHBOARD, '/permission/new'),
+    view: (permissionCode: string) => path(ROOTS_DASHBOARD, `/permission/${permissionCode}`),
+    edit: (permissionCode: string) => path(ROOTS_DASHBOARD, `/permission/${permissionCode}/edit`),
   },
   general: {
     app: path(ROOTS_DASHBOARD, '/app'),

@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { default as useMessage } from 'src/common/hooks/useMessage';
 import { LoadingButton } from '@mui/lab';
-import { Box, Card, Grid, Stack } from '@mui/material';
-import { FormProvider, RHFTextField, RHFSelect } from 'src/common/components/hook-form';
+import { Box, Card, Grid, Stack, Typography } from '@mui/material';
+import { FormProvider, RHFTextField, RHFSelect, RHFEditor } from 'src/common/components/hook-form';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
 import { useGetListManufacturer } from 'src/equipment/common/hooks/useGetListManufacture';
 import { useGetListEquipmentType } from 'src/equipment/common/hooks/useGetListTypeEquipment';
@@ -13,6 +13,7 @@ import { useGetUnitOfMeasure } from 'src/equipment/common/hooks/useGetUnitOfMeas
 import { GroupEquipmentSchema } from '../groupEquipment.schema';
 import axiosInstance from 'src/common/utils/axios';
 import { API_EQUIPMENT_GROUP } from 'src/common/constant/api.constant';
+import { styled } from '@mui/material/styles';
 
 interface ISelectOption {
   id: number;
@@ -33,6 +34,12 @@ type Props = {
   currentGroupEquipment?: IFormGroupEquipment;
 };
 
+const LabelStyle = styled(Typography)(({ theme }) => ({
+  ...theme.typography.subtitle2,
+  color: theme.palette.text.secondary,
+  marginBottom: theme.spacing(1),
+}));
+
 export default function GroupEquipmentNewEditForm({ isEdit, currentGroupEquipment }: Props) {
   const navigate = useNavigate();
 
@@ -40,28 +47,28 @@ export default function GroupEquipmentNewEditForm({ isEdit, currentGroupEquipmen
 
   const { data: manufacturers, fetchData: fetchManufacturers } = useGetListManufacturer({
     onSuccess: () => {
-      showSuccessSnackbar('Fetched manufacturers successfully!');
+      showSuccessSnackbar('Lấy danh sách nhà sản xuất thành công!');
     },
     onError: () => {
-      showErrorSnackbar('Failed to fetch manufacturers');
+      showErrorSnackbar('Lấy danh sách nhà sản xuất thất bại');
     },
   });
 
   const { data: equipmentType, fetchData: fetchEquipmentType } = useGetListEquipmentType({
     onSuccess: () => {
-      showSuccessSnackbar('Fetched equipment types successfully!');
+      showSuccessSnackbar('Lấy danh sách loại thiết bị thành công!');
     },
     onError: () => {
-      showErrorSnackbar('Failed to fetch equipment types');
+      showErrorSnackbar('Lấy danh sách loại thiết bị thất bại');
     },
   });
 
   const { data: unitOfMeasure, fetchData: fetchUnitOfMeasure } = useGetUnitOfMeasure({
     onSuccess: () => {
-      showSuccessSnackbar('Fetched unit of measure successfully!');
+      showSuccessSnackbar('Lấy danh sách đơn vị đo thành công!');
     },
     onError: () => {
-      showErrorSnackbar('Failed to fetch unit of measure');
+      showErrorSnackbar('Lấy danh sách đơn vị đo thất bại');
     },
   });
 
@@ -121,14 +128,14 @@ export default function GroupEquipmentNewEditForm({ isEdit, currentGroupEquipmen
       if (response.status === 201) {
         await new Promise((resolve) => setTimeout(resolve, 500));
         reset();
-        showSuccessSnackbar(!isEdit ? 'Created successfully!' : 'Updated successfully!');
+        showSuccessSnackbar(!isEdit ? 'Tạo mới thành công!' : 'Cập nhật thành công!');
         navigate(PATH_DASHBOARD.equipment.listGroup);
       } else {
-        showErrorSnackbar('Unexpected response status');
+        showErrorSnackbar('Trạng thái phản hồi không mong đợi');
       }
     } catch (error) {
       console.error(error);
-      showErrorSnackbar('Failed to submit data. Please try again!');
+      showErrorSnackbar('Gửi dữ liệu thất bại. Vui lòng thử lại!');
     }
   };
 
@@ -145,12 +152,12 @@ export default function GroupEquipmentNewEditForm({ isEdit, currentGroupEquipmen
                 gridTemplateColumns: { xs: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)' },
               }}
             >
-              <RHFTextField name="name" label="Name" />
+              <RHFTextField name="name" label="Tên nhóm thiết bị" />
 
               <RHFSelect
                 name="manufacturer.id"
-                label="Manufacturer"
-                placeholder="Select Manufacturer"
+                label="Nhà sản xuất"
+                placeholder="Chọn nhà sản xuất"
                 onChange={(e) => {
                   const selected = manufacturers?.find(
                     (item) => item.id === Number(e.target.value)
@@ -168,8 +175,8 @@ export default function GroupEquipmentNewEditForm({ isEdit, currentGroupEquipmen
 
               <RHFSelect
                 name="type.id"
-                label="Type"
-                placeholder="Select Type"
+                label="Loại thiết bị"
+                placeholder="Chọn loại thiết bị"
                 onChange={(e) => {
                   const selected = equipmentType?.find(
                     (item) => item.id === Number(e.target.value)
@@ -187,8 +194,8 @@ export default function GroupEquipmentNewEditForm({ isEdit, currentGroupEquipmen
 
               <RHFSelect
                 name="unit.id"
-                label="Unit"
-                placeholder="Select Unit"
+                label="Đơn vị đo"
+                placeholder="Chọn đơn vị đo"
                 onChange={(e) => {
                   const selected = unitOfMeasure?.find(
                     (item) => item.id === Number(e.target.value)
@@ -205,12 +212,13 @@ export default function GroupEquipmentNewEditForm({ isEdit, currentGroupEquipmen
               </RHFSelect>
             </Box>
             <Box mt={3}>
-              <RHFTextField name="description" label="Description" multiline rows={3} />
+              <LabelStyle sx={{ mb: 1 }}>Mô tả</LabelStyle>
+              <RHFEditor name="description" simple />
             </Box>
 
             <Stack alignItems="flex-end" sx={{ mt: 3 }}>
               <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
-                {!isEdit ? 'Create Group Equipment' : 'Save Changes'}
+                {!isEdit ? 'Tạo nhóm thiết bị' : 'Lưu thay đổi'}
               </LoadingButton>
             </Stack>
           </Card>

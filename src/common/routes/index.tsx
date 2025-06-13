@@ -108,6 +108,8 @@ export default function Router() {
             { element: <Navigate to="/dashboard/borrow-receipt/list" replace />, index: true },
             { path: 'list', element: <BorrowReceiptList /> },
             { path: 'new', element: <BorrowReceiptCreate /> },
+            { path: ':id', element: <BorrowReceiptDetails /> },
+            { path: ':id/scan', element: <BorrowReceiptScanSerialNumber /> },
           ],
         },
         {
@@ -130,6 +132,16 @@ export default function Router() {
             { path: 'new', element: <ImportReceiptCreate /> },
             { path: ':id', element: <ImportReceiptDetails /> },
             { path: ':id/edit', element: <ImportReceiptEdit /> },
+          ],
+        },
+        {
+          path: 'role',
+          children: [
+            { element: <Navigate to="/dashboard/role/list" replace />, index: true },
+            { path: 'list', element: <RoleList /> },
+            { path: 'new', element: <RoleCreate /> },
+            // { path: ':id', element: <RoleDetails /> },
+            // { path: ':id/edit', element: <RoleEdit /> },
           ],
         },
         {
@@ -214,6 +226,10 @@ const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')));
 
 // DASHBOARD
 
+// ROLE
+const RoleList = Loadable(lazy(() => import('../../management-role/list')));
+const RoleCreate = Loadable(lazy(() => import('../../management-role/create')));
+
 // EQUIPMENT
 const GroupEquipmentList = Loadable(lazy(() => import('../../equipment/list-group-equipment')));
 const GroupEquipmentCreate = Loadable(lazy(() => import('../../equipment/create-group-equipment')));
@@ -229,6 +245,10 @@ const ImportReceiptEdit = Loadable(lazy(() => import('../../import-equipment-rec
 // BORROW RECEIPT
 const BorrowReceiptList = Loadable(lazy(() => import('../../borrow-equipment-receipt/list')));
 const BorrowReceiptCreate = Loadable(lazy(() => import('../../borrow-equipment-receipt/create')));
+const BorrowReceiptDetails = Loadable(lazy(() => import('../../borrow-equipment-receipt/view')));
+const BorrowReceiptScanSerialNumber = Loadable(
+  lazy(() => import('../../borrow-equipment-receipt/scan'))
+);
 
 // GENERAL
 const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));

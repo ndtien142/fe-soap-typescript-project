@@ -10,7 +10,8 @@ import kanbanReducer from './slices/kanban';
 // auth
 import authReducer from 'src/auth/login/auth.slice';
 import loginReducer from 'src/auth/login/login.slice';
-
+// borrow receipt
+import scanBorrowReceiptReducer from 'src/borrow-equipment-receipt/scan/scan.slice';
 // ----------------------------------------------------------------------
 
 const rootPersistConfig = {
@@ -36,6 +37,7 @@ const rootReducer = combineReducers({
   chat: chatReducer,
   calendar: calendarReducer,
   kanban: kanbanReducer,
+  scanBorrowReceipt: scanBorrowReceiptReducer,
   product: persistReducer(productPersistConfig, productReducer),
 });
 

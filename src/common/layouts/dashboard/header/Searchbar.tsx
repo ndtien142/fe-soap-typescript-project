@@ -113,7 +113,7 @@ function Searchbar() {
   const reduceItems = NavConfig.map((list) => {
     const patchedItems = list.items.map((item) => ({
       ...item,
-      children: Array.isArray(item.children) ? item.children : [],
+      children: Array.isArray((item as any).children) ? (item as any).children : [],
     }));
     return handleLoop(patchedItems, list.subheader);
   }).flat();

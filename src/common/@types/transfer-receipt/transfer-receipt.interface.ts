@@ -1,3 +1,5 @@
+import { IRoom } from '../department/department.interface';
+
 export interface IListTransferReceiptResponse {
   status: number;
   message: string;
@@ -10,26 +12,15 @@ export interface IListTransferReceiptResponse {
       currentPage: number;
       pageSize: number;
     };
- };
+  };
 }
 export interface ITransferReceipts {
   id: number;
   transferDate: string;
-  transferFrom: Room;
-  transferTo: Room;
+  transferFrom: IRoom;
+  transferTo: IRoom;
   user: User;
   status: string;
-}
-
-export interface Room {
-  id: number;
-  name: string;
-  department: Department;
-}
-
-export interface Department {
-  id: number;
-  name: string;
 }
 
 export interface User {
@@ -56,4 +47,16 @@ export interface ITransferReceiptParams {
   endDate?: string;
 }
 
+export interface IEquipmentInTransfer {
+  serialNumber: string;
+  name: string;
+  type: { id: number; name: string };
+  description: string;
+  status: string;
+  images: string[];
+}
 
+export interface ITransferItemForm {
+  serialNumber: string;
+  notes: string;
+}

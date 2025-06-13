@@ -108,17 +108,17 @@ const ListTransferReceipts = () => {
           heading="Phiếu Chuyển thiết bị"
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'Phiếu Chhuyển thiết bị', href: PATH_DASHBOARD.importReceipt.list },
+            { name: 'Phiếu huyển thiết bị', href: PATH_DASHBOARD.transferReceipt.list },
             { name: 'Danh sách' },
           ]}
           action={
             <Button
               variant="contained"
               component={RouterLink}
-              to={PATH_DASHBOARD.importReceipt.new}
+              to={PATH_DASHBOARD.transferReceipt.new}
               startIcon={<Iconify icon="eva:plus-fill" />}
             >
-              Tạo phiếu nhập
+              Tạo phiếu chuyển thiết bị
             </Button>
           }
         />

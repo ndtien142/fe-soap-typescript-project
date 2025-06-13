@@ -10,7 +10,7 @@ type Props = {
   total?: number; // total receipts for percent calculation
 };
 
-export default function ImportReceiptAnalytic({ icon, status, count, color, total }: Props) {
+export default function ReceiptAnalytic({ icon, status, count, color, total }: Props) {
   const percent = total && total > 0 ? (count / total) * 100 : 0;
 
   return (

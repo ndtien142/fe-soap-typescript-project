@@ -35,7 +35,7 @@ import { useGetListSuppliers } from '../common/hooks/useGetListSupplier';
 import { IImportReceipt } from 'src/common/@types/import-receipt/import-receipt.interface';
 import sumBy from 'lodash/sumBy';
 import { useTheme } from '@mui/material/styles';
-import ImportReceiptAnalytic from './components/ImportReceiptAnalytic';
+import ImportReceiptAnalytic from '../../common/components/ReceiptAnalytic';
 import { useGetReportReceipt } from 'src/common/hooks/useGetReportReceipt';
 
 const ListImportReceipts = () => {

@@ -1,16 +1,18 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
+import { default as useMessage } from 'src/common/hooks/useMessage';
 // @mui
 import {
   Box,
   Stack,
-  Button,
   Dialog,
   Tooltip,
   IconButton,
   DialogActions,
   CircularProgress,
 } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
 // hooks
 import useToggle from 'src/common/hooks/useToggle';
 // routes
@@ -20,7 +22,8 @@ import { IImportReceipt } from 'src/common/@types/import-receipt/import-receipt.
 // components
 import Iconify from 'src/common/components/Iconify';
 import ImportReceiptPDF from './ImportReceiptPDF';
-//
+import axiosInstance from 'src/common/utils/axios';
+import { API_IMPORT_RECEIPT } from 'src/common/constant/api.constant';
 
 // ----------------------------------------------------------------------
 
@@ -33,9 +36,43 @@ export default function ImportReceiptToolbar({ importReceipt }: Props) {
 
   const { toggle: open, onOpen, onClose } = useToggle();
 
+  const { showErrorSnackbar, showSuccessSnackbar } = useMessage();
+
+  // State for status menu
+  const [statusLoading, setStatusLoading] = useState(false);
+
   const handleEdit = () => {
-    navigate(PATH_DASHBOARD.importReceipt.edit(String(importReceipt.id)));
+    // Only allow edit if status is 'requested'
+    if (importReceipt.status === 'requested') {
+      navigate(PATH_DASHBOARD.importReceipt.edit(String(importReceipt.id)));
+    }
   };
+
+  // You should implement this function to call your API to update status
+  const handleChangeStatus = async (status: string) => {
+    setStatusLoading(true);
+    try {
+      if (status === 'received') {
+        await axiosInstance.post(`${API_IMPORT_RECEIPT}/${importReceipt.id}/process`);
+      } else {
+        await axiosInstance.put(`${API_IMPORT_RECEIPT}/${importReceipt.id}/status`, {
+          status,
+          reason: '',
+        });
+      }
+      showSuccessSnackbar('Cập nhật trạng thái thành công!');
+      window.location.reload();
+    } catch (error) {
+      showErrorSnackbar('Cập nhật trạng thái thất bại!');
+    }
+    setStatusLoading(false);
+  };
+
+  // Status options logic
+  const showApproveReject = importReceipt.status === 'requested';
+  const showReceivedOrReturn = importReceipt.status === 'approved';
+
+  const canEdit = importReceipt.status === 'requested';
 
   return (
     <>
@@ -47,10 +84,12 @@ export default function ImportReceiptToolbar({ importReceipt }: Props) {
         sx={{ mb: 5 }}
       >
         <Stack direction="row" spacing={1}>
-          <Tooltip title="Edit">
-            <IconButton onClick={handleEdit}>
-              <Iconify icon={'eva:edit-fill'} />
-            </IconButton>
+          <Tooltip title={canEdit ? 'Edit' : 'Không thể chỉnh sửa'}>
+            <span>
+              <IconButton onClick={handleEdit} disabled={!canEdit}>
+                <Iconify icon={'eva:edit-fill'} />
+              </IconButton>
+            </span>
           </Tooltip>
 
           <Tooltip title="View">
@@ -96,14 +135,51 @@ export default function ImportReceiptToolbar({ importReceipt }: Props) {
           </Tooltip>
         </Stack>
 
-        <Button
-          color="inherit"
-          variant="outlined"
-          startIcon={<Iconify icon={'eva:checkmark-fill'} />}
-          sx={{ alignSelf: 'flex-end' }}
-        >
-          Mark as Paid
-        </Button>
+        {/* Actions based on status */}
+        {showApproveReject && (
+          <Stack direction="row" spacing={2}>
+            <LoadingButton
+              variant="contained"
+              color="success"
+              loading={statusLoading}
+              onClick={() => handleChangeStatus('approved')}
+            >
+              Duyệt phiếu nhập
+            </LoadingButton>
+            <LoadingButton
+              variant="contained"
+              sx={{
+                backgroundColor: '#d32f2f',
+                color: '#fff',
+                '&:hover': { backgroundColor: '#b71c1c' },
+              }}
+              loading={statusLoading}
+              onClick={() => handleChangeStatus('rejected')}
+            >
+              Từ chối phiếu nhập
+            </LoadingButton>
+          </Stack>
+        )}
+        {showReceivedOrReturn && (
+          <Stack direction="row" spacing={2}>
+            <LoadingButton
+              variant="contained"
+              color="success"
+              loading={statusLoading}
+              onClick={() => handleChangeStatus('received')}
+            >
+              Đã nhận
+            </LoadingButton>
+            <LoadingButton
+              variant="contained"
+              color="error"
+              loading={statusLoading}
+              onClick={() => handleChangeStatus('returned')}
+            >
+              Hủy phiếu nhập
+            </LoadingButton>
+          </Stack>
+        )}
       </Stack>
 
       <Dialog fullScreen open={open}>

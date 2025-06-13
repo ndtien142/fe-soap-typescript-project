@@ -1,14 +1,15 @@
 import sum from 'lodash/sum';
 import { useEffect } from 'react';
 // form
-import { useFormContext, useFieldArray } from 'react-hook-form';
+import { useFormContext, useFieldArray, Controller } from 'react-hook-form';
 // @mui
-import { Box, Stack, Button, Divider, Typography, InputAdornment } from '@mui/material';
+import { Box, Stack, Button, Divider, Typography, InputAdornment, MenuItem } from '@mui/material';
 // utils
 import { fCurrency, fNumber } from 'src/common/utils/formatNumber';
 // components
-import { RHFTextField } from 'src/common/components/hook-form';
+import { RHFSelect, RHFTextField } from 'src/common/components/hook-form';
 import Iconify from 'src/common/components/Iconify';
+import { useGetListEquipmentGroup } from 'src/equipment/list-group-equipment/hooks/useGetListGroupEquipment';
 
 // ----------------------------------------------------------------------
 
@@ -19,6 +20,15 @@ export default function ImportNewEditDetails() {
     control,
     name: 'items',
   });
+
+  const { data: equipmentGroups, fetchData } = useGetListEquipmentGroup({
+    onSuccess: () => console.log('Lấy group thành công'),
+    onError: (err) => console.error(err),
+  });
+
+  useEffect(() => {
+    fetchData({ page: 1, limit: 50 });
+  }, []);
 
   const values = watch();
 
@@ -61,19 +71,53 @@ export default function ImportNewEditDetails() {
         {fields.map((item, index) => (
           <Stack key={item.id} alignItems="flex-end" spacing={1.5}>
             <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ width: 1 }}>
+              <Controller
+                name={`items.${index}.code`}
+                control={control}
+                render={({ field }) => (
+                  <RHFSelect
+                    name={field.name}
+                    value={field.value}
+                    onChange={(e) => {
+                      const selectedCode = e.target.value;
+                      const selected = equipmentGroups.find((eq) => eq.code === selectedCode);
+                      field.onChange(selectedCode);
+                      // Update all items' name based on code selection
+                      setValue(
+                        'items',
+                        fields.map((f, idx) =>
+                          idx === index
+                            ? {
+                                ...f,
+                                code: selectedCode,
+                                name: selected ? selected.name : '',
+                              }
+                            : f
+                        )
+                      );
+                    }}
+                    label="Chọn thiết bị"
+                    size="small"
+                    InputLabelProps={{ shrink: true }}
+                    SelectProps={{ native: false, sx: { textTransform: 'capitalize' } }}
+                    sx={{ minWidth: 120 }}
+                    disabled={allDisabled}
+                  >
+                    <MenuItem value="">-- Chọn thiết bị --</MenuItem>
+                    {equipmentGroups.map((eq) => (
+                      <MenuItem key={eq.code} value={eq.code}>
+                        {eq.name}
+                      </MenuItem>
+                    ))}
+                  </RHFSelect>
+                )}
+              />
               <RHFTextField
                 size="small"
                 name={`items[${index}].code`}
                 label="Mã thiết bị"
                 InputLabelProps={{ shrink: true }}
-                disabled={allDisabled}
-              />
-              <RHFTextField
-                size="small"
-                name={`items[${index}].name`}
-                label="Tên thiết bị"
-                InputLabelProps={{ shrink: true }}
-                disabled={allDisabled}
+                disabled
               />
               <RHFTextField
                 size="small"

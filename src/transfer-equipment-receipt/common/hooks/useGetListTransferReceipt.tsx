@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ICallbackFunction } from 'src/common/@types/common.interface';
+import { ICallbackFunction, PaginationMeta } from 'src/common/@types/common.interface';
 import {
   ITransferReceipts,
   ITransferReceiptParams,
@@ -8,7 +8,7 @@ import { getListTransferReceipts } from '../service';
 
 export const useGetListTransferReceipts = ({ onSuccess, onError }: ICallbackFunction) => {
   const [data, setData] = useState<ITransferReceipts[]>([]);
-
+  const [meta, setMeta] = useState<PaginationMeta | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = async (params: ITransferReceiptParams) => {
@@ -17,6 +17,7 @@ export const useGetListTransferReceipts = ({ onSuccess, onError }: ICallbackFunc
       const response = await getListTransferReceipts(params);
       if (!response) throw new Error('No response');
       setData(response.metadata.metadata);
+      setMeta(response.metadata.meta);
       onSuccess();
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Có lỗi xảy ra';
@@ -26,5 +27,5 @@ export const useGetListTransferReceipts = ({ onSuccess, onError }: ICallbackFunc
     }
   };
 
-  return { data, isLoading, fetchData };
+  return { data, meta, isLoading, fetchData };
 };

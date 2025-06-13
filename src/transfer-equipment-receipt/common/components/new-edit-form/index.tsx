@@ -7,7 +7,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 // @mui
 import { LoadingButton } from '@mui/lab';
 import { Card, Stack } from '@mui/material';
+import { default as useMessage } from 'src/common/hooks/useMessage';
 // routes
+import { PATH_DASHBOARD } from 'src/common/routes/paths';
 // components
 import { FormProvider } from 'src/common/components/hook-form';
 import TransferNewEditRoom from './TransferNewEditRoom';
@@ -18,6 +20,8 @@ import { dispatch } from 'src/common/redux/store';
 import { setRoomOptionsFrom, setRoomOptionsTo } from '../../store/transferEditNew.slice';
 import { IRoom } from 'src/common/@types/department/department.interface';
 import { TransferCreateSchema } from '../../transfer.schema';
+import axiosInstance from 'src/common/utils/axios';
+import { API_TRANSFER_RECEIPT } from 'src/common/constant/api.constant';
 // ----------------------------------------------------------------------
 
 type IEquipment = {
@@ -67,6 +71,8 @@ export default function TransferNewEditForm({ isEdit, currentTransfer }: Props) 
 
   const [loadingSave, setLoadingSave] = useState(false);
   const [loadingSend, setLoadingSend] = useState(false);
+
+  const { showErrorSnackbar, showSuccessSnackbar } = useMessage();
 
   // Fetch room list using hook
   const { data: fetchedRooms, fetchData: fetchRooms } = useGetListRoom({
@@ -143,28 +149,33 @@ export default function TransferNewEditForm({ isEdit, currentTransfer }: Props) 
     };
   }
 
-  const handleSaveAsDraft = async (data: FormValuesProps) => {
-    setLoadingSave(true);
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      reset();
-      setLoadingSave(false);
-      console.log('Save as draft:', JSON.stringify(mapFormValuesToRequest(data), null, 2));
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const handleSaveAsDraft = async (data: FormValuesProps) => {
+  //   setLoadingSave(true);
+  //   try {
+  //     await new Promise((resolve) => setTimeout(resolve, 500));
+  //     reset();
+  //     navigate(PATH_DASHBOARD.transferReceipt.list);
+  //     setLoadingSave(false);
+  //     console.log('Save as draft:', JSON.stringify(mapFormValuesToRequest(data), null, 2));
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const handleCreateAndSend = async (data: FormValuesProps) => {
     setLoadingSend(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      const dataSend = mapFormValuesToRequest(data);
+      // await new Promise((resolve) => setTimeout(resolve, 500));
+      await axiosInstance.post(API_TRANSFER_RECEIPT, dataSend);
       reset();
+      console.log('Create & Send:', JSON.stringify(dataSend, null, 2));
       setLoadingSend(false);
-
-      console.log('Create & Send:', JSON.stringify(mapFormValuesToRequest(data), null, 2));
+      showSuccessSnackbar('Tạo phiếu chuyển thiết bị thành công!');
+      navigate(PATH_DASHBOARD.transferReceipt.list);
     } catch (error) {
       console.error(error);
+      showErrorSnackbar('Tạo phiếu chuyển thiết bị thất bại!');
     }
   };
 

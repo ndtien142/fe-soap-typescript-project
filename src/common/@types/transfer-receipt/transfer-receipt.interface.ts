@@ -1,3 +1,4 @@
+import { PaginationMeta } from '../common.interface';
 import { IRoom } from '../department/department.interface';
 
 export interface IListTransferReceiptResponse {
@@ -6,29 +7,29 @@ export interface IListTransferReceiptResponse {
   metadata: {
     code: number;
     metadata: ITransferReceipts[];
-    meta: {
-      totalItems: number;
-      totalPages: number;
-      currentPage: number;
-      pageSize: number;
-    };
+    meta: PaginationMeta;
   };
 }
+
 export interface ITransferReceipts {
   id: number;
-  transferDate: string;
   transferFrom: IRoom;
   transferTo: IRoom;
-  user: User;
+  transferDate: string;
+  responsibleBy: IUserShort | null;
+  approveBy: IUserShort | null;
+  createdBy: IUserShort | null;
   status: string;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export interface User {
-  id: number;
-  username: string;
-  email: string | null;
-  isActive: boolean;
+export interface IUserShort {
+  userCode: string | null;
+  username: string | null;
 }
+
 export interface ITransferReceiptParams {
   page: number;
   limit: number;

@@ -1,104 +1,65 @@
 import { useState } from 'react';
 // @mui
-import { useTheme } from '@mui/material/styles';
-import { Checkbox, TableRow, TableCell, Typography, Stack, Link, MenuItem } from '@mui/material';
-// utils
-import { fDate } from '../../../../common/utils/formatTime';
-import createAvatar from '../../../../common/utils/createAvatar';
-import { fCurrency } from '../../../../common/utils/formatNumber';
-// @types
+import { TableRow, TableCell, Chip, MenuItem } from '@mui/material';
 // components
-import Label from '../../../../common/components/Label';
-import Avatar from '../../../../common/components/Avatar';
-import Iconify from '../../../../common/components/Iconify';
-import { TableMoreMenu } from '../../../../common/components/table';
-import { Transfer } from 'src/common/@types/transfer';
+import Iconify from 'src/common/components/Iconify';
+import { TableMoreMenu } from 'src/common/components/table';
+import { ITransferReceipts } from 'src/common/@types/transfer-receipt/transfer-receipt.interface';
 
 // ----------------------------------------------------------------------
 
-type Props = {
-  row: Transfer;
-  selected: boolean;
-  onSelectRow: VoidFunction;
-  onViewRow: VoidFunction;
-  onEditRow: VoidFunction;
-  onDeleteRow: VoidFunction;
+const statusColorMap: Record<string, 'default' | 'info' | 'success' | 'error' | 'warning'> = {
+  requested: 'info',
+  approved: 'success',
+  rejected: 'error',
+  transferred: 'warning',
 };
 
-export default function TransferTableRow({
-  row,
-  selected,
-  onSelectRow,
-  onViewRow,
-  onEditRow,
-  onDeleteRow,
-}: Props) {
-  const theme = useTheme();
+type Props = {
+  row: ITransferReceipts;
+  onEditRow: (row: ITransferReceipts) => void;
+  onViewRow: (row: ITransferReceipts) => void;
+};
 
-  const { sent, transferNumber, createDate, dueDate, status, transferTo, totalPrice } = row;
-
-  const [openMenu, setOpenMenuActions] = useState<HTMLElement | null>(null);
+export default function TransferTableRow({ row, onEditRow, onViewRow }: Props) {
+  const [openMenu, setOpenMenu] = useState<null | HTMLElement>(null);
 
   const handleOpenMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setOpenMenuActions(event.currentTarget);
+    setOpenMenu(event.currentTarget);
   };
 
   const handleCloseMenu = () => {
-    setOpenMenuActions(null);
+    setOpenMenu(null);
   };
 
   return (
-    <TableRow hover selected={selected}>
-      <TableCell padding="checkbox">
-        <Checkbox checked={selected} onClick={onSelectRow} />
-      </TableCell>
-
-      <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
-        <Avatar alt={transferTo.name} color={createAvatar(transferTo.name).color} sx={{ mr: 2 }}>
-          {createAvatar(transferTo.name).name}
-        </Avatar>
-
-        <Stack>
-          <Typography variant="subtitle2" noWrap>
-            {transferTo.name}
-          </Typography>
-
-          <Link
-            noWrap
-            variant="body2"
-            onClick={onViewRow}
-            sx={{ color: 'text.disabled', cursor: 'pointer' }}
-          >
-            {`INV-${transferNumber}`}
-          </Link>
-        </Stack>
-      </TableCell>
-
-      <TableCell align="left">{fDate(createDate)}</TableCell>
-
-      <TableCell align="left">{fDate(dueDate)}</TableCell>
-
-      <TableCell align="center">{fCurrency(totalPrice)}</TableCell>
-
-      <TableCell align="center" sx={{ textTransform: 'capitalize' }}>
-        {sent}
-      </TableCell>
-
+    <TableRow hover>
       <TableCell align="left">
-        <Label
-          variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
-          color={
-            (status === 'paid' && 'success') ||
-            (status === 'unpaid' && 'warning') ||
-            (status === 'overdue' && 'error') ||
-            'default'
-          }
-          sx={{ textTransform: 'capitalize' }}
-        >
-          {status}
-        </Label>
+        {row.transferFrom?.name}
+        <br />
+        <small style={{ color: '#888' }}>{row.transferFrom?.id}</small>
       </TableCell>
-
+      <TableCell align="left">
+        {row.transferTo?.name}
+        <br />
+        <small style={{ color: '#888' }}>{row.transferTo?.id}</small>
+      </TableCell>
+      <TableCell align="left">
+        {row.transferDate ? new Date(row.transferDate).toLocaleDateString() : ''}
+      </TableCell>
+      <TableCell align="left">{row.responsibleBy?.username}</TableCell>
+      <TableCell align="left">{row.createdBy?.username}</TableCell>
+      <TableCell align="left">
+        <Chip
+          label={row.status}
+          color={statusColorMap[row.status] || 'default'}
+          size="small"
+          sx={{ textTransform: 'capitalize' }}
+        />
+      </TableCell>
+      <TableCell align="left">
+        <span dangerouslySetInnerHTML={{ __html: row.notes || '' }} />
+      </TableCell>
       <TableCell align="right">
         <TableMoreMenu
           open={openMenu}
@@ -108,33 +69,21 @@ export default function TransferTableRow({
             <>
               <MenuItem
                 onClick={() => {
-                  onDeleteRow();
-                  handleCloseMenu();
-                }}
-                sx={{ color: 'error.main' }}
-              >
-                <Iconify icon={'eva:trash-2-outline'} />
-                Delete
-              </MenuItem>
-
-              <MenuItem
-                onClick={() => {
-                  onViewRow();
+                  onViewRow(row);
                   handleCloseMenu();
                 }}
               >
                 <Iconify icon={'eva:eye-fill'} />
-                View
+                Xem
               </MenuItem>
-
               <MenuItem
                 onClick={() => {
-                  onEditRow();
+                  onEditRow(row);
                   handleCloseMenu();
                 }}
               >
                 <Iconify icon={'eva:edit-fill'} />
-                Edit
+                Chỉnh sửa
               </MenuItem>
             </>
           }

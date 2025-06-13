@@ -1,43 +1,56 @@
+import { PaginationMeta } from '../common.interface';
+import { IRoom } from '../department/department.interface';
+
 export interface IListTransferReceiptResponse {
   status: number;
   message: string;
   metadata: {
     code: number;
     metadata: ITransferReceipts[];
-    meta: {
-      totalItems: number;
-      totalPages: number;
-      currentPage: number;
-      pageSize: number;
-    };
- };
+    meta: PaginationMeta;
+  };
 }
+
+export interface IDetailTransferReceiptResponse {
+  status: number;
+  message: string;
+  metadata: {
+    code: number;
+    metadata: ITransferReceipts & { items?: ITransferReceiptItem[] };
+  };
+}
+
 export interface ITransferReceipts {
   id: number;
+  transferFrom: IRoom;
+  transferTo: IRoom;
   transferDate: string;
-  transferFrom: Room;
-  transferTo: Room;
-  user: User;
+  responsibleBy: IUserShort | null;
+  approveBy: IUserShort | null;
+  createdBy: IUserShort | null;
   status: string;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+  items?: ITransferReceiptItem[]; // Add this line
 }
 
-export interface Room {
-  id: number;
-  name: string;
-  department: Department;
+export interface ITransferReceiptItem {
+  serialNumber: string;
+  description: string;
+  notes?: string | null;
+  images: string[];
+  type: {
+    id: number;
+    name: string;
+  };
 }
 
-export interface Department {
-  id: number;
-  name: string;
+export interface IUserShort {
+  userCode: string | null;
+  username: string | null;
 }
 
-export interface User {
-  id: number;
-  username: string;
-  email: string | null;
-  isActive: boolean;
-}
 export interface ITransferReceiptParams {
   page: number;
   limit: number;
@@ -56,4 +69,16 @@ export interface ITransferReceiptParams {
   endDate?: string;
 }
 
+export interface IEquipmentInTransfer {
+  serialNumber: string;
+  name: string;
+  type: { id: number; name: string };
+  description: string;
+  status: string;
+  images: string[];
+}
 
+export interface ITransferItemForm {
+  serialNumber: string;
+  notes: string;
+}

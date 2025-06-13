@@ -15,17 +15,16 @@ import {
 import useToggle from '../../../../common/hooks/useToggle';
 // routes
 import { PATH_DASHBOARD } from '../../../../common/routes/paths';
-// @types
-import { Transfer } from '../../../../common/@types/transfer';
 // components
 import Iconify from '../../../../common/components/Iconify';
 //
 import TransferPDF from './TransferPDF';
+import { ITransferReceipts } from 'src/common/@types/transfer-receipt/transfer-receipt.interface';
 
 // ----------------------------------------------------------------------
 
 type Props = {
-  transfer: Transfer;
+  transfer: ITransferReceipts;
 };
 
 export default function TransferToolbar({ transfer }: Props) {
@@ -34,7 +33,7 @@ export default function TransferToolbar({ transfer }: Props) {
   const { toggle: open, onOpen, onClose } = useToggle();
 
   const handleEdit = () => {
-    navigate(PATH_DASHBOARD.transferReceipt.edit(transfer.id));
+    navigate(PATH_DASHBOARD.transferReceipt.edit(String(transfer.id)));
   };
 
   return (
@@ -47,25 +46,26 @@ export default function TransferToolbar({ transfer }: Props) {
         sx={{ mb: 5 }}
       >
         <Stack direction="row" spacing={1}>
-          <Tooltip title="Edit">
+          <Tooltip title="Chỉnh sửa">
             <IconButton onClick={handleEdit}>
               <Iconify icon={'eva:edit-fill'} />
             </IconButton>
           </Tooltip>
 
-          <Tooltip title="View">
+          <Tooltip title="Xem">
             <IconButton onClick={onOpen}>
               <Iconify icon={'eva:eye-fill'} />
             </IconButton>
           </Tooltip>
 
+          {/* Remove fileName={transfer.transferNumber} if not available */}
           <PDFDownloadLink
             document={<TransferPDF transfer={transfer} />}
-            fileName={transfer.transferNumber}
+            fileName={`transfer-${transfer.id}.pdf`}
             style={{ textDecoration: 'none' }}
           >
             {({ loading }) => (
-              <Tooltip title="Download">
+              <Tooltip title="Tải xuống">
                 <IconButton>
                   {loading ? (
                     <CircularProgress size={24} color="inherit" />
@@ -76,34 +76,7 @@ export default function TransferToolbar({ transfer }: Props) {
               </Tooltip>
             )}
           </PDFDownloadLink>
-
-          <Tooltip title="Print">
-            <IconButton>
-              <Iconify icon={'eva:printer-fill'} />
-            </IconButton>
-          </Tooltip>
-
-          <Tooltip title="Send">
-            <IconButton>
-              <Iconify icon={'ic:round-send'} />
-            </IconButton>
-          </Tooltip>
-
-          <Tooltip title="Share">
-            <IconButton>
-              <Iconify icon={'eva:share-fill'} />
-            </IconButton>
-          </Tooltip>
         </Stack>
-
-        <Button
-          color="inherit"
-          variant="outlined"
-          startIcon={<Iconify icon={'eva:checkmark-fill'} />}
-          sx={{ alignSelf: 'flex-end' }}
-        >
-          Mark as Paid
-        </Button>
       </Stack>
 
       <Dialog fullScreen open={open}>
@@ -115,7 +88,7 @@ export default function TransferToolbar({ transfer }: Props) {
               boxShadow: (theme) => theme.customShadows.z8,
             }}
           >
-            <Tooltip title="Close">
+            <Tooltip title="Đóng">
               <IconButton color="inherit" onClick={onClose}>
                 <Iconify icon={'eva:close-fill'} />
               </IconButton>

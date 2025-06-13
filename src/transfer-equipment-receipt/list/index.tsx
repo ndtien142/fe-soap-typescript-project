@@ -12,6 +12,7 @@ import {
   FormControlLabel,
   CircularProgress,
   TableRow,
+  TableCell,
 } from '@mui/material';
 import HeaderBreadcrumbs from 'src/common/components/HeaderBreadcrumbs';
 import Page from 'src/common/components/Page';
@@ -20,24 +21,26 @@ import useSettings from 'src/common/hooks/useSettings';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import Scrollbar from 'src/common/components/Scrollbar';
-import useTable, { emptyRows, getComparator } from 'src/common/hooks/useTable';
-import { TableEmptyRows, TableHeadCustom, TableNoData } from 'src/common/components/table';
-import { TransferTableRow } from '../common/components/list';
+import useTable from 'src/common/hooks/useTable';
+import { TableHeadCustom, TableNoData } from 'src/common/components/table';
 import { useGetListTransferReceipts } from '../common/hooks/useGetListTransferReceipt';
-import {
-  ITransferReceipts,
-  ITransferReceiptParams,
-} from 'src/common/@types/transfer-receipt/transfer-receipt.interface';
+import { ITransferReceipts } from 'src/common/@types/transfer-receipt/transfer-receipt.interface';
+import { TransferTableRow } from '../common/components/list';
+
+const TABLE_HEAD = [
+  { id: 'transferFrom', label: 'Chuyển từ', align: 'left' },
+  { id: 'transferTo', label: 'Chuyển đến', align: 'left' },
+  { id: 'transferDate', label: 'Ngày chuyển', align: 'left' },
+  { id: 'responsibleBy', label: 'Người chịu trách nhiệm', align: 'left' },
+  { id: 'createdBy', label: 'Người tạo', align: 'left' },
+  { id: 'status', label: 'Trạng thái', align: 'left' },
+  { id: 'notes', label: 'Ghi chú', align: 'left' },
+  { id: '' },
+];
 
 const ListTransferReceipts = () => {
   const { themeStretch } = useSettings();
   const navigate = useNavigate();
-
-  const [filterCode, setFilterCode] = useState('');
-  const [filterSupplier, setFilterSupplier] = useState('');
-  const [filterStatus, setFilterStatus] = useState('');
-  const [filterStartDate, setFilterStartDate] = useState<Date | null>(null);
-  const [filterEndDate, setFilterEndDate] = useState<Date | null>(null);
 
   const {
     dense,
@@ -56,8 +59,7 @@ const ListTransferReceipts = () => {
 
   // Dữ liệu từ API
   const [tableData, setTableData] = useState<ITransferReceipts[]>([]);
-
-  const { data, isLoading, fetchData } = useGetListTransferReceipts({
+  const { data, meta, isLoading, fetchData } = useGetListTransferReceipts({
     onSuccess: () => {},
     onError: () => {},
   });
@@ -67,38 +69,21 @@ const ListTransferReceipts = () => {
     fetchData({
       page: page + 1,
       limit: rowsPerPage,
-      searchText: filterCode,
     });
-  }, [page, rowsPerPage, filterCode]);
+  }, [page, rowsPerPage]);
+
   useEffect(() => {
     if (data) {
       setTableData(data);
     }
   }, [data]);
 
-  const handleFilterCode = (value: string) => {
-    setFilterCode(value);
-    setPage(0);
+  const handleEditRow = (row: ITransferReceipts) => {
+    navigate(PATH_DASHBOARD.transferReceipt.edit(String(row.id)));
   };
 
-  const handleFilterSupplier = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFilterSupplier(event.target.value);
-    setPage(0);
-  };
-
-  const handleFilterStatus = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFilterStatus(event.target.value);
-    setPage(0);
-  };
-
-  const handleFilterStartDate = (value: Date | null) => {
-    setFilterStartDate(value);
-    setPage(0);
-  };
-
-  const handleFilterEndDate = (value: Date | null) => {
-    setFilterEndDate(value);
-    setPage(0);
+  const handleViewRow = (row: ITransferReceipts) => {
+    navigate(PATH_DASHBOARD.transferReceipt.view(String(row.id)));
   };
 
   return (
@@ -108,17 +93,17 @@ const ListTransferReceipts = () => {
           heading="Phiếu Chuyển thiết bị"
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'Phiếu Chhuyển thiết bị', href: PATH_DASHBOARD.importReceipt.list },
+            { name: 'Phiếu huyển thiết bị', href: PATH_DASHBOARD.transferReceipt.list },
             { name: 'Danh sách' },
           ]}
           action={
             <Button
               variant="contained"
               component={RouterLink}
-              to={PATH_DASHBOARD.importReceipt.new}
+              to={PATH_DASHBOARD.transferReceipt.new}
               startIcon={<Iconify icon="eva:plus-fill" />}
             >
-              Tạo phiếu nhập
+              Tạo phiếu chuyển thiết bị
             </Button>
           }
         />
@@ -129,17 +114,29 @@ const ListTransferReceipts = () => {
                 <TableHeadCustom
                   order={order}
                   orderBy={orderBy}
-                  headLabel={[]}
+                  headLabel={TABLE_HEAD}
                   rowCount={tableData.length}
                   onSort={onSort}
                 />
                 <TableBody>
-                  <TableEmptyRows
-                    height={denseHeight}
-                    emptyRows={emptyRows(page, rowsPerPage, tableData.length)}
-                  />
-
-                  <TableNoData isNotFound={true} />
+                  {isLoading ? (
+                    <TableRow>
+                      <TableCell colSpan={TABLE_HEAD.length} align="center">
+                        <CircularProgress size={24} />
+                      </TableCell>
+                    </TableRow>
+                  ) : tableData.length > 0 ? (
+                    tableData.map((row) => (
+                      <TransferTableRow
+                        key={row.id}
+                        row={row}
+                        onEditRow={handleEditRow}
+                        onViewRow={handleViewRow}
+                      />
+                    ))
+                  ) : (
+                    <TableNoData isNotFound />
+                  )}
                 </TableBody>
               </Table>
             </TableContainer>
@@ -149,7 +146,7 @@ const ListTransferReceipts = () => {
             <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
               component="div"
-              count={0}
+              count={meta?.totalItems || 0}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={onChangePage}

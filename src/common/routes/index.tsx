@@ -16,6 +16,10 @@ import { useSelector } from '../redux/store';
 import { selectIsAuthenticated } from 'src/auth/login/auth.slice';
 import DepartmentList from 'src/management-department/list/DepartmentList';
 import DepartmentCreate from 'src/management-department/create';
+import LiquidationReceiptList from 'src/liquidation-receipt/list';
+import LiquidationReceiptCreate from 'src/liquidation-receipt/create';
+import RepairReceiptCreate from 'src/repair-receipt/create';
+import RepairReceiptList from 'src/repair-receipt/list';
 
 // ----------------------------------------------------------------------
 
@@ -122,6 +126,24 @@ export default function Router() {
             { path: 'new', element: <UserCreate /> },
             { path: ':name/edit', element: <UserCreate /> },
             // { path: 'account', element: <UserAccount /> },
+          ],
+        },
+
+        {
+          path: 'liquidation-receipt',
+          children: [
+            { element: <Navigate to="/dashboard/liquidation-receipt/list" replace />, index: true },
+            { path: 'list', element: <LiquidationReceiptList /> },
+            { path: 'new', element: <LiquidationReceiptCreate /> },
+          ],
+        },
+
+        {
+          path: 'repair-receipt',
+          children: [
+            { element: <Navigate to="/dashboard/repair-receipt/list" replace />, index: true },
+            { path: 'list', element: <RepairReceiptList /> },
+            { path: 'new', element: <RepairReceiptCreate /> },
           ],
         },
 

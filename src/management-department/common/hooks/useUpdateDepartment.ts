@@ -1,19 +1,19 @@
 import { useMutation } from 'react-query';
 import { ICallbackMutation } from 'src/common/@types/common.interface';
 import { IUpdateDepartmentData } from '../department.interface';
-import { updateDepartment } from '../department.service'; // Giả sử bạn có dịch vụ updateDepartment
+import { updateDepartment } from '../department.service'; 
 
 // Định nghĩa hàm mutationFn
 const useUpdateDepartment = (callback: ICallbackMutation) =>
   useMutation(
     (variables: { departmentId: string; data: IUpdateDepartmentData }) =>
-      updateDepartment(variables.departmentId, variables.data), // Chuyển các tham số thành đối tượng
+      updateDepartment(variables.departmentId, variables.data), 
     {
       onSuccess: () => {
-        callback.onSuccess(); // Gọi hàm callback khi thành công
+        callback.onSuccess(); 
       },
       onError: (error) => {
-        callback.onError(); // Gọi hàm callback khi có lỗi
+        callback.onError();
         console.error(error);
       },
     }

@@ -97,14 +97,25 @@ const navConfig = [
       {
         title: 'Quản lý phòng ban',
         path: PATH_DASHBOARD.user.root,
-        icon: ICONS.user,
+        icon: ICONS.banking,
         children: [
           // { title: 'profile', path: PATH_DASHBOARD.user.profile },
           // { title: 'cards', path: PATH_DASHBOARD.user.cards },
-          { title: 'Danh sách phòng ban', path: PATH_DASHBOARD.department.list },
+          { title: 'Danh sách', path: PATH_DASHBOARD.department.list },
           { title: 'Tạo phòng ban', path: PATH_DASHBOARD.department.new },
           { title: 'Sửa phòng ban', path: PATH_DASHBOARD.department.demoEdit },
           // { title: 'account', path: PATH_DASHBOARD.user.account },
+        ],
+      },
+
+      // LIQUIDATION RECEIPT
+      {
+        title: 'Phiếu thanh lý',
+        path: PATH_DASHBOARD.liquidationReceipt.root,
+        icon: ICONS.borrowReceipt,
+        children: [
+          { title: 'Danh sách', path: PATH_DASHBOARD.liquidationReceipt.list },
+          { title: 'Tạo phiếu thanh toán', path: PATH_DASHBOARD.liquidationReceipt.new },
         ],
       },
 

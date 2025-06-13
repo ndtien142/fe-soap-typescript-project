@@ -2,38 +2,38 @@ import { useState } from 'react';
 
 // ----------------------------------------------------------------------
 
-export type UseTableProps = {
+export type UseTableProps<T> = {
   dense: boolean;
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
   rowsPerPage: number;
   order: 'asc' | 'desc';
-  orderBy: string;
+  orderBy: keyof T;
   //
   selected: string[];
   setSelected: React.Dispatch<React.SetStateAction<string[]>>;
   onSelectRow: (id: string) => void;
   onSelectAllRows: (checked: boolean, newSelecteds: string[]) => void;
   //
-  onSort: (id: string) => void;
+  onSort: (id: keyof T) => void;
   onChangePage: (event: unknown, newPage: number) => void;
   onChangeRowsPerPage: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onChangeDense: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export type Props = {
+export type Props<T> = {
   defaultDense?: boolean;
   defaultOrder?: 'asc' | 'desc';
-  defaultOrderBy?: string;
+  defaultOrderBy?: keyof T;
   defaultSelected?: string[];
   defaultRowsPerPage?: number;
   defaultCurrentPage?: number;
 };
 
-export default function useTable(props?: Props) {
+export default function useTable<T>(props?: Props<T>) {
   const [dense, setDense] = useState(props?.defaultDense || false);
 
-  const [orderBy, setOrderBy] = useState(props?.defaultOrderBy || 'name');
+  const [orderBy, setOrderBy] = useState<keyof T>(props?.defaultOrderBy || ('startDate' as keyof T)); // Default to a valid key
 
   const [order, setOrder] = useState<'asc' | 'desc'>(props?.defaultOrder || 'asc');
 
@@ -43,9 +43,9 @@ export default function useTable(props?: Props) {
 
   const [selected, setSelected] = useState<string[]>(props?.defaultSelected || []);
 
-  const onSort = (id: string) => {
+  const onSort = (id: keyof T) => {
     const isAsc = orderBy === id && order === 'asc';
-    if (id !== '') {
+    if (id !== undefined) {
       setOrder(isAsc ? 'desc' : 'asc');
       setOrderBy(id);
     }
@@ -124,13 +124,10 @@ export function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   return 0;
 }
 
-export function getComparator<Key extends keyof any>(
-  order: 'asc' | 'desc',
-  orderBy: Key
-): (a: { [key in Key]: number | string }, b: { [key in Key]: number | string }) => number {
+export function getComparator<T>(order: 'asc' | 'desc', orderBy: keyof T) {
   return order === 'desc'
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
+    ? (a: T, b: T) => descendingComparator(a, b, orderBy)
+    : (a: T, b: T) => -descendingComparator(a, b, orderBy);
 }
 
 export function emptyRows(page: number, rowsPerPage: number, arrayLength: number) {

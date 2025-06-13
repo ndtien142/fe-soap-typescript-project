@@ -135,7 +135,7 @@ export default function UserList() {
     <Page title="Người dùng: Danh sách">
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <HeaderBreadcrumbs
-          heading="Người dùng Danh sách"
+          heading="Danh sách người dùng"
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             { name: 'Người dùng', href: PATH_DASHBOARD.user.list },
@@ -207,7 +207,7 @@ export default function UserList() {
                   headLabel={TABLE_HEAD}
                   rowCount={tableData.length}
                   numSelected={selected.length}
-                  onSort={onSort}
+                  // onSort={onSort}
                   onSelectAllRows={(checked) =>
                     onSelectAllRows(
                       checked,

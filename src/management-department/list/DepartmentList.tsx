@@ -122,7 +122,7 @@ export default function DepartmentList() {
     <Page title="Phòng ban: Danh sách">
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <HeaderBreadcrumbs
-          heading="Phòng ban Danh sách"
+          heading="Danh sách Phòng ban"
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             { name: 'Phòng ban', href: PATH_DASHBOARD.department.list },

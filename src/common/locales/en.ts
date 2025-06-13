@@ -41,6 +41,7 @@ const en = {
   analytics: `analytics`,
   ecommerce: `e-commerce`,
   management: `management`,
+  authorization: `authorization`,
   menu_level_1: `menu level 1`,
   menu_level_2a: `menu level 2a`,
   menu_level_2b: `menu level 2b`,

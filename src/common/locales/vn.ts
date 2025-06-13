@@ -47,6 +47,7 @@ const vn = {
   analytics: `phân tích`,
   ecommerce: `thương mại điện tử`,
   management: `quản lý`,
+  authorization: `phân quyền`,
   menu_level_1: `menu cấp 1`,
   menu_level_2a: `menu cấp 2a`,
   menu_level_2b: `menu cấp 2b`,

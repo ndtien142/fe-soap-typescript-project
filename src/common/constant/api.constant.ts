@@ -8,6 +8,7 @@ export const API_POLICIES = '/policies';
 // ROLE API CONSTANTS
 export const API_ROLE = '/role';
 export const API_ROLE_PERMISSION = '/role-permission';
+export const API_PERMISSION = '/permission';
 // USER API CONSTANTS
 export const API_USER = '/user';
 export const API_USER_PROFILE = '/user-profile';
@@ -39,3 +40,5 @@ export const API_LIQUIDATION_RECEIPT= '/liquidation-receipt';
 
 // REPAIR RECEIPT CONSTANT
 export const API_REPAIR_RECEIPT= '/repair-receipt'
+// Upload API CONSTANTS
+export const API_UPLOAD_MULTIPLE_IMAGE = '/file-image/equipment/multi';

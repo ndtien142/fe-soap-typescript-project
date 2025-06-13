@@ -9,6 +9,7 @@ import {
   UploadSingleFile,
   UploadProps,
   UploadMultiFileProps,
+  ButtonUploadImage,
 } from '../upload';
 
 // ----------------------------------------------------------------------
@@ -107,6 +108,44 @@ export function RHFUploadMultiFile({ name, ...other }: RHFUploadMultiFileProps) 
                 </FormHelperText>
               )
             }
+            {...other}
+          />
+        );
+      }}
+    />
+  );
+}
+
+// ----------------------------------------------------------------------
+
+interface RHFUploadMultiFileProps extends Omit<UploadMultiFileProps, 'files'> {
+  name: string;
+}
+
+export function RHFButtonUploadImage({ name, ...other }: RHFUploadMultiFileProps) {
+  const { control } = useFormContext();
+
+  return (
+    <Controller
+      name={name}
+      control={control}
+      render={({ field, fieldState: { error } }) => {
+        const checkError = !!error && !field.value;
+        return (
+          <ButtonUploadImage
+            accept={{ 'image/*': [] }}
+            files={field.value}
+            error={checkError}
+            helperText={
+              checkError && (
+                <FormHelperText error sx={{ px: 2 }}>
+                  {error?.message}
+                </FormHelperText>
+              )
+            }
+            onUpload={other.onUpload ?? (() => {})}
+            onRemove={other.onRemove ?? (() => {})}
+            onRemoveAll={other.onRemoveAll ?? (() => {})}
             {...other}
           />
         );

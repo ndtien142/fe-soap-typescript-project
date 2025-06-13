@@ -43,7 +43,7 @@ export default function UserNewEditForm({ isEdit, currentUser }: Props) {
 
   const { uploadImage } = useUploadImage();
 
-  const { data: listRole } = useGetAllRole();
+  const { data: listRole } = useGetAllRole({ page: 1, limit: 20 });
 
   const { showErrorSnackbar, showSuccessSnackbar } = useShowSnackbar();
   const { mutate: updateUser } = useBlockUser({

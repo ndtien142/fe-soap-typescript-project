@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import { useMemo, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { default as useMessage } from 'src/common/hooks/useMessage';
 // form
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -28,6 +29,8 @@ type Props = {
 export default function ImportReceiptNewEditForm({ isEdit, currentImportReceipt }: Props) {
   const navigate = useNavigate();
 
+  const { showErrorSnackbar, showSuccessSnackbar } = useMessage();
+
   const [loadingSave, setLoadingSave] = useState(false);
 
   const [loadingSend, setLoadingSend] = useState(false);
@@ -43,8 +46,15 @@ export default function ImportReceiptNewEditForm({ isEdit, currentImportReceipt 
         Yup.object().shape({
           code: Yup.string().required('Mã thiết bị là bắt buộc'),
           name: Yup.string().required('Tên thiết bị là bắt buộc'),
-          quantity: Yup.number().required('Số lượng là bắt buộc').min(1, 'Tối thiểu 1'),
-          price: Yup.number().required('Đơn giá là bắt buộc').min(0, 'Không âm'),
+          quantity: Yup.number()
+            .typeError('Số lượng phải là số')
+            .required('Số lượng là bắt buộc')
+            .integer('Số lượng phải là số nguyên')
+            .min(1, 'Số lượng phải lớn hơn 0'),
+          price: Yup.number()
+            .typeError('Đơn giá phải là số')
+            .required('Đơn giá là bắt buộc')
+            .min(0, 'Đơn giá không được âm'),
         })
       )
       .min(1, 'Vui lòng nhập ít nhất 1 thiết bị')
@@ -99,25 +109,6 @@ export default function ImportReceiptNewEditForm({ isEdit, currentImportReceipt 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEdit, currentImportReceipt]);
 
-  const handleSaveAsDraft = async (data: any) => {
-    setLoadingSave(true);
-
-    try {
-      // POST to API
-      await axiosInstance.post(API_IMPORT_RECEIPT, {
-        ...data,
-        status: 'requested',
-      });
-      reset();
-      setLoadingSave(false);
-      navigate(PATH_DASHBOARD.importReceipt.list);
-      // console.log(JSON.stringify(data, null, 2));
-    } catch (error) {
-      setLoadingSave(false);
-      console.error(error);
-    }
-  };
-
   const handleCreateAndSend = async (data: any) => {
     setLoadingSend(true);
 
@@ -126,10 +117,12 @@ export default function ImportReceiptNewEditForm({ isEdit, currentImportReceipt 
       await axiosInstance.post(API_IMPORT_RECEIPT, data);
       reset();
       setLoadingSend(false);
+      showSuccessSnackbar(isEdit ? 'Cập nhật thành công!' : 'Tạo mới thành công!');
       navigate(PATH_DASHBOARD.importReceipt.list);
       // console.log(JSON.stringify(data, null, 2));
     } catch (error) {
       setLoadingSend(false);
+      showErrorSnackbar('Có lỗi xảy ra, vui lòng thử lại!');
       console.error(error);
     }
   };
@@ -153,7 +146,7 @@ export default function ImportReceiptNewEditForm({ isEdit, currentImportReceipt 
 
       {!allDisabled && (
         <Stack justifyContent="flex-end" direction="row" spacing={2} sx={{ mt: 3 }}>
-          <LoadingButton
+          {/* <LoadingButton
             color="inherit"
             size="large"
             variant="contained"
@@ -161,7 +154,7 @@ export default function ImportReceiptNewEditForm({ isEdit, currentImportReceipt 
             onClick={handleSubmit(handleSaveAsDraft)}
           >
             Lưu nháp
-          </LoadingButton>
+          </LoadingButton> */}
 
           <LoadingButton
             size="large"

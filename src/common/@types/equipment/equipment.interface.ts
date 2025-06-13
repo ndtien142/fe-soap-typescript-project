@@ -14,6 +14,7 @@ export interface IEquipmentGroupDetail {
     id: number;
     name: string;
   };
+  images: string[];
   equipments: IEquipmentSerial[];
   isDeleted: boolean;
   isActive: boolean;
@@ -45,10 +46,28 @@ export interface IEquipmentDetailBySerial {
   status: string;
   importReceipt?: {
     id: number;
-    userCode: string;
-    approvedBy: string | null;
+    price?: string;
+    userRequested?: {
+      userCode: string;
+      username: string;
+      email: string | null;
+      phone: string | null;
+    };
+    approvedBy?: {
+      userCode: string;
+      username: string;
+      email: string | null;
+      phone: string | null;
+    } | null;
     receivedAt: string;
     note: string;
+    supplier?: {
+      name: string;
+      address: string;
+      description?: string;
+      phone?: string;
+      email?: string;
+    };
   };
   groupEquipment?: {
     code: string;
@@ -64,7 +83,7 @@ export interface IEquipmentDetailBySerial {
       name: string;
     };
   };
-  image?: string;
+  images?: string[];
 }
 
 export interface IDetailEquipmentSerialResponse {

@@ -11,7 +11,10 @@ import {
   TablePagination,
   FormControlLabel,
   CircularProgress,
+  Stack,
+  Divider,
 } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import HeaderBreadcrumbs from 'src/common/components/HeaderBreadcrumbs';
 import Page from 'src/common/components/Page';
 import Iconify from 'src/common/components/Iconify';
@@ -26,10 +29,30 @@ import BorrowEquipmentRow from './components/BorrowEquipmentRow';
 import { IBorrowReceipt } from 'src/common/@types/borrow-receipt/borrowReceipt.interface';
 import { TABLE_HEAD_BORROW_RECEIPTS } from '../common/constant';
 import BorrowEquipmentToolbar from './components/BorrowEquipmentToolbar';
+import BorrowReceiptAnalytic from 'src/common/components/ReceiptAnalytic';
+import { useGetReportReceipt } from 'src/common/hooks/useGetReportReceipt';
 
 const BorrowEquipmentList = () => {
   const { themeStretch } = useSettings();
   const navigate = useNavigate();
+  const theme = useTheme();
+
+  // Use report hook for borrow
+  const { data: reportData, isLoading: isReportLoading, fetchReport } = useGetReportReceipt();
+
+  // Fetch report on mount
+  React.useEffect(() => {
+    fetchReport('borrow');
+  }, [fetchReport]);
+
+  // Helper: get count by status from reportData
+  const getCountByStatus = (status: string) =>
+    reportData?.find((item: any) => item.status === status)?.count || 0;
+
+  // Total receipts from report
+  const totalReceipts = reportData
+    ? reportData.reduce((sum: number, item: any) => sum + (item.count || 0), 0)
+    : 0;
 
   const [filterUser, setFilterUser] = useState('');
   const [filterRoom, setFilterRoom] = useState('');
@@ -135,6 +158,40 @@ const BorrowEquipmentList = () => {
     setPage(0);
   };
 
+  // Status configs for analytic cards
+  const STATUS_CONFIGS = [
+    {
+      status: 'requested',
+      label: 'Đã yêu cầu',
+      icon: 'eva:clock-fill',
+      color: theme.palette.info.main,
+    },
+    {
+      status: 'approved',
+      label: 'Đã duyệt',
+      icon: 'eva:checkmark-circle-2-fill',
+      color: theme.palette.success.main,
+    },
+    {
+      status: 'processing',
+      label: 'Đang xử lý',
+      icon: 'eva:settings-2-fill',
+      color: theme.palette.warning.main,
+    },
+    {
+      status: 'rejected',
+      label: 'Từ chối',
+      icon: 'eva:close-circle-fill',
+      color: theme.palette.error.main,
+    },
+    {
+      status: 'borrowed',
+      label: 'Đã mượn',
+      icon: 'eva:archive-fill',
+      color: theme.palette.secondary.main,
+    },
+  ];
+
   return (
     <Page title="Danh sách phiếu mượn thiết bị">
       <Container maxWidth={themeStretch ? false : 'lg'}>
@@ -156,6 +213,40 @@ const BorrowEquipmentList = () => {
             </Button>
           }
         />
+
+        {/* Analytic section */}
+        <Card sx={{ mb: 5 }}>
+          <Scrollbar>
+            <Stack
+              direction="row"
+              divider={<Divider orientation="vertical" flexItem sx={{ borderStyle: 'dashed' }} />}
+              sx={{ py: 2 }}
+            >
+              <BorrowReceiptAnalytic
+                icon="ic:round-receipt"
+                status="Tổng"
+                count={totalReceipts}
+                color={theme.palette.primary.main}
+                total={totalReceipts}
+              />
+              {STATUS_CONFIGS.map((cfg) => (
+                <BorrowReceiptAnalytic
+                  key={cfg.status}
+                  icon={cfg.icon}
+                  status={cfg.label}
+                  count={getCountByStatus(cfg.status)}
+                  color={cfg.color}
+                  total={totalReceipts}
+                />
+              ))}
+            </Stack>
+            {isReportLoading && (
+              <Box sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>
+                <CircularProgress size={24} />
+              </Box>
+            )}
+          </Scrollbar>
+        </Card>
 
         <Card>
           <BorrowEquipmentToolbar

@@ -37,3 +37,6 @@ export const API_ROOM = '/room';
 
 // Upload API CONSTANTS
 export const API_UPLOAD_MULTIPLE_IMAGE = '/file-image/equipment/multi';
+
+// Report API CONSTANTS
+export const API_REPORT_RECEIPT = '/report';

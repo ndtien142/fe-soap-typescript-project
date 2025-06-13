@@ -19,6 +19,7 @@ import DepartmentCreate from 'src/management-department/create';
 import LiquidationReceiptList from 'src/liquidation-receipt/list';
 import LiquidationReceiptCreate from 'src/liquidation-receipt/create';
 import RepairReceiptCreate from 'src/repair-receipt/create';
+import RepairReceiptList from 'src/repair-receipt/list';
 
 // ----------------------------------------------------------------------
 
@@ -143,6 +144,7 @@ export default function Router() {
           path: 'repair-receipt',
           children: [
             { element: <Navigate to="/dashboard/repair-receipt/list" replace />, index: true },
+            { path: 'list', element: <RepairReceiptList /> },
             { path: 'new', element: <RepairReceiptCreate /> },
           ],
         },
@@ -287,7 +289,7 @@ const BorrowReceiptScanSerialNumber = Loadable(
 );
 
 // GENERAL
-const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));
+const GeneralApp = Loadable(lazy(() => import('../../home')));
 const GeneralEcommerce = Loadable(lazy(() => import('../pages/dashboard/GeneralEcommerce')));
 const GeneralAnalytics = Loadable(lazy(() => import('../pages/dashboard/GeneralAnalytics')));
 const GeneralBanking = Loadable(lazy(() => import('../pages/dashboard/GeneralBanking')));

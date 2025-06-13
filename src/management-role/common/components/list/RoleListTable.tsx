@@ -19,7 +19,7 @@ import Page from 'src/common/components/Page';
 import Iconify from 'src/common/components/Iconify';
 import useSettings from 'src/common/hooks/useSettings';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import Scrollbar from 'src/common/components/Scrollbar';
 import { TableEmptyRows, TableHeadCustom, TableNoData } from 'src/common/components/table';
 import useTable, { emptyRows, getComparator } from 'src/common/hooks/useTable';
@@ -60,6 +60,7 @@ interface IFormValues {
 
 const RoleListTable = () => {
   const { themeStretch } = useSettings();
+  const navigate = useNavigate();
 
   const methods = useForm<IFormValues>();
 
@@ -83,7 +84,10 @@ const RoleListTable = () => {
   const [filterName, setFilterName] = useState('');
 
   // Fetch roles
-  const { data, isLoading, isError } = useGetAllRole();
+  const { data, isLoading, isError } = useGetAllRole({
+    page: page + 1,
+    limit: rowsPerPage,
+  });
   const roleList: IRole[] = data?.metadata?.metadata || [];
 
   // Filter & sort
@@ -172,10 +176,10 @@ const RoleListTable = () => {
                             key={row.id}
                             row={row}
                             onViewRow={() => {
-                              /* TODO: implement view handler */
+                              navigate(PATH_DASHBOARD.role.view(row.id));
                             }}
                             onEditRow={() => {
-                              /* TODO: implement edit handler */
+                              navigate(PATH_DASHBOARD.role.edit(row.id));
                             }}
                           />
                         ))}

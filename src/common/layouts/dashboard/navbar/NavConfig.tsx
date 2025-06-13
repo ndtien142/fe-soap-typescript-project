@@ -27,6 +27,8 @@ const ICONS = {
   dashboard: getIcon('ic_dashboard'),
   menuItem: getIcon('ic_menu_item'),
   borrowReceipt: getIcon('ic_borrow_receipt'),
+  role: getIcon('ic_role'),
+  permission: getIcon('ic_permissions'),
 };
 
 const navConfig = [
@@ -78,20 +80,6 @@ const navConfig = [
           { title: 'Tạo phiếu mượn', path: PATH_DASHBOARD.borrowReceipt.new },
         ],
       },
-      // USER
-      {
-        title: 'user',
-        path: PATH_DASHBOARD.user.root,
-        icon: ICONS.user,
-        children: [
-          // { title: 'profile', path: PATH_DASHBOARD.user.profile },
-          // { title: 'cards', path: PATH_DASHBOARD.user.cards },
-          { title: 'list', path: PATH_DASHBOARD.user.list },
-          { title: 'create', path: PATH_DASHBOARD.user.new },
-          { title: 'edit', path: PATH_DASHBOARD.user.demoEdit },
-          // { title: 'account', path: PATH_DASHBOARD.user.account },
-        ],
-      },
 
       // E-COMMERCE
       {
@@ -130,6 +118,47 @@ const navConfig = [
           { title: 'posts', path: PATH_DASHBOARD.blog.posts },
           { title: 'post', path: PATH_DASHBOARD.blog.demoView },
           { title: 'create', path: PATH_DASHBOARD.blog.new },
+        ],
+      },
+    ],
+  },
+
+  // AUTHORIZATION
+  // ----------------------------------------------------------------------
+  {
+    subheader: 'authorization',
+    items: [
+      // Group Equipment
+      {
+        title: 'Vai trò',
+        path: PATH_DASHBOARD.role.root,
+        icon: ICONS.role,
+        children: [
+          { title: 'Danh sách', path: PATH_DASHBOARD.role.list },
+          { title: 'Tạo vai trò', path: PATH_DASHBOARD.role.new },
+        ],
+      },
+      {
+        title: 'Quyền',
+        path: PATH_DASHBOARD.permission.root,
+        icon: ICONS.permission,
+        children: [
+          { title: 'Danh sách', path: PATH_DASHBOARD.permission.list },
+          { title: 'Tạo quyền', path: PATH_DASHBOARD.permission.new },
+        ],
+      },
+      // USER
+      {
+        title: 'user',
+        path: PATH_DASHBOARD.user.root,
+        icon: ICONS.user,
+        children: [
+          // { title: 'profile', path: PATH_DASHBOARD.user.profile },
+          // { title: 'cards', path: PATH_DASHBOARD.user.cards },
+          { title: 'list', path: PATH_DASHBOARD.user.list },
+          { title: 'create', path: PATH_DASHBOARD.user.new },
+          { title: 'edit', path: PATH_DASHBOARD.user.demoEdit },
+          // { title: 'account', path: PATH_DASHBOARD.user.account },
         ],
       },
     ],

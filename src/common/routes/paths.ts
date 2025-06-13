@@ -81,6 +81,20 @@ export const PATH_DASHBOARD = {
       path(ROOTS_DASHBOARD, `/unit-of-measure/${unitOfMeasureCode}`),
     new: path(ROOTS_DASHBOARD, '/unit-of-measure/new'),
   },
+  role: {
+    root: path(ROOTS_DASHBOARD, '/role'),
+    list: path(ROOTS_DASHBOARD, '/role/list'),
+    new: path(ROOTS_DASHBOARD, '/role/new'),
+    view: (roleCode: string) => path(ROOTS_DASHBOARD, `/role/${roleCode}`),
+    edit: (roleCode: string) => path(ROOTS_DASHBOARD, `/role/${roleCode}/edit`),
+  },
+  permission: {
+    root: path(ROOTS_DASHBOARD, '/permission'),
+    list: path(ROOTS_DASHBOARD, '/permission/list'),
+    new: path(ROOTS_DASHBOARD, '/permission/new'),
+    view: (permissionCode: string) => path(ROOTS_DASHBOARD, `/permission/${permissionCode}`),
+    edit: (permissionCode: string) => path(ROOTS_DASHBOARD, `/permission/${permissionCode}/edit`),
+  },
   general: {
     app: path(ROOTS_DASHBOARD, '/app'),
     ecommerce: path(ROOTS_DASHBOARD, '/ecommerce'),

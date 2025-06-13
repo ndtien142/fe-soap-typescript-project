@@ -135,6 +135,16 @@ export default function Router() {
           ],
         },
         {
+          path: 'role',
+          children: [
+            { element: <Navigate to="/dashboard/role/list" replace />, index: true },
+            { path: 'list', element: <RoleList /> },
+            // { path: 'new', element: <RoleCreate /> },
+            // { path: ':id', element: <RoleDetails /> },
+            // { path: ':id/edit', element: <RoleEdit /> },
+          ],
+        },
+        {
           path: 'invoice',
           children: [
             { element: <Navigate to="/dashboard/invoice/list" replace />, index: true },
@@ -215,6 +225,9 @@ const NewPassword = Loadable(lazy(() => import('../pages/auth/NewPassword')));
 const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')));
 
 // DASHBOARD
+
+// ROLE
+const RoleList = Loadable(lazy(() => import('../../management-role/list')));
 
 // EQUIPMENT
 const GroupEquipmentList = Loadable(lazy(() => import('../../equipment/list-group-equipment')));

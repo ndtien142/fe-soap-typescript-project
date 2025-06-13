@@ -109,6 +109,14 @@ export default function Router() {
           ],
         },
         {
+          path: 'transfer-receipt',
+          children: [
+            { element: <Navigate to="/dashboard/transfer-receipt/list" replace />, index: true },
+            { path: 'list', element: <TransferReceiptList /> },
+            { path: 'new', element: <TransferReceiptCreate /> },
+          ],
+        },
+        {
           path: 'user',
           children: [
             { element: <Navigate to="/dashboard/user/profile" replace />, index: true },
@@ -225,6 +233,12 @@ const ImportReceiptEdit = Loadable(lazy(() => import('../../import-equipment-rec
 // BORROW RECEIPT
 const BorrowReceiptList = Loadable(lazy(() => import('../../borrow-equipment-receipt/list')));
 const BorrowReceiptCreate = Loadable(lazy(() => import('../../borrow-equipment-receipt/create')));
+
+// TRANSFER RECEIPT
+const TransferReceiptList = Loadable(lazy(() => import('../../transfer-equipment-receipt/list')));
+const TransferReceiptCreate = Loadable(
+  lazy(() => import('../../transfer-equipment-receipt/create'))
+);
 
 // GENERAL
 const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));

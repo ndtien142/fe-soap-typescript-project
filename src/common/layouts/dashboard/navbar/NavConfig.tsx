@@ -78,6 +78,15 @@ const navConfig = [
           { title: 'Tạo phiếu mượn', path: PATH_DASHBOARD.borrowReceipt.new },
         ],
       },
+      {
+        title: 'Phiếu chuyen thiet bi',
+        path: PATH_DASHBOARD.transferReceipt.root,
+        icon: ICONS.borrowReceipt,
+        children: [
+          { title: 'Danh sách', path: PATH_DASHBOARD.transferReceipt.list },
+          { title: 'Tạo phiếu chuyển', path: PATH_DASHBOARD.transferReceipt.new },
+        ],
+      },
       // USER
       {
         title: 'user',

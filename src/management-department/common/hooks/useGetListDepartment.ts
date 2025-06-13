@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
-import { fetchDepartments } from '../department.service'; // Dịch vụ lấy danh sách phòng ban
+import { fetchDepartments } from '../department.service'; 
 import { QUERY_KEYS } from 'src/common/constant/queryKeys.constant';
-import { IParamsDepartment } from '../department.interface'; // Interface của phòng ban
+import { IParamsDepartment } from '../department.interface'; 
 
 const useGetListDepartment = (params: IParamsDepartment) =>
   useQuery([QUERY_KEYS.LIST_DEPARTMENT, params], () => fetchDepartments(params));

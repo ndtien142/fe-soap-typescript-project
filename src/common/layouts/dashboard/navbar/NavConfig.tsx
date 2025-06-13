@@ -80,22 +80,57 @@ const navConfig = [
           { title: 'Tạo phiếu mượn', path: PATH_DASHBOARD.borrowReceipt.new },
         ],
       },
-
-      // DEPARTMENT
+      // USER
       {
-        title: 'Quản lý phòng ban',
+        title: 'user',
         path: PATH_DASHBOARD.user.root,
         icon: ICONS.user,
         children: [
           // { title: 'profile', path: PATH_DASHBOARD.user.profile },
           // { title: 'cards', path: PATH_DASHBOARD.user.cards },
-          { title: 'Danh sách phòng ban', path: PATH_DASHBOARD.department.list },
+          { title: 'list', path: PATH_DASHBOARD.user.list },
+          { title: 'create', path: PATH_DASHBOARD.user.new },
+          { title: 'edit', path: PATH_DASHBOARD.user.demoEdit },
+          // { title: 'account', path: PATH_DASHBOARD.user.account },
+        ],
+      },
+
+      // DEPARTMENT
+      {
+        title: 'Quản lý phòng ban',
+        path: PATH_DASHBOARD.user.root,
+        icon: ICONS.banking,
+        children: [
+          // { title: 'profile', path: PATH_DASHBOARD.user.profile },
+          // { title: 'cards', path: PATH_DASHBOARD.user.cards },
+          { title: 'Danh sách', path: PATH_DASHBOARD.department.list },
           { title: 'Tạo phòng ban', path: PATH_DASHBOARD.department.new },
           { title: 'Sửa phòng ban', path: PATH_DASHBOARD.department.demoEdit },
           // { title: 'account', path: PATH_DASHBOARD.user.account },
         ],
       },
 
+      // LIQUIDATION RECEIPT
+      {
+        title: 'Phiếu thanh lý',
+        path: PATH_DASHBOARD.liquidationReceipt.root,
+        icon: ICONS.borrowReceipt,
+        children: [
+          { title: 'Danh sách', path: PATH_DASHBOARD.liquidationReceipt.list },
+          { title: 'Tạo phiếu thanh toán', path: PATH_DASHBOARD.liquidationReceipt.new },
+        ],
+      },
+
+      // REPAIR RECEIPT
+      {
+        title: 'Phiếu sửa chữa thiết bị',
+        path: PATH_DASHBOARD.repairReceipt.root,
+        icon: ICONS.borrowReceipt,
+        children: [
+          { title: 'Danh sách', path: PATH_DASHBOARD.repairReceipt.list },
+          { title: 'Tạo phiếu thanh toán', path: PATH_DASHBOARD.repairReceipt.new },
+        ],
+      },
 
       // E-COMMERCE
       {

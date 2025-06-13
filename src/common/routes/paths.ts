@@ -60,6 +60,23 @@ export const PATH_DASHBOARD = {
     edit: (departmentId: string) => path(ROOTS_DASHBOARD, `/department/${departmentId}/edit`),
     demoEdit: path(ROOTS_DASHBOARD, `/department/reece-chung/edit`),
   },
+
+  liquidationReceipt: {
+    root: path(ROOTS_DASHBOARD, '/liquidation-receipt'),
+    list: path(ROOTS_DASHBOARD, '/liquidation-receipt/list'),
+    new: path(ROOTS_DASHBOARD, '/liquidation-receipt/new'),
+    view: (id: string) => path(ROOTS_DASHBOARD, `/liquidation-receipt/${id}`),
+    edit: (id: string) => path(ROOTS_DASHBOARD, `/liquidation-receipt/${id}/edit`),
+  },
+
+  repairReceipt: {
+    root: path(ROOTS_DASHBOARD, '/repair-receipt'),
+    list: path(ROOTS_DASHBOARD, '/repair-receipt/list'),
+    new: path(ROOTS_DASHBOARD, '/repair-receipt/new'),
+    view: (id: string) => path(ROOTS_DASHBOARD, `/repair-receipt/${id}`),
+    edit: (id: string) => path(ROOTS_DASHBOARD, `/repair-receipt/${id}/edit`),
+  },
+
   borrowReceipt: {
     root: path(ROOTS_DASHBOARD, '/borrow-receipt'),
     list: path(ROOTS_DASHBOARD, '/borrow-receipt/list'),

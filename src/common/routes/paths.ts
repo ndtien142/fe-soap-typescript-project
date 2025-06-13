@@ -42,6 +42,8 @@ export const PATH_DASHBOARD = {
     view: (groupEquipmentCode: string) =>
       path(ROOTS_DASHBOARD, `/group-equipment/${groupEquipmentCode}`),
     new: path(ROOTS_DASHBOARD, '/group-equipment/new'),
+    serialItem: (equipmentCode: string, serialNumber: string) =>
+      path(ROOTS_DASHBOARD, `/group-equipment/${equipmentCode}/${serialNumber}`),
   },
   importReceipt: {
     root: path(ROOTS_DASHBOARD, '/import-receipt'),
@@ -50,12 +52,38 @@ export const PATH_DASHBOARD = {
     view: (id: string) => path(ROOTS_DASHBOARD, `/import-receipt/${id}`),
     edit: (id: string) => path(ROOTS_DASHBOARD, `/import-receipt/${id}/edit`),
   },
+  department: {
+    root: path(ROOTS_DASHBOARD, '/department'),
+    list: path(ROOTS_DASHBOARD, '/department/list'),
+    new: path(ROOTS_DASHBOARD, '/department/new'),
+    view: (departmentId: string) => path(ROOTS_DASHBOARD, `/department/${departmentId}`),
+    edit: (departmentId: string) => path(ROOTS_DASHBOARD, `/department/${departmentId}/edit`),
+    demoEdit: path(ROOTS_DASHBOARD, `/department/reece-chung/edit`),
+  },
+
+  liquidationReceipt: {
+    root: path(ROOTS_DASHBOARD, '/liquidation-receipt'),
+    list: path(ROOTS_DASHBOARD, '/liquidation-receipt/list'),
+    new: path(ROOTS_DASHBOARD, '/liquidation-receipt/new'),
+    view: (id: string) => path(ROOTS_DASHBOARD, `/liquidation-receipt/${id}`),
+    edit: (id: string) => path(ROOTS_DASHBOARD, `/liquidation-receipt/${id}/edit`),
+  },
+
+  repairReceipt: {
+    root: path(ROOTS_DASHBOARD, '/repair-receipt'),
+    list: path(ROOTS_DASHBOARD, '/repair-receipt/list'),
+    new: path(ROOTS_DASHBOARD, '/repair-receipt/new'),
+    view: (id: string) => path(ROOTS_DASHBOARD, `/repair-receipt/${id}`),
+    edit: (id: string) => path(ROOTS_DASHBOARD, `/repair-receipt/${id}/edit`),
+  },
+
   borrowReceipt: {
     root: path(ROOTS_DASHBOARD, '/borrow-receipt'),
     list: path(ROOTS_DASHBOARD, '/borrow-receipt/list'),
     new: path(ROOTS_DASHBOARD, '/borrow-receipt/new'),
     view: (id: string) => path(ROOTS_DASHBOARD, `/borrow-receipt/${id}`),
     edit: (id: string) => path(ROOTS_DASHBOARD, `/borrow-receipt/${id}/edit`),
+    scan: (id: string) => path(ROOTS_DASHBOARD, `/borrow-receipt/${id}/scan`),
   },
   transferReceipt:{
     root: path(ROOTS_DASHBOARD, '/transfer-receipt'),
@@ -84,6 +112,20 @@ export const PATH_DASHBOARD = {
     view: (unitOfMeasureCode: string) =>
       path(ROOTS_DASHBOARD, `/unit-of-measure/${unitOfMeasureCode}`),
     new: path(ROOTS_DASHBOARD, '/unit-of-measure/new'),
+  },
+  role: {
+    root: path(ROOTS_DASHBOARD, '/role'),
+    list: path(ROOTS_DASHBOARD, '/role/list'),
+    new: path(ROOTS_DASHBOARD, '/role/new'),
+    view: (roleCode: string) => path(ROOTS_DASHBOARD, `/role/${roleCode}`),
+    edit: (roleCode: string) => path(ROOTS_DASHBOARD, `/role/${roleCode}/edit`),
+  },
+  permission: {
+    root: path(ROOTS_DASHBOARD, '/permission'),
+    list: path(ROOTS_DASHBOARD, '/permission/list'),
+    new: path(ROOTS_DASHBOARD, '/permission/new'),
+    view: (permissionCode: string) => path(ROOTS_DASHBOARD, `/permission/${permissionCode}`),
+    edit: (permissionCode: string) => path(ROOTS_DASHBOARD, `/permission/${permissionCode}/edit`),
   },
   general: {
     app: path(ROOTS_DASHBOARD, '/app'),

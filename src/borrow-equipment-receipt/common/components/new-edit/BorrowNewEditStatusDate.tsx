@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
-import { Stack, MenuItem } from '@mui/material';
-import { RHFTextField, RHFSelect, RHFEditor } from 'src/common/components/hook-form';
+import { Stack } from '@mui/material';
+import { RHFTextField, RHFEditor } from 'src/common/components/hook-form';
 
 // ----------------------------------------------------------------------
 
@@ -26,10 +26,7 @@ export default function BorrowNewEditStatusDate() {
           InputLabelProps={{ shrink: true }}
           disabled={false}
         />
-        <RHFSelect name="type" label="Loại mượn" disabled={false}>
-          <MenuItem value="specific">Cụ thể</MenuItem>
-          <MenuItem value="random">Ngẫu nhiên</MenuItem>
-        </RHFSelect>
+        {/* Status is always 'requested' on create, so no select needed */}
       </Stack>
       <RHFEditor name="note" />
     </Stack>

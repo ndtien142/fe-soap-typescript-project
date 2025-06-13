@@ -9,6 +9,11 @@ import BorrowNewEditDetails from './BorrowNewEditDetails';
 import { IBorrowReceiptRequest } from '../../../../common/@types/borrow-receipt/borrowReceipt.interface';
 import { FormProvider } from '../../../../common/components/hook-form';
 import BorrowFormRoom from './BorrowFormRoom';
+import axiosInstance from 'src/common/utils/axios';
+import { API_BORROW_RECEIPT } from 'src/common/constant/api.constant';
+import { default as useMessage } from 'src/common/hooks/useMessage';
+import { useNavigate } from 'react-router-dom';
+import { PATH_DASHBOARD } from 'src/common/routes/paths';
 // ----------------------------------------------------------------------
 
 type Props = {
@@ -20,12 +25,14 @@ const BorrowReceiptNewEditForm = ({ isEdit, currentBorrowReceipt }: Props) => {
   const [loadingSave, setLoadingSave] = useState(false);
   const [loadingSend, setLoadingSend] = useState(false);
 
+  const { showErrorSnackbar, showSuccessSnackbar } = useMessage();
+  const navigate = useNavigate();
+
   const BorrowReceiptSchema = Yup.object().shape({
     borrowDate: Yup.string().required('Ngày mượn là bắt buộc'),
     returnDate: Yup.string().required('Ngày trả là bắt buộc'),
     note: Yup.string(),
     roomId: Yup.string().required('Phòng là bắt buộc'),
-    type: Yup.string().oneOf(['specific', 'random']).required(),
     groups: Yup.array()
       .of(
         Yup.object().shape({
@@ -43,7 +50,6 @@ const BorrowReceiptNewEditForm = ({ isEdit, currentBorrowReceipt }: Props) => {
       returnDate: currentBorrowReceipt?.returnDate || '',
       note: currentBorrowReceipt?.note || '',
       roomId: currentBorrowReceipt?.roomId || '',
-      type: currentBorrowReceipt?.type || 'specific',
       groups: currentBorrowReceipt?.groups || [{ groupEquipmentCode: '', quantity: 1 }],
     }),
     [currentBorrowReceipt]
@@ -58,7 +64,7 @@ const BorrowReceiptNewEditForm = ({ isEdit, currentBorrowReceipt }: Props) => {
     reset,
     watch,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = methods;
 
   useEffect(() => {
@@ -86,16 +92,19 @@ const BorrowReceiptNewEditForm = ({ isEdit, currentBorrowReceipt }: Props) => {
     }
   };
 
+  console.log('Form errors:', errors);
+
   const handleCreateAndSend = async (data: IBorrowReceiptRequest) => {
     setLoadingSend(true);
     try {
-      // await axiosInstance.post(API_BORROW_RECEIPT, data);
+      await axiosInstance.post(API_BORROW_RECEIPT, data);
+      showSuccessSnackbar('Tạo phiếu mượn thành công!');
       reset();
       setLoadingSend(false);
-      // navigate(PATH_DASHBOARD.borrowReceipt.list);
+      navigate(PATH_DASHBOARD.borrowReceipt.list);
     } catch (error) {
       setLoadingSend(false);
-      // handle error
+      showErrorSnackbar('Tạo phiếu mượn thất bại!');
     }
   };
 
@@ -108,7 +117,7 @@ const BorrowReceiptNewEditForm = ({ isEdit, currentBorrowReceipt }: Props) => {
       </Card>
       {!allDisabled && (
         <Stack justifyContent="flex-end" direction="row" spacing={2} sx={{ mt: 3 }}>
-          <LoadingButton
+          {/* <LoadingButton
             color="inherit"
             size="large"
             variant="contained"
@@ -116,7 +125,7 @@ const BorrowReceiptNewEditForm = ({ isEdit, currentBorrowReceipt }: Props) => {
             onClick={handleSubmit(handleSaveAsDraft)}
           >
             Lưu nháp
-          </LoadingButton>
+          </LoadingButton> */}
           <LoadingButton
             size="large"
             variant="contained"

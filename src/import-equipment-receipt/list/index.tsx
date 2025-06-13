@@ -11,6 +11,8 @@ import {
   TablePagination,
   FormControlLabel,
   CircularProgress,
+  Stack,
+  Divider,
 } from '@mui/material';
 import HeaderBreadcrumbs from 'src/common/components/HeaderBreadcrumbs';
 import Page from 'src/common/components/Page';
@@ -19,8 +21,8 @@ import useSettings from 'src/common/hooks/useSettings';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import Scrollbar from 'src/common/components/Scrollbar';
-import useTable, { emptyRows, getComparator } from 'src/common/hooks/useTable';
-import { TableEmptyRows, TableHeadCustom, TableNoData } from 'src/common/components/table';
+import useTable, { getComparator } from 'src/common/hooks/useTable';
+import { TableHeadCustom, TableNoData } from 'src/common/components/table';
 import { applySortFilterImportReceipts } from '../common/utils';
 import { useGetListImportReceipts } from '../common/hooks/useGetListImportReceipt';
 import {
@@ -31,10 +33,15 @@ import ImportReceiptRow from './components/ImportReceiptRow';
 import ImportReceiptTableToolbar from '../common/components/list/ImportReceiptTableToolbar';
 import { useGetListSuppliers } from '../common/hooks/useGetListSupplier';
 import { IImportReceipt } from 'src/common/@types/import-receipt/import-receipt.interface';
+import sumBy from 'lodash/sumBy';
+import { useTheme } from '@mui/material/styles';
+import ImportReceiptAnalytic from '../../common/components/ReceiptAnalytic';
+import { useGetReportReceipt } from 'src/common/hooks/useGetReportReceipt';
 
 const ListImportReceipts = () => {
   const { themeStretch } = useSettings();
   const navigate = useNavigate();
+  const theme = useTheme();
 
   const [filterCode, setFilterCode] = useState('');
   const [filterSupplier, setFilterSupplier] = useState('');
@@ -60,7 +67,7 @@ const ListImportReceipts = () => {
   // Dữ liệu từ API
   const [tableData, setTableData] = useState<IImportReceipt[]>([]);
 
-  const { data, isLoading, fetchData } = useGetListImportReceipts({
+  const { data, isLoading, fetchData, meta } = useGetListImportReceipts({
     onSuccess: () => {},
     onError: () => {},
   });
@@ -69,6 +76,11 @@ const ListImportReceipts = () => {
     onSuccess: () => {},
     onError: () => {},
   });
+
+  // Use report hook
+  const { data: reportData, isLoading: isReportLoading, fetchReport } = useGetReportReceipt();
+
+  console.log('reportData', reportData);
 
   // Fetch data when page, rowsPerPage, or filterCode changes
   useEffect(() => {
@@ -88,6 +100,11 @@ const ListImportReceipts = () => {
       setTableData(data);
     }
   }, [data]);
+
+  // Fetch report on mount
+  React.useEffect(() => {
+    fetchReport('import');
+  }, [fetchReport]);
 
   const dataFiltered = applySortFilterImportReceipts({
     tableData,
@@ -122,6 +139,49 @@ const ListImportReceipts = () => {
     setPage(0);
   };
 
+  // Helper: get count by status from reportData
+  const getCountByStatus = (status: string) =>
+    reportData?.find((item: any) => item.status === status)?.count || 0;
+
+  // Total receipts from report
+  const totalReceipts = reportData
+    ? reportData.reduce((sum: number, item: any) => sum + (item.count || 0), 0)
+    : 0;
+
+  // Status configs for analytic cards
+  const STATUS_CONFIGS = [
+    {
+      status: 'received',
+      label: 'Đã nhận hàng',
+      icon: 'eva:archive-fill',
+      color: theme.palette.info.main,
+    },
+    {
+      status: 'approved',
+      label: 'Đã duyệt',
+      icon: 'eva:checkmark-circle-2-fill',
+      color: theme.palette.success.main,
+    },
+    {
+      status: 'requested',
+      label: 'Đã yêu cầu',
+      icon: 'eva:clock-fill',
+      color: theme.palette.warning.main,
+    },
+    {
+      status: 'rejected',
+      label: 'Đã từ chối',
+      icon: 'eva:close-circle-fill',
+      color: theme.palette.error.main,
+    },
+    {
+      status: 'returned',
+      label: 'Trả hàng',
+      icon: 'eva:undo-fill',
+      color: theme.palette.secondary.main,
+    },
+  ];
+
   const isNotFound = !dataFiltered.length;
 
   return (
@@ -145,6 +205,40 @@ const ListImportReceipts = () => {
             </Button>
           }
         />
+
+        {/* Analytic section */}
+        <Card sx={{ mb: 5 }}>
+          <Scrollbar>
+            <Stack
+              direction="row"
+              divider={<Divider orientation="vertical" flexItem sx={{ borderStyle: 'dashed' }} />}
+              sx={{ py: 2 }}
+            >
+              <ImportReceiptAnalytic
+                icon="ic:round-receipt"
+                status="Tổng"
+                count={totalReceipts}
+                color={theme.palette.primary.main}
+                total={totalReceipts}
+              />
+              {STATUS_CONFIGS.map((cfg) => (
+                <ImportReceiptAnalytic
+                  key={cfg.status}
+                  icon={cfg.icon}
+                  status={cfg.label}
+                  count={getCountByStatus(cfg.status)}
+                  color={cfg.color}
+                  total={totalReceipts}
+                />
+              ))}
+            </Stack>
+            {isReportLoading && (
+              <Box sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>
+                <CircularProgress size={24} />
+              </Box>
+            )}
+          </Scrollbar>
+        </Card>
 
         <Card>
           <ImportReceiptTableToolbar
@@ -176,26 +270,19 @@ const ListImportReceipts = () => {
                       onSort={onSort}
                     />
                     <TableBody>
-                      {dataFiltered
-                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        .map((row) => (
-                          <ImportReceiptRow
-                            key={row.id}
-                            row={row}
-                            onEditRow={() => {
-                              navigate(PATH_DASHBOARD.importReceipt.edit(String(row.id)));
-                            }}
-                            onViewRow={() => {
-                              console.log('View row', row);
-                              navigate(PATH_DASHBOARD.importReceipt.view(String(row.id)));
-                            }}
-                          />
-                        ))}
-
-                      <TableEmptyRows
-                        height={denseHeight}
-                        emptyRows={emptyRows(page, rowsPerPage, tableData.length)}
-                      />
+                      {dataFiltered.map((row) => (
+                        <ImportReceiptRow
+                          key={row.id}
+                          row={row}
+                          onEditRow={() => {
+                            navigate(PATH_DASHBOARD.importReceipt.edit(String(row.id)));
+                          }}
+                          onViewRow={() => {
+                            console.log('View row', row);
+                            navigate(PATH_DASHBOARD.importReceipt.view(String(row.id)));
+                          }}
+                        />
+                      ))}
 
                       <TableNoData isNotFound={isNotFound} />
                     </TableBody>
@@ -207,7 +294,7 @@ const ListImportReceipts = () => {
                 <TablePagination
                   rowsPerPageOptions={[5, 10, 25]}
                   component="div"
-                  count={dataFiltered.length}
+                  count={meta?.totalItems || 0}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onPageChange={onChangePage}

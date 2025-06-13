@@ -14,6 +14,11 @@ import { PATH_AFTER_LOGIN } from '../../config';
 import LoadingScreen from '../components/LoadingScreen';
 import { useSelector } from '../redux/store';
 import { selectIsAuthenticated } from 'src/auth/login/auth.slice';
+import DepartmentList from 'src/management-department/list/DepartmentList';
+import DepartmentCreate from 'src/management-department/create';
+import LiquidationReceiptList from 'src/liquidation-receipt/list';
+import LiquidationReceiptCreate from 'src/liquidation-receipt/create';
+import RepairReceiptCreate from 'src/repair-receipt/create';
 
 // ----------------------------------------------------------------------
 
@@ -98,6 +103,8 @@ export default function Router() {
             { element: <Navigate to="/dashboard/group-equipment/list" replace />, index: true },
             { path: 'list', element: <GroupEquipmentList /> },
             { path: 'new', element: <GroupEquipmentCreate /> },
+            { path: ':id', element: <EquipmentViewPage /> },
+            { path: ':id/:serialNumber', element: <EquipmentDetailSerial /> },
           ],
         },
         {
@@ -106,6 +113,8 @@ export default function Router() {
             { element: <Navigate to="/dashboard/borrow-receipt/list" replace />, index: true },
             { path: 'list', element: <BorrowReceiptList /> },
             { path: 'new', element: <BorrowReceiptCreate /> },
+            { path: ':id', element: <BorrowReceiptDetails /> },
+            { path: ':id/scan', element: <BorrowReceiptScanSerialNumber /> },
           ],
         },
         {
@@ -128,6 +137,37 @@ export default function Router() {
             // { path: 'account', element: <UserAccount /> },
           ],
         },
+
+        {
+          path: 'liquidation-receipt',
+          children: [
+            { element: <Navigate to="/dashboard/liquidation-receipt/list" replace />, index: true },
+            { path: 'list', element: <LiquidationReceiptList /> },
+            { path: 'new', element: <LiquidationReceiptCreate /> },
+          ],
+        },
+
+        {
+          path: 'repair-receipt',
+          children: [
+            { element: <Navigate to="/dashboard/repair-receipt/list" replace />, index: true },
+            { path: 'new', element: <RepairReceiptCreate /> },
+          ],
+        },
+
+        {
+          path: 'department',
+          children: [
+            { element: <Navigate to="/dashboard/department/profile" replace />, index: true },
+            // { path: 'profile', element: <UserProfile /> },
+            // { path: 'cards', element: <UserCards /> },
+            { path: 'list', element: <DepartmentList /> },
+            { path: 'new', element: <DepartmentCreate /> },
+            { path: ':name/edit', element: <DepartmentCreate /> },
+            // { path: 'account', element: <UserAccount /> },
+          ],
+        },
+
         {
           path: 'import-receipt',
           children: [
@@ -136,6 +176,16 @@ export default function Router() {
             { path: 'new', element: <ImportReceiptCreate /> },
             { path: ':id', element: <ImportReceiptDetails /> },
             { path: ':id/edit', element: <ImportReceiptEdit /> },
+          ],
+        },
+        {
+          path: 'role',
+          children: [
+            { element: <Navigate to="/dashboard/role/list" replace />, index: true },
+            { path: 'list', element: <RoleList /> },
+            { path: 'new', element: <RoleCreate /> },
+            // { path: ':id', element: <RoleDetails /> },
+            // { path: ':id/edit', element: <RoleEdit /> },
           ],
         },
         {
@@ -220,9 +270,15 @@ const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')));
 
 // DASHBOARD
 
+// ROLE
+const RoleList = Loadable(lazy(() => import('../../management-role/list')));
+const RoleCreate = Loadable(lazy(() => import('../../management-role/create')));
+
 // EQUIPMENT
 const GroupEquipmentList = Loadable(lazy(() => import('../../equipment/list-group-equipment')));
 const GroupEquipmentCreate = Loadable(lazy(() => import('../../equipment/create-group-equipment')));
+const EquipmentViewPage = Loadable(lazy(() => import('../../equipment/view')));
+const EquipmentDetailSerial = Loadable(lazy(() => import('../../equipment/detail-serial-item')));
 
 // IMPORT RECEIPT
 const ImportReceiptList = Loadable(lazy(() => import('../../import-equipment-receipt/list')));
@@ -233,6 +289,10 @@ const ImportReceiptEdit = Loadable(lazy(() => import('../../import-equipment-rec
 // BORROW RECEIPT
 const BorrowReceiptList = Loadable(lazy(() => import('../../borrow-equipment-receipt/list')));
 const BorrowReceiptCreate = Loadable(lazy(() => import('../../borrow-equipment-receipt/create')));
+const BorrowReceiptDetails = Loadable(lazy(() => import('../../borrow-equipment-receipt/view')));
+const BorrowReceiptScanSerialNumber = Loadable(
+  lazy(() => import('../../borrow-equipment-receipt/scan'))
+);
 
 // TRANSFER RECEIPT
 const TransferReceiptList = Loadable(lazy(() => import('../../transfer-equipment-receipt/list')));

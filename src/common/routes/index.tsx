@@ -19,7 +19,6 @@ import DepartmentCreate from 'src/management-department/create';
 import LiquidationReceiptList from 'src/liquidation-receipt/list';
 import LiquidationReceiptCreate from 'src/liquidation-receipt/create';
 import RepairReceiptCreate from 'src/repair-receipt/create';
-import RepairReceiptList from 'src/repair-receipt/list';
 
 // ----------------------------------------------------------------------
 
@@ -144,7 +143,6 @@ export default function Router() {
           path: 'repair-receipt',
           children: [
             { element: <Navigate to="/dashboard/repair-receipt/list" replace />, index: true },
-            { path: 'list', element: <RepairReceiptList /> },
             { path: 'new', element: <RepairReceiptCreate /> },
           ],
         },

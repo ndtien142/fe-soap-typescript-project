@@ -26,7 +26,7 @@ import useTabs from 'src/common/hooks/useTabs';
 import useSettings from 'src/common/hooks/useSettings';
 import useTable, { getComparator, emptyRows } from 'src/common/hooks/useTable';
 // @types
-import { IDepartment } from 'src/common/@types/department/department.interface';  // Import đúng kiểu IDepartment
+import { IDepartment } from 'src/common/@types/department/department.interface'; // Import đúng kiểu IDepartment
 // components
 import Page from 'src/common/components/Page';
 import Iconify from 'src/common/components/Iconify';
@@ -85,7 +85,7 @@ export default function DepartmentList() {
 
   useEffect(() => {
     if (data?.metadata?.metadata) {
-      setTableData(data.metadata.metadata);  // Cập nhật dữ liệu phòng ban
+      setTableData(data.metadata.metadata); // Cập nhật dữ liệu phòng ban
     }
   }, [data]);
 
@@ -124,8 +124,7 @@ export default function DepartmentList() {
   const denseHeight = dense ? 52 : 72;
 
   const isNotFound =
-    (!dataFiltered.length && !!filterName) ||
-    (!dataFiltered.length && !!filterStatus);
+    (!dataFiltered.length && !!filterName) || (!dataFiltered.length && !!filterStatus);
 
   return (
     <Page title="Department: List">
@@ -165,10 +164,7 @@ export default function DepartmentList() {
 
           <Divider />
 
-          <DepartmentTableToolbar
-            filterName={filterName}
-            onFilterName={handleFilterName}
-          />
+          <DepartmentTableToolbar filterName={filterName} onFilterName={handleFilterName} />
 
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800, position: 'relative' }}>
@@ -223,7 +219,10 @@ export default function DepartmentList() {
                       />
                     ))}
 
-                  <TableEmptyRows height={denseHeight} emptyRows={emptyRows(page, rowsPerPage, tableData.length)} />
+                  <TableEmptyRows
+                    height={denseHeight}
+                    emptyRows={emptyRows(page, rowsPerPage, tableData.length)}
+                  />
                   <TableNoData isNotFound={isNotFound} />
                 </TableBody>
               </Table>
@@ -284,7 +283,9 @@ function applySortFilter({
   }
 
   if (filterStatus !== 'all') {
-    tableData = tableData.filter((item: Record<string, any>) => item.isActive === (filterStatus === 'active'));
+    tableData = tableData.filter(
+      (item: Record<string, any>) => item.isActive === (filterStatus === 'active')
+    );
   }
 
   return tableData;

@@ -80,6 +80,20 @@ const navConfig = [
           { title: 'Tạo phiếu mượn', path: PATH_DASHBOARD.borrowReceipt.new },
         ],
       },
+      // USER
+      {
+        title: 'user',
+        path: PATH_DASHBOARD.user.root,
+        icon: ICONS.user,
+        children: [
+          // { title: 'profile', path: PATH_DASHBOARD.user.profile },
+          // { title: 'cards', path: PATH_DASHBOARD.user.cards },
+          { title: 'list', path: PATH_DASHBOARD.user.list },
+          { title: 'create', path: PATH_DASHBOARD.user.new },
+          { title: 'edit', path: PATH_DASHBOARD.user.demoEdit },
+          // { title: 'account', path: PATH_DASHBOARD.user.account },
+        ],
+      },
 
       // DEPARTMENT
       {
@@ -107,6 +121,16 @@ const navConfig = [
         ],
       },
 
+      // REPAIR RECEIPT
+      {
+        title: 'Phiếu sửa chữa thiết bị',
+        path: PATH_DASHBOARD.repairReceipt.root,
+        icon: ICONS.borrowReceipt,
+        children: [
+          { title: 'Danh sách', path: PATH_DASHBOARD.repairReceipt.list },
+          { title: 'Tạo phiếu thanh toán', path: PATH_DASHBOARD.repairReceipt.new },
+        ],
+      },
 
       // E-COMMERCE
       {

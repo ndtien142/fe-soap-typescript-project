@@ -85,6 +85,13 @@ export const PATH_DASHBOARD = {
     edit: (id: string) => path(ROOTS_DASHBOARD, `/borrow-receipt/${id}/edit`),
     scan: (id: string) => path(ROOTS_DASHBOARD, `/borrow-receipt/${id}/scan`),
   },
+  transferReceipt:{
+    root: path(ROOTS_DASHBOARD, '/transfer-receipt'),
+    list: path(ROOTS_DASHBOARD, '/transfer-receipt/list'),
+    new: path(ROOTS_DASHBOARD, '/transfer-receipt/new'),
+    view: (id: string) => path(ROOTS_DASHBOARD, `/transfer-receipt/${id}`),
+    edit: (id: string) => path(ROOTS_DASHBOARD, `/transfer-receipt/${id}/edit`),
+  },
   equipmentType: {
     root: path(ROOTS_DASHBOARD, '/type-equipment'),
     list: path(ROOTS_DASHBOARD, '/type-equipment/list'),

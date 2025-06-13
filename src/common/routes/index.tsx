@@ -19,6 +19,7 @@ import DepartmentCreate from 'src/management-department/create';
 import LiquidationReceiptList from 'src/liquidation-receipt/list';
 import LiquidationReceiptCreate from 'src/liquidation-receipt/create';
 import RepairReceiptCreate from 'src/repair-receipt/create';
+import RepairReceiptList from 'src/repair-receipt/list';
 
 // ----------------------------------------------------------------------
 
@@ -79,6 +80,7 @@ export default function Router() {
       ),
       children: [
         { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
+        { path: 'app', element: <GeneralApp /> },
         {
           path: 'group-equipment',
           children: [
@@ -134,6 +136,7 @@ export default function Router() {
           path: 'repair-receipt',
           children: [
             { element: <Navigate to="/dashboard/repair-receipt/list" replace />, index: true },
+            { path: 'list', element: <RepairReceiptList /> },
             { path: 'new', element: <RepairReceiptCreate /> },
           ],
         },
@@ -242,6 +245,9 @@ const TransferReceiptCreate = Loadable(
 const TransferReceiptDetails = Loadable(
   lazy(() => import('../../transfer-equipment-receipt/view'))
 );
+
+// GENERAL
+const GeneralApp = Loadable(lazy(() => import('../../home')));
 
 // USER
 // const UserProfile = Loadable(lazy(() => import('../../management-user/')));

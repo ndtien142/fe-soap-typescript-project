@@ -1,12 +1,6 @@
 import { useEffect } from 'react';
 import { useFormContext, useFieldArray } from 'react-hook-form';
-import {
-  Box,
-  Stack,
-  Button,
-  Divider,
-  Typography,
-} from '@mui/material';
+import { Box, Stack, Button, Divider, Typography } from '@mui/material';
 import { RHFTextField, RHFUploadSingleFile } from 'src/common/components/hook-form';
 import Iconify from 'src/common/components/Iconify';
 
@@ -23,7 +17,8 @@ export default function RepairReceiptDetails() {
   const handleAdd = () => {
     append({
       serialNumber: '',
-      note: '',
+      deviceName: '',
+      quantity: '',
     });
   };
 
@@ -31,23 +26,18 @@ export default function RepairReceiptDetails() {
     remove(index);
   };
 
-  useEffect(() => {
-    // Nếu sau này cần xử lý gì thêm khi items thay đổi
-  }, [watch('items')]);
+  useEffect(() => {}, [watch('items')]);
 
   return (
     <Box sx={{ p: 3 }}>
       <Stack spacing={3}>
-        <RHFTextField name="title" label="Tên phiếu" />
-
-        <RHFTextField name="reason" label="Lý do sửa chữa" multiline rows={3} />
-
-        <RHFUploadSingleFile
-          name="image"
-        //   label="Ảnh thiết bị (tuỳ chọn)"
-          accept={{ 'image/*': [] }}
-          helperText="Chỉ chấp nhận file hình ảnh (jpg, png...)"
-        />
+        <Box sx={{ width: 380 }}>
+          <RHFUploadSingleFile
+            name="image"
+            accept={{ 'image/*': [] }}
+            helperText="Chỉ chấp nhận file hình ảnh (jpg, png...)"
+          />
+        </Box>
 
         <Typography variant="h6" sx={{ color: 'text.disabled' }}>
           Danh sách thiết bị cần sửa
@@ -56,11 +46,7 @@ export default function RepairReceiptDetails() {
         <Stack divider={<Divider flexItem sx={{ borderStyle: 'dashed' }} />} spacing={3}>
           {fields.map((item, index) => (
             <Stack key={item.id} alignItems="flex-end" spacing={1.5}>
-              <Stack
-                direction={{ xs: 'column', md: 'row' }}
-                spacing={2}
-                sx={{ width: 1 }}
-              >
+              <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ width: 1 }}>
                 <RHFTextField
                   size="small"
                   name={`items[${index}].serialNumber`}
@@ -69,9 +55,18 @@ export default function RepairReceiptDetails() {
                 />
                 <RHFTextField
                   size="small"
-                  name={`items[${index}].note`}
-                  label="Ghi chú"
+                  name={`items[${index}].deviceName`}
+                  label="Tên thiết bị"
                   InputLabelProps={{ shrink: true }}
+                />
+                <RHFTextField
+                  size="small"
+                  type="number"
+                  name={`items[${index}].quantity`}
+                  label="Số lượng"
+                  placeholder="0"
+                  InputLabelProps={{ shrink: true }}
+                  sx={{ maxWidth: { md: 96 } }}
                 />
                 <Button
                   size="small"
@@ -86,11 +81,7 @@ export default function RepairReceiptDetails() {
           ))}
         </Stack>
 
-        <Button
-          size="small"
-          startIcon={<Iconify icon="eva:plus-fill" />}
-          onClick={handleAdd}
-        >
+        <Button size="small" startIcon={<Iconify icon="eva:plus-fill" />} onClick={handleAdd}>
           Thêm thiết bị
         </Button>
       </Stack>

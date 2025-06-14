@@ -4,7 +4,6 @@ import { Container } from '@mui/material';
 import Page from 'src/common/components/Page';
 import HeaderBreadcrumbs from 'src/common/components/HeaderBreadcrumbs';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
-import axiosInstance from 'src/common/utils/axios';
 import BorrowReceiptDetail from '../common/components/details';
 import BorrowReceiptToolbar from '../common/components/details/BorrowReceiptToolbar';
 import { useGetDetailBorrow } from '../common/hooks/useGetDetailBorrow';
@@ -40,7 +39,22 @@ const BorrowReceiptViewContainer = () => {
         {borrowReceipt && (
           <>
             <BorrowReceiptToolbar borrowReceipt={borrowReceipt} />
-            <BorrowReceiptDetail borrowReceipt={borrowReceipt} />
+            <BorrowReceiptDetail
+              borrowReceipt={{
+                ...borrowReceipt,
+                requestItems: borrowReceipt.requestItems.map((item) => ({
+                  ...item,
+                  note: item.note ?? null,
+                  type: item.type ?? { id: 0, name: '', description: '' },
+                  manufacturer: item.manufacturer ?? {
+                    id: 0,
+                    name: '',
+                    contactInfo: '',
+                    address: '',
+                  },
+                })),
+              }}
+            />
           </>
         )}
       </Container>

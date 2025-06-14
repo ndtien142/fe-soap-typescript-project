@@ -11,6 +11,8 @@ import {
   TableCell,
   Typography,
   TableContainer,
+  Link,
+  Stack,
 } from '@mui/material';
 import Label from 'src/common/components/Label';
 import Scrollbar from 'src/common/components/Scrollbar';
@@ -25,70 +27,85 @@ const RowResultStyle = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-type Props = {
-  borrowReceipt?: any;
+type BorrowReceiptFile = {
+  id: number;
+  filePath: string;
+  fileName: string;
+  note?: string | null;
+  createdTime?: string;
 };
 
-export interface IBorrowReceiptDetail {
-  id: number;
-  userCode: string;
-  borrowDate: string | null;
-  createdTime?: string;
-  returnDate: string | null;
-  status: string;
-  note: string;
-  room: {
-    roomId: string;
-    roomName: string;
-    roomStatus: boolean;
-    department: {
-      departmentId: string;
-      departmentName: string;
-    };
-  };
-  requestedBy: {
+type BorrowReceiptDetailProps = {
+  borrowReceipt: {
+    id: number;
     userCode: string;
-    username: string;
-    phone: string | null;
-    email: string | null;
-  };
-  borrowEquipments: {
-    serialNumber: string;
-    groupEquipmentCode: string;
+    returnDate: string | null;
     status: string;
-  }[];
-  requestItems: {
-    groupEquipmentCode: string;
-    name: string;
-    quantity: number;
-    note: string | null;
-    type: {
-      id: number;
-      name: string;
-      description: string;
+    note: string;
+    room: {
+      roomId: string;
+      roomName: string;
+      roomStatus: boolean;
+      department: {
+        departmentId: string;
+        departmentName: string;
+      };
     };
-    manufacturer: {
-      id: number;
-      name: string;
-      contactInfo: string;
-      address: string;
+    requestedBy: {
+      userCode: string;
+      username: string;
+      phone: string | null;
+      email: string | null;
     };
-  }[];
-}
+    borrowEquipments: {
+      serialNumber: string;
+      groupEquipmentCode: string;
+      status: string;
+    }[];
+    requestItems: {
+      groupEquipmentCode: string;
+      name: string;
+      quantity: number;
+      note: string | null;
+      type: {
+        id: number;
+        name: string;
+        description: string;
+      };
+      manufacturer: {
+        id: number;
+        name: string;
+        contactInfo: string;
+        address: string;
+      };
+    }[];
+    files?: BorrowReceiptFile[];
+  };
+};
 
-export default function BorrowReceiptDetail({ borrowReceipt }: Props) {
+export default function BorrowReceiptDetail({ borrowReceipt }: BorrowReceiptDetailProps) {
   const theme = useTheme();
 
   if (!borrowReceipt) {
     return null;
   }
 
-  const { id, status, note, room, requestedBy, borrowEquipments, requestItems, returnDate } =
-    borrowReceipt;
+  const {
+    id,
+    status,
+    note,
+    room,
+    requestedBy,
+    borrowEquipments,
+    requestItems,
+    returnDate,
+    files = [],
+  } = borrowReceipt;
+
+  console.log('files', files);
 
   return (
     <>
-      {/* Toolbar can be added here if needed */}
       <Card sx={{ pt: 5, px: 5 }}>
         <Grid container>
           <Grid item xs={12} sm={6} sx={{ mb: 5 }}>
@@ -164,7 +181,7 @@ export default function BorrowReceiptDetail({ borrowReceipt }: Props) {
               </TableHead>
 
               <TableBody>
-                {requestItems?.map((row: any, index: number) => (
+                {requestItems?.map((row, index) => (
                   <TableRow
                     key={row.groupEquipmentCode}
                     sx={{
@@ -202,7 +219,7 @@ export default function BorrowReceiptDetail({ borrowReceipt }: Props) {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {borrowEquipments.map((eq: any, idx: number) => (
+                    {borrowEquipments.map((eq, idx) => (
                       <TableRow key={eq.serialNumber}>
                         <TableCell>{idx + 1}</TableCell>
                         <TableCell>{eq.serialNumber}</TableCell>
@@ -236,6 +253,29 @@ export default function BorrowReceiptDetail({ borrowReceipt }: Props) {
                 </Table>
               </TableContainer>
             </Scrollbar>
+          </>
+        )}
+
+        {/* Display attached files if any */}
+        {files && files.length > 0 && (
+          <>
+            <Typography variant="h6" sx={{ mt: 5, mb: 2 }}>
+              File xác nhận
+            </Typography>
+            <Stack spacing={1} sx={{ mb: 2 }}>
+              {files.map((file) => (
+                <Box key={file.id} sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Link href={file.filePath} target="_blank" rel="noopener" underline="hover">
+                    {file.fileName}
+                  </Link>
+                  {file.createdTime && (
+                    <Typography variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
+                      {new Date(file.createdTime).toLocaleString('vi-VN')}
+                    </Typography>
+                  )}
+                </Box>
+              ))}
+            </Stack>
           </>
         )}
 

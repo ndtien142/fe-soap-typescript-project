@@ -11,7 +11,7 @@ import ScanBorrowReceipt from '../common/components/scan-borrow-receipt';
 import AvailableEquipmentCheck from '../common/components/scan-borrow-receipt/AvailableEquipmentCheck';
 import { useGetDetailBorrow } from '../common/hooks/useGetDetailBorrow';
 import { useGetListAvailable } from '../common/hooks/useGetListAvailable';
-import { onNextStep, setBorrowEquipments, setRequestItems } from './scan.slice';
+import { onNextStep, refetchData, setBorrowEquipments, setRequestItems } from './scan.slice';
 import Iconify from 'src/common/components/Iconify';
 import { useDispatch, useSelector } from 'src/common/redux/store';
 import Page from 'src/common/components/Page';
@@ -119,6 +119,12 @@ const ScanBorrowReceiptContainer = () => {
     setAvailableData(availableList);
     setAllAvailable(allAvailableFlag);
   }, [availableList, allAvailableFlag]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(refetchData());
+    };
+  }, []);
 
   const handleProcess = () => {
     dispatch(onNextStep());

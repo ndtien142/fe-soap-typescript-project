@@ -11,6 +11,8 @@ import {
   TableCell,
   Typography,
   TableContainer,
+  Link,
+  Stack,
 } from '@mui/material';
 import Label from 'src/common/components/Label';
 import Scrollbar from 'src/common/components/Scrollbar';
@@ -24,6 +26,14 @@ const RowResultStyle = styled(TableRow)(({ theme }) => ({
     paddingBottom: theme.spacing(1),
   },
 }));
+
+type BorrowReceiptFile = {
+  id: number;
+  filePath: string;
+  fileName: string;
+  note?: string | null;
+  createdTime?: string;
+};
 
 type BorrowReceiptDetailProps = {
   borrowReceipt: {
@@ -69,6 +79,7 @@ type BorrowReceiptDetailProps = {
         address: string;
       };
     }[];
+    files?: BorrowReceiptFile[];
   };
 };
 
@@ -79,8 +90,19 @@ export default function BorrowReceiptDetail({ borrowReceipt }: BorrowReceiptDeta
     return null;
   }
 
-  const { id, status, note, room, requestedBy, borrowEquipments, requestItems, returnDate } =
-    borrowReceipt;
+  const {
+    id,
+    status,
+    note,
+    room,
+    requestedBy,
+    borrowEquipments,
+    requestItems,
+    returnDate,
+    files = [],
+  } = borrowReceipt;
+
+  console.log('files', files);
 
   return (
     <>
@@ -231,6 +253,29 @@ export default function BorrowReceiptDetail({ borrowReceipt }: BorrowReceiptDeta
                 </Table>
               </TableContainer>
             </Scrollbar>
+          </>
+        )}
+
+        {/* Display attached files if any */}
+        {files && files.length > 0 && (
+          <>
+            <Typography variant="h6" sx={{ mt: 5, mb: 2 }}>
+              File xác nhận
+            </Typography>
+            <Stack spacing={1} sx={{ mb: 2 }}>
+              {files.map((file) => (
+                <Box key={file.id} sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Link href={file.filePath} target="_blank" rel="noopener" underline="hover">
+                    {file.fileName}
+                  </Link>
+                  {file.createdTime && (
+                    <Typography variant="caption" sx={{ ml: 1, color: 'text.secondary' }}>
+                      {new Date(file.createdTime).toLocaleString('vi-VN')}
+                    </Typography>
+                  )}
+                </Box>
+              ))}
+            </Stack>
           </>
         )}
 

@@ -42,7 +42,10 @@ const slice = createSlice({
     },
 
     refetchData(state) {
-      // This action is just a trigger, no state change needed
+      state.activeStep = 0; // Reset to the first step
+      state.borrowEquipments = []; // Clear borrow equipments
+      state.requestItems = []; // Clear request items
+      state.triggerCallApi = 0; // Increment to trigger refetch
     },
 
     triggerRefetch(state) {

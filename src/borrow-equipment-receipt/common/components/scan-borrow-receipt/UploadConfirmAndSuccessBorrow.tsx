@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Box, Card, Typography, Stack, Button, CircularProgress } from '@mui/material';
 import { RHFUploadMultiFile, FormProvider } from 'src/common/components/hook-form';
 import { useForm } from 'react-hook-form';
-import useUploadMultiImage from 'src/common/hooks/useUploadMultiImage';
+import useFirebaseUpload from 'src/common/hooks/useFirebaseUpload';
 import axiosInstance from 'src/common/utils/axios';
-import { API_BORROW_RECEIPT } from 'src/common/constant/api.constant';
+import { API_BORROW_RECEIPT, API_UPLOAD_MULTIPLE_FILE } from 'src/common/constant/api.constant';
 import { useParams } from 'react-router-dom';
 import { default as useMessage } from 'src/common/hooks/useMessage';
 import { useDispatch } from 'src/common/redux/store';
 import { onBackStep } from 'src/borrow-equipment-receipt/scan/scan.slice';
 
 type FormValues = {
-  confirmFiles: File[];
+  images: (File & { preview?: string })[];
 };
 
 type Props = {
@@ -25,7 +25,7 @@ export default function UploadConfirmAndSuccessBorrow({ onSuccess }: Props) {
   const dispatch = useDispatch();
 
   const methods = useForm<FormValues>({
-    defaultValues: { confirmFiles: [] },
+    defaultValues: { images: [] },
   });
 
   const {
@@ -35,66 +35,84 @@ export default function UploadConfirmAndSuccessBorrow({ onSuccess }: Props) {
     formState: { isDirty },
   } = methods;
 
-  const { uploadImages, progress, error } = useUploadMultiImage();
+  const { uploadFile, progress, error } = useFirebaseUpload();
 
-  const onSubmit = async (data: FormValues) => {
-    if (!data.confirmFiles || data.confirmFiles.length === 0) {
+  const handleDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      const images = watch('images') || [];
+      setValue('images', [
+        ...images,
+        ...acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        ),
+      ]);
+    },
+    [setValue, watch]
+  );
+
+  const handleUpload = async () => {
+    const images = watch('images') || [];
+    if (!images.length) {
       showErrorSnackbar('Vui lòng chọn file xác nhận!');
       return;
     }
     setIsSubmitting(true);
     try {
-      // Upload files to Firebase
-      const urls = await uploadImages(data.confirmFiles);
-      // Call API to confirm borrow receipt with all file URLs
-      await axiosInstance.post(`${API_BORROW_RECEIPT}/${id}/confirm`, {
-        confirmFileUrls: urls,
-      });
-      showSuccessSnackbar('Xác nhận và hoàn tất phiếu mượn thành công!');
+      const urls = await Promise.all(images.map((file) => uploadFile(file, 'borrow-confirm')));
+      // Prepare files array for BE
+      const files = images.map((file, idx) => ({
+        filePath: urls[idx],
+        fileName: file.name,
+        note: '',
+      }));
+      // Wrap in equipmentFiles as required by new API
+      const equipmentFiles = [
+        {
+          files,
+        },
+      ];
+      await axiosInstance.post(`${API_BORROW_RECEIPT}/${id}/confirm-borrowed`, { equipmentFiles });
+      showSuccessSnackbar('Tải lên và lưu file thành công!');
       if (onSuccess) onSuccess();
     } catch (err: any) {
-      showErrorSnackbar(err?.message || 'Xác nhận thất bại!');
+      showErrorSnackbar(err?.message || 'Tải lên thất bại!');
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  function handleDrop<T extends File>(acceptedFiles: T[]) {
-    const currentFiles = watch('confirmFiles') || [];
-    setValue('confirmFiles', [...currentFiles, ...acceptedFiles], { shouldDirty: true });
-  }
   function handleRemove(file: string | File): void {
-    const currentFiles = watch('confirmFiles') || [];
+    const currentFiles = watch('images') || [];
     let updatedFiles;
     if (typeof file === 'string') {
-      // If file is a string (URL), remove by name or URL
       updatedFiles = currentFiles.filter((f: File) => f.name !== file && (f as any) !== file);
     } else {
-      // If file is a File object, remove by reference or name
       updatedFiles = currentFiles.filter((f: File) => f !== file && f.name !== file.name);
     }
-    setValue('confirmFiles', updatedFiles, { shouldDirty: true });
+    setValue('images', updatedFiles, { shouldDirty: true });
   }
 
   function handleRemoveAll(): void {
-    setValue('confirmFiles', [], { shouldDirty: true });
+    setValue('images', [], { shouldDirty: true });
   }
 
   return (
     <Card sx={{ p: 3 }}>
-      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+      <FormProvider methods={methods} onSubmit={handleSubmit(handleUpload)}>
         <Typography variant="h6" sx={{ mb: 2 }}>
           Xác nhận và hoàn tất phiếu mượn thiết bị
         </Typography>
         <Stack spacing={2}>
           <RHFUploadMultiFile
-            name="confirmFiles"
+            name="images"
             showPreview
             maxSize={3145728}
             onDrop={handleDrop}
             onRemove={handleRemove}
             onRemoveAll={handleRemoveAll}
-            onUpload={() => console.log('ON UPLOAD')}
+            onUpload={handleUpload}
           />
           {progress > 0 && progress < 100 && (
             <Typography color="primary">Đang tải lên: {Math.round(progress)}%</Typography>
